@@ -1,6 +1,6 @@
 # Gods Eye — free local setup
 
-Install Node.js 22.12+ (or a newer supported LTS). In this folder, run `npm ci`,
+Install Node.js 24.14+ within version 24, or Node.js 26. In this folder, run `npm ci`,
 then `npm start`, and visit http://localhost:4173.
 
 On macOS, **Start Gods Eye.command** is an optional launcher; a downloaded copy
