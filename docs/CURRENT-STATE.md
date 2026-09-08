@@ -2582,3 +2582,10 @@ Replay transport uses one Play/Pause toggle plus Cancel. During ascent only the 
 ## Maintenance Rule
 
 When runtime behavior or architecture changes, update this file in the same change set as code updates.
+
+## Phase 1 community branch
+See FREE-START.md and PHASE-1.md for the free-only launch path, source-health
+diagnostics, expanded cameras, city favorites, Boston transit, GDACS, Open-Meteo
+and RainViewer. Run npm start for localhost-only free mode. All credentials remain
+user-supplied. This branch starts from ac927de and requires reconciliation with
+newer upstream changes before merging; it does not remove those upstream changes.
