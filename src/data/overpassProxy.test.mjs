@@ -12,7 +12,13 @@ import {
   simplifyOverpassPayloadBody,
   isOverpassBoundaryQuery,
   resolveOverpassPreflight,
+  shouldRetryOverpassMirror,
 } from '../../vite.config.js';
+
+test('edge rejection tries another public mirror while invalid queries stop', () => {
+  for (const status of [403, 406, 408, 500, 502, 503]) assert.equal(shouldRetryOverpassMirror(status), true);
+  for (const status of [200, 400, 404]) assert.equal(shouldRetryOverpassMirror(status), false);
+});
 
 test('preflight checks memory, in-flight, then disk before consuming limiter quota', async () => {
   const key = 'normalized query';
