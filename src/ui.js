@@ -2367,6 +2367,12 @@ export class StyleManager {
     this._cctvSyncProgress = document.getElementById('cctv-sync-progress');
     this._toast = document.getElementById('toast');
     this._locationSearch = document.getElementById('location-search');
+    const searchKey = window.__GOOGLE_MAPS_API_KEY__ || import.meta.env?.GOOGLE_MAPS_API_KEY;
+    this._keylessLocationSearch = !searchKey || searchKey === 'your_google_maps_api_key_here';
+    if (this._keylessLocationSearch && this._locationSearch) {
+      this._locationSearch.placeholder = 'Search cities, landmarks, addresses...';
+      this._locationSearch.title = 'Free place search via Photon / OpenStreetMap. Press Enter to search.';
+    }
     this._searchToggle = document.getElementById('search-toggle');
     this._locationPills = document.getElementById('location-pills');
     this._poiRow = document.getElementById('poi-row');
@@ -6358,8 +6364,12 @@ export class StyleManager {
       return;
     }
     const kind = String(activeCamera.sourceKind || activeCamera.feedType || 'unknown').toUpperCase();
-    const status = String(activeCamera.sourceStatus || 'unknown').toUpperCase();
+    const sourceStatus = String(activeCamera.sourceStatus || 'unknown').toUpperCase();
+    // Providers can return an unavailable-image placeholder with HTTP 200.
+    // Successful transport does not establish that the camera itself is live.
+    const status = sourceStatus === 'OK' ? 'RECEIVED' : sourceStatus;
     this._cctvSourceBadge.textContent = `${kind} · ${status}`;
+    this._cctvSourceBadge.title = 'Image delivery status only. Providers may return an unavailable-image placeholder; check the picture for camera availability.';
     this._cctvSourceBadge.dataset.frameState = 'ready';
   }
 
@@ -9331,7 +9341,9 @@ export class StyleManager {
             this._collapsePOIRow();
             this._updateLocationMiniStatus();
           } else {
-            this._showToast('Location not found');
+            this._showToast(this._keylessLocationSearch
+              ? 'No matching place. Add the city or country and try again.'
+              : 'Location not found');
           }
         } catch (err) {
           console.error('[Search] Geocoding failed:', err);

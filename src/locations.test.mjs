@@ -53,6 +53,25 @@ const AUSTIN_RESULT = {
   },
 };
 
+test('keyless search navigates bundled places without network requests and respects cancellation', async () => {
+  const priorWindow = globalThis.window;
+  const priorFetch = globalThis.fetch;
+  globalThis.window = {};
+  globalThis.fetch = async () => { throw new Error('Keyless preset search must not use a provider'); };
+  try {
+    const viewer = stubViewer();
+    assert.equal((await searchAndFlyTo(viewer, ' Austin ')).label, 'Austin');
+    assert.equal((await searchAndFlyTo(viewer, 'Golden Gate Bridge')).label, 'Golden Gate Bridge');
+    assert.equal(viewer.flights.length, 2);
+    assert.equal(await searchAndFlyTo(viewer, 'Tokyo', { beforeFly: () => false }), CANCELLED_SEARCH);
+    assert.equal(viewer.flights.length, 2);
+  } finally {
+    globalThis.fetch = priorFetch;
+    if (priorWindow === undefined) delete globalThis.window;
+    else globalThis.window = priorWindow;
+  }
+});
+
 async function runSearch(viewer, options, { result = AUSTIN_RESULT, query = 'austin' } = {}) {
   const hadWindow = Object.hasOwn(globalThis, 'window');
   const priorWindow = globalThis.window;

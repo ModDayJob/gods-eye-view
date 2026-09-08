@@ -1,3 +1,5 @@
+import { initCreatorCredits } from './creatorCredits.js';
+import { initSituationDesk } from './situationDesk.js';
 import * as Cesium from 'cesium';
 import { StyleManager } from './ui.js';
 import { flyToAustin } from './camera.js';
@@ -32,6 +34,9 @@ import {
 } from './renderGovernor.js';
 import { installScopeMask } from './scopeMask.js';
 import { initFirstRunExperience } from './firstRunExperience.js';
+import { initSourceStatus } from './sourceStatus.js';
+import { initCameraBrowser } from './cameraBrowser.js';
+import { initLiveViews } from './liveViews.js';
 import { initKeySetup } from './keySetup.js';
 import { loadPhotorealisticTileset } from './mapStartup.js';
 
@@ -238,6 +243,11 @@ async function init() {
     }
     dataManager.buildTogglePanel(document.getElementById('data-toggles'));
     styleManager.attachDataManager(dataManager);
+    initSourceStatus({ dataManager });
+    initCreatorCredits();
+    initSituationDesk({ viewer });
+    initCameraBrowser();
+    initLiveViews({ viewer, dataManager });
 
     // Initialize deterministic scene playback for social clip capture
     const sceneDirector = new SceneDirector(viewer, styleManager, dataManager);
