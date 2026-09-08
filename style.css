@@ -9164,6 +9164,53 @@ body.scene-playback-mode #first-run-launcher {
   /* Scrolling a tile into view must not animate either. */
   .first-run-choices { scroll-behavior: auto; }
 }
+/* Source health is on demand; no extra polling or panel work while closed. */
+#source-status-dialog {
+  margin: auto;
+  box-sizing: border-box;
+  width: min(680px, calc(100vw - 40px));
+  max-height: 80vh;
+  overflow: auto;
+  color: #d8f4f3;
+  background: #0b171f;
+  border: 1px solid #46777d;
+  border-radius: 14px;
+  padding: 24px;
+  font: 14px/1.5 system-ui, sans-serif;
+}
+#source-status-dialog::backdrop { background: #000b; }
+#source-status-dialog h2 { font-size: 22px; margin: 0 0 12px; }
+#source-status-dialog section { padding: 10px 0; border-bottom: 1px solid #29414b; }
+#source-status-dialog p { margin: 6px 0 14px; color: #b5ced3; }
+#source-status-dialog section p { margin: 4px 0 0; font-size: 12px; }
+#source-status-dialog a { color: #86e5e8; }
+#source-status-dialog button { padding: 8px 14px; margin: 0 8px 10px 0; border: 1px solid #568d97; border-radius: 6px; color: #e1ffff; background: #163b46; cursor: pointer; }
+#source-status-dialog button:disabled { opacity: .55; cursor: wait; }
+#camera-browser-dialog h2 { margin: 0 0 12px; font-size: 24px; }
+#camera-browser-dialog p { margin: 12px 0; line-height: 1.5; }
+#camera-browser-dialog button, #camera-browser-dialog select {
+  font: inherit; color: #e1edf2; background: #19323e;
+  border: 1px solid #547783; border-radius: 6px; padding: 8px 12px;
+  margin: 4px 8px 4px 0;
+}
+#camera-browser-dialog button { cursor: pointer; }
+#camera-browser-dialog button:disabled { opacity: .5; cursor: default; }
+#camera-browser-dialog::backdrop { background: rgba(0,0,0,.55); }
+#live-views-panel { position:fixed;z-index:10000;right:16px;top:85px;width:min(390px,90vw);max-height:78vh;overflow:auto;padding:20px;background:#0b1922;color:#e1edf2;border:1px solid #547783;border-radius:12px;font:14px/1.5 sans-serif; }
+#live-views-panel h2 { font-size:22px;margin:0 0 12px; }
+#live-views-panel button,#live-views-panel select,#live-views-panel input { color:#e1edf2;background:#19323e;border:1px solid #547783;border-radius:6px;padding:8px;margin:4px;max-width:100%;font:inherit; }
+#live-views-panel button { cursor:pointer; }
+#live-views-panel section { border-top:1px solid #34505c;padding:8px 0; }
+#live-views-panel p { margin:8px 0; }
+
+#live-views-panel fieldset { border:1px solid #39526e; border-radius:10px; margin:12px 0; padding:12px; background:#101c30; }
+#live-views-panel fieldset legend { color:#8fd9ff; font-weight:600; }
+#live-views-panel fieldset label { display:flex; align-items:center; gap:8px; }
+#live-views-panel fieldset input[type=checkbox] { width:auto; }
+#live-views-panel fieldset input[type=range] { width:100%; }
+#live-views-panel a { color:#8fd9ff; }
+#live-views-panel > div > section { border:1px solid #2e4158; border-radius:9px; padding:10px; margin:8px 0; background:#101a28; }
+#live-views-panel [hidden] { display:none!important; }
 
 /* ============================================================
    POWER UP — in-app key setup (dev server only, src/keySetup.js)
@@ -9520,3 +9567,25 @@ body.scene-playback-mode #key-setup {
   border-color: rgba(255, 170, 150, 0.65);
   outline: none;
 }
+
+#situation-desk { position:fixed; z-index:190; right:16px; top:76px; width:min(510px,calc(100vw - 32px)); max-height:calc(100dvh - 110px); overflow:auto; box-sizing:border-box; padding:22px; border:1px solid #426579; border-radius:16px; color:#e5f3f5; background:linear-gradient(140deg,#102333f5,#08131cfb); box-shadow:0 20px 70px #0009; font:14px/1.55 system-ui,sans-serif; }
+#situation-desk[hidden] {display:none}
+#situation-desk h2 {font-size:26px;margin:0;letter-spacing:-.5px}
+#situation-desk header>button {float:right}
+#situation-desk header>p {color:#64d9d2;font-size:10px;letter-spacing:2px}
+#situation-desk button,#situation-desk select,#situation-desk input,#situation-desk textarea,.gev-credits button {font:inherit;background:#172e40;color:#e4f4f7;border:1px solid #3d6176;border-radius:7px;padding:8px;margin:3px;box-sizing:border-box;max-width:100%}
+#situation-desk button {cursor:pointer}
+#situation-desk button[aria-pressed=true] {background:#295c66;border-color:#70d6cc}
+#situation-desk button:disabled{opacity:.5}
+#situation-desk nav {display:flex;flex-wrap:wrap;margin-top:12px;border-bottom:1px solid #34505c;padding-bottom:10px}
+#situation-desk input,#situation-desk textarea{width:100%}
+#situation-desk article{padding:15px 0;border-bottom:1px solid #294454}
+#situation-desk article>a {font-size:16px;font-weight:600;color:#e3f6ff;text-decoration:none}
+#situation-desk article>a:hover{text-decoration:underline}
+#situation-desk article p,#situation-desk footer {font-size:11px;color:#9bb7c5}
+#situation-desk footer {margin-top:20px}
+.situation-disclaimer {padding:10px;background:#193442;border-left:3px solid #6bc8bf;font-size:12px}
+.situation-brief {white-space:pre-wrap;overflow-wrap:anywhere}
+.gev-credits {max-width:560px;color:#e5f3f5;background:#102333;border:1px solid #426579;border-radius:16px;padding:25px;font:15px/1.6 system-ui}
+.gev-credits a{color:#71dad5}
+.gev-credits::backdrop{background:#0009}

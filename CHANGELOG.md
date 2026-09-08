@@ -262,3 +262,14 @@ represent previously published GitHub Releases.
 ## [0.1.0] — 2026-02-09
 
 - Initial project version.
+
+## Phase 1 community preview
+- Add portable free-only startup and source-health diagnostics.
+- Expand camera regions and enable official HLS playback.
+- Add saved cities, Boston transit, global hazard reports, weather units and radar.
+- Retain known grounded-aircraft regression limitations; upstream integration pending.
+
+## Phase 2 community preview
+- Integrate upstream v0.1.1 through 7596522 while retaining Phase 1.
+- Add original-creator credits and a free, independently implemented Situation Desk.
+- Add region watchlists, headline context maps, saved stories, briefings and notes.
