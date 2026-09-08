@@ -32,6 +32,9 @@ import {
 } from './renderGovernor.js';
 import { installScopeMask } from './scopeMask.js';
 import { initFirstRunExperience } from './firstRunExperience.js';
+import { initSourceStatus } from './sourceStatus.js';
+import { initCameraBrowser } from './cameraBrowser.js';
+import { initLiveViews } from './liveViews.js';
 
 initLogoGaze();
 
@@ -80,11 +83,9 @@ async function init() {
     }
 
     // Set Google Maps API key for 3D Tiles
-    const googleApiKey = import.meta.env.GOOGLE_MAPS_API_KEY;
-    if (!googleApiKey) {
-      throw new Error('GOOGLE_MAPS_API_KEY not found. Set it as an environment variable.');
-    }
-    Cesium.GoogleMaps.defaultApiKey = googleApiKey;
+    const configuredGoogleKey = String(import.meta.env.GOOGLE_MAPS_API_KEY || '').trim();
+    const googleApiKey = configuredGoogleKey === 'your_google_maps_api_key_here' ? '' : configuredGoogleKey;
+    if (googleApiKey) Cesium.GoogleMaps.defaultApiKey = googleApiKey;
 
     // Expose API key globally for geocoding in locations.js
     window.__GOOGLE_MAPS_API_KEY__ = googleApiKey;
@@ -153,9 +154,9 @@ async function init() {
     viewer.scene.skyAtmosphere.saturationShift = -0.12;
     viewer.scene.skyAtmosphere.brightnessShift = -0.08;
 
-    loaderStatus.textContent = 'Loading Google 3D Tiles...';
+    loaderStatus.textContent = googleApiKey ? 'Loading Google 3D Tiles...' : 'Loading free OpenStreetMap globe...';
     let tileset = null;
-    try {
+    if (googleApiKey) try {
       // Load Google Photorealistic 3D Tiles
       tileset = await Cesium.createGooglePhotorealistic3DTileset({
         onlyUsingWithGoogleGeocoder: true,
@@ -169,6 +170,8 @@ async function init() {
       const tileErrorDetail = describeError(tileError);
       loaderStatus.textContent = `Google 3D Tiles unavailable (${tileErrorDetail}). Continuing in fallback mode...`;
       // Keep Cesium globe visible as fallback instead of aborting the app.
+      viewer.scene.globe.show = true;
+    } else {
       viewer.scene.globe.show = true;
     }
 
@@ -241,6 +244,9 @@ async function init() {
     }
     dataManager.buildTogglePanel(document.getElementById('data-toggles'));
     styleManager.attachDataManager(dataManager);
+    initSourceStatus({ dataManager });
+    initCameraBrowser();
+    initLiveViews({ viewer, dataManager });
 
     // Initialize deterministic scene playback for social clip capture
     const sceneDirector = new SceneDirector(viewer, styleManager, dataManager);

@@ -1,4 +1,5 @@
 import * as Cesium from 'cesium';
+import { findFreePlace } from './freeGeocode.js';
 import { viewportBias, placesNearViewRecovery } from './annotations/annotationResolver.js';
 
 /**
@@ -347,8 +348,35 @@ export const CANCELLED_SEARCH = Object.freeze({ cancelled: true });
  * default; precise landmarks/buildings use close landmark framing.
  */
 export async function searchAndFlyTo(viewer, query, options = {}) {
-  const apiKey = window.__GOOGLE_MAPS_API_KEY__ || import.meta.env.GOOGLE_MAPS_API_KEY;
-  if (!apiKey) throw new Error('No Google Maps API key available for geocoding');
+  const apiKey = window.__GOOGLE_MAPS_API_KEY__ || import.meta.env?.GOOGLE_MAPS_API_KEY;
+  if (!apiKey || apiKey === 'your_google_maps_api_key_here') {
+    const normalized = String(query).trim().toLowerCase();
+    const cityEntry = Object.entries(CITY_POIS).find(([id, city]) =>
+      normalized === id || normalized === city.name.toLowerCase());
+    const poi = findPoiByName(query);
+    if (!cityEntry && !poi) {
+      const place = await findFreePlace(query, { signal: options.signal });
+      if (!place) return null;
+      if (typeof options.beforeFly === 'function' && options.beforeFly() === false) return CANCELLED_SEARCH;
+      const mode = geocodeNavigationMode(place.types);
+      const range = finitePositive(options.range) || defaultRangeForNavigationMode(mode);
+      if (place.viewport && shouldFrameGeocodeViewport(mode) && !options.range && !options.forceClose) {
+        const result = flyToViewportBounds(viewer, place.viewport, { ...options, navigationMode: mode });
+        if (result === CANCELLED_SEARCH) return result;
+      } else {
+        flyToLandmark(viewer, place.lat, place.lon, { ...options, range });
+      }
+      return { label: place.label, navigationMode: mode, rangeM: range };
+    }
+    if (typeof options.beforeFly === 'function' && options.beforeFly() === false) return CANCELLED_SEARCH;
+    if (cityEntry) {
+      const [id, city] = cityEntry;
+      flyToPresetLocation(viewer, id, { viewMode: 'overview', ...options });
+      return { label: city.name, navigationMode: 'city-overview', rangeM: null };
+    }
+    flyToPOI(viewer, poi.cityId, poi.index, options);
+    return { label: CITY_POIS[poi.cityId].pois[poi.index].name, navigationMode: 'precise-place', rangeM: null };
+  }
 
   const beforeFly = typeof options.beforeFly === 'function' ? options.beforeFly : null;
   const mayFly = () => beforeFly === null || beforeFly() !== false;

@@ -620,6 +620,13 @@ export class IntelHUD {
    */
   async _updateSummary(animate = false, force = false) {
     const fallbackText = this._composeSummary();
+    // Free mode intentionally has no OpenAI key. Use the live local metrics
+    // directly instead of repeatedly calling a disabled service and emitting 503s.
+    if (import.meta.env?.GEV_FREE_ONLY === true) {
+      this._summaryDirty = false;
+      this._setSummaryText(fallbackText, animate);
+      return;
+    }
     if (!this._latestMetrics) {
       this._setSummaryText(fallbackText, animate);
       return;
