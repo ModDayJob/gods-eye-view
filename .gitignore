@@ -18,3 +18,5 @@ output/
 *.key
 .codex/
 .agents/
+pinokio/ENVIRONMENT
+pinokio/.installed

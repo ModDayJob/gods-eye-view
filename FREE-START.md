@@ -1,6 +1,10 @@
 # Gods Eye — free local setup
 
-Open **Start Gods Eye.command** in this folder, then visit http://localhost:4173.
+Install Node.js 24.14+ within version 24, or Node.js 26. In this folder, run `npm ci`,
+then `npm start`, and visit http://localhost:4173.
+
+On macOS, **Start Gods Eye.command** is an optional launcher; a downloaded copy
+may require executable permission first.
 Keep the launcher window open while using the app. Press Control-C to stop it.
 If Gods Eye is already running, use the existing browser page instead of starting a second copy.
 
