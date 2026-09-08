@@ -169,3 +169,9 @@ of current runtime behavior, see [`docs/CURRENT-STATE.md`](docs/CURRENT-STATE.md
 ## [0.1.0] — 2026-02-09
 
 - Initial project version.
+
+## Phase 1 community preview
+- Add portable free-only startup and source-health diagnostics.
+- Expand camera regions and enable official HLS playback.
+- Add saved cities, Boston transit, global hazard reports, weather units and radar.
+- Retain known grounded-aircraft regression limitations; upstream integration pending.

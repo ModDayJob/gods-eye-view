@@ -136,3 +136,14 @@ Douglas-Peucker simplification, 6-decimal rounding).
 ## In-app attribution
 
 The required Google Maps / Cesium credit renders on the on-globe credit line (`#cesium-credits`, bottom-left) and must stay visible — including in clean-view and recording modes (the whole line, logo + "Google Maps" + the "Data attribution" link, stays on screen; only the GEV panels/HUD fade). The layer-specific credits (adsb.lol, TeleGeography, OSM datacenters/dams/roads, NASA FIRMS, CelesTrak, USGS, City of Austin, GBFS, Radio Browser, OpenSky, AISStream) are registered into the expandable **"Data attribution"** popover on that credit line via `viewer.creditDisplay.addStaticCredit(new Cesium.Credit(html, /* showOnScreen */ false))` — see `src/data/dataCredits.js`. When you add a new data source, add its license and attribution to this file **and** append an entry to `DATA_CREDITS` in `src/data/dataCredits.js` so it surfaces in the app.
+
+## Phase 1 runtime additions
+These connections fetch provider content at runtime; this contribution does not
+bundle camera images, video recordings or weather observations.
+- WSDOT camera catalog and snapshots: https://data.wsdot.wa.gov/ ; preserve WSDOT attribution and provider conditions.
+- Caltrans HLS: official streaming URLs in the existing Caltrans catalog; on-demand playback, not redistributed recordings.
+- MBTA vehicle positions: https://api-v3.mbta.com/ ; Boston only, subject to MBTA developer terms.
+- GDACS: https://www.gdacs.org/ ; attributed published disaster reports, not comprehensive warnings.
+- Open-Meteo: https://open-meteo.com/ ; CC BY 4.0 attribution; public endpoint limited to eligible noncommercial use.
+- RainViewer: https://www.rainviewer.com/api.html ; free API use within provider terms, attribution retained; incomplete radar coverage.
+- Photon: https://github.com/komoot/photon ; OpenStreetMap-based search, moderate public-service use; configurable self-hosted endpoint.
