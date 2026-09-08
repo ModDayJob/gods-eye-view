@@ -120,6 +120,12 @@ export const DATA_CREDITS = [
       'CCTV cameras &amp; frames (California): Caltrans — ' +
       '<a href="https://cwwp2.dot.ca.gov/" target="_blank" rel="noopener">cwwp2.dot.ca.gov</a>',
   },
+  { key: 'live-views-gdacs', html: 'Hazard reports: <a href="https://www.gdacs.org/" target="_blank" rel="noopener">GDACS</a>.' },
+  { key: 'live-views-mbta', html: 'Boston transit positions: <a href="https://api-v3.mbta.com/" target="_blank" rel="noopener">MBTA V3 API</a>.' },
+  {
+    key: 'wsdot-cctv',
+    html: 'Washington traffic cameras: <a href="https://data.wsdot.wa.gov/" target="_blank" rel="noopener">Washington State Department of Transportation</a> and credited camera owners.',
+  },
   {
     key: 'tfl-cctv',
     html:
