@@ -1,6 +1,9 @@
+import { waitForStartup } from './startupGate.js';
+import { initViewPreferences, applyOpeningView } from './viewPreferences.js';
+import { initCreatorCredits } from './creatorCredits.js';
+import { initSituationDesk } from './situationDesk.js';
 import * as Cesium from 'cesium';
 import { StyleManager } from './ui.js';
-import { flyToAustin } from './camera.js';
 import { DataLayerManager } from './data/manager.js';
 import flightsLayer from './data/flights.js';
 import militaryFlightsLayer from './data/militaryFlights.js';
@@ -32,6 +35,9 @@ import {
 } from './renderGovernor.js';
 import { installScopeMask } from './scopeMask.js';
 import { initFirstRunExperience } from './firstRunExperience.js';
+import { initSourceStatus } from './sourceStatus.js';
+import { initCameraBrowser } from './cameraBrowser.js';
+import { initLiveViews } from './liveViews.js';
 import { initKeySetup } from './keySetup.js';
 import { loadPhotorealisticTileset } from './mapStartup.js';
 
@@ -145,12 +151,13 @@ async function init() {
     viewer.scene.skyAtmosphere.saturationShift = -0.12;
     viewer.scene.skyAtmosphere.brightnessShift = -0.08;
 
-    loaderStatus.textContent = googleApiKey || cesiumToken
+    loaderStatus.textContent = !import.meta.env.GEV_FREE_ONLY && (googleApiKey || cesiumToken)
       ? 'Loading Google 3D Tiles...'
       : 'Loading the keyless globe...';
     const photoreal = await loadPhotorealisticTileset(Cesium, {
       googleApiKey,
       cesiumToken,
+      allowPhotorealistic: !import.meta.env.GEV_FREE_ONLY,
     });
     const tileset = photoreal.tileset;
     if (tileset) {
@@ -197,8 +204,8 @@ async function init() {
 
     // If no share link state, do default fly-to Austin
     if (!styleManager.hasShareState) {
-      loaderStatus.textContent = 'Flying to Austin, TX...';
-      flyToAustin(viewer);
+      loaderStatus.textContent = 'Opening your starting view...';
+      applyOpeningView(viewer);
     } else {
       loaderStatus.textContent = 'Restoring shared view...';
     }
@@ -238,6 +245,20 @@ async function init() {
     }
     dataManager.buildTogglePanel(document.getElementById('data-toggles'));
     styleManager.attachDataManager(dataManager);
+    initSourceStatus({ dataManager });
+    initCreatorCredits();
+    initSituationDesk({ viewer });
+    initViewPreferences({ viewer });
+    initCameraBrowser({ viewer, getMapCenter: () => {
+      const canvas = viewer.scene.canvas;
+      const point = new Cesium.Cartesian2(canvas.clientWidth / 2, canvas.clientHeight / 2);
+      const ray = viewer.camera.getPickRay(point);
+      const position = (ray && viewer.scene.globe.pick(ray, viewer.scene))
+        || viewer.camera.pickEllipsoid(point, viewer.scene.globe.ellipsoid);
+      const location = position ? Cesium.Cartographic.fromCartesian(position) : viewer.camera.positionCartographic;
+      return location ? {lat: Cesium.Math.toDegrees(location.latitude), lon: Cesium.Math.toDegrees(location.longitude)} : null;
+    } });
+    initLiveViews({ viewer, dataManager });
 
     // Initialize deterministic scene playback for social clip capture
     const sceneDirector = new SceneDirector(viewer, styleManager, dataManager);
@@ -245,13 +266,25 @@ async function init() {
     // Initialize the voice "whiteboard" annotation engine (world-space renderer)
     const annotations = initAnnotations({ viewer, tileset });
 
-    // Keep startup chrome truthful: a share is not restored until camera,
-    // visual/map/panel lanes, and every requested layer have terminated.
-    void Promise.all([
-      styleManager.initialRestorePromise,
-      new Promise((resolve) => setTimeout(resolve, 1000)),
-    ]).finally(() => {
+    // Provider restoration must not hold the entire interface hostage.
+    const restoration = styleManager.initialRestorePromise;
+    void waitForStartup(restoration).then(({settled}) => {
       loadingScreen.classList.add('hidden');
+      loadingScreen.setAttribute('aria-hidden', 'true');
+      if (!settled) {
+        const progress = document.createElement('div');
+        progress.id = 'startup-pending-notice';
+        progress.setAttribute('role', 'status');
+        progress.textContent = 'Map open · Some layers are still restoring. Source Status shows their progress.';
+        const dismiss = document.createElement('button');
+        dismiss.textContent = 'Dismiss';
+        dismiss.onclick = () => progress.remove();
+        progress.append(dismiss);
+        document.body.append(progress);
+        void Promise.resolve(restoration).then(() => progress.remove(), () => {
+          progress.firstChild.textContent = 'Some layers could not finish restoring. Check Source Status.';
+        });
+      }
       // Reveal only after the loading cover has yielded. transitionend can be
       // absent under reduced motion, so a bounded fallback makes this reliable.
       let firstRunRevealed = false;
@@ -261,7 +294,7 @@ async function init() {
         // dataManager is passed explicitly: the globe missions enable bundled
         // keyless layers through it, and reaching for styleManager._dataManager
         // would make a private field part of this feature's contract.
-        initFirstRunExperience({ styleManager, dataManager });
+        if (settled && !document.body.classList.contains('briefing-room-open')) initFirstRunExperience({ styleManager, dataManager });
       };
       loadingScreen.addEventListener('transitionend', revealFirstRun, { once: true });
       setTimeout(revealFirstRun, 900);

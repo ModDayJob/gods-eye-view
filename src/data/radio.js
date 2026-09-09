@@ -111,6 +111,8 @@ const CATEGORY_MATCHERS = Object.freeze({
   'traffic-transit': ['traffic', 'transit', 'transport', 'rail', 'metro'],
 });
 
+const CATEGORY_PATTERNS = Object.fromEntries(Object.entries(CATEGORY_MATCHERS).map(([id, words]) => [id, words.map(word => new RegExp('(^|[^a-z0-9])' + word + '($|[^a-z0-9])', 'i'))]));
+
 const RADIO_CATEGORY_COLORS = Object.freeze({
   all: '#b9fbff',
   news: '#44adff',
@@ -167,6 +169,7 @@ let _stationById = new Map();
 let _categories = [];
 let _renderById = new Map();
 let _filter = DEFAULT_RADIO_FILTER;
+let _listeningAnchor = null;
 let _selectedId = null;
 let _selectedEntity = null;
 let _selectionGeneration = 0;
@@ -742,7 +745,8 @@ export function stationMatchesRadioCategory(station, categoryId) {
     return !Object.entries(CATEGORY_MATCHERS).some(([id]) => stationMatchesRadioCategory(station, id))
       && !stationMatchesRadioCategory(station, 'music');
   }
-  return hasTag(station, CATEGORY_MATCHERS[categoryId] || []);
+  const tags = stationTags(station);
+  return (CATEGORY_PATTERNS[categoryId] || []).some(pattern => tags.some(tag => pattern.test(tag)));
 }
 
 /** Return the shared CSS color for a canonical or detected-genre category. */
@@ -1141,8 +1145,24 @@ function selectedPresentationStation() {
   return _cancelledTuningPresentationStation || selectedStation();
 }
 
+export function radioStationsNear(stations, anchor, radiusKm = 200) {
+  if (!anchor) return stations;
+  return rankRadioStationsForViewport(stations.filter(station => radioAngularDistance(station, anchor) * 6371 <= radiusKm), anchor);
+}
+
 function visibleStations() {
-  return filterRadioStations(_stations, _filter);
+  return filterRadioStations(radioStationsNear(_stations, _listeningAnchor), _filter);
+}
+
+export function setRadioListeningArea(nearMap = false) {
+  if (!radioPresentationAllowed()) return false;
+  const anchor = nearMap ? viewportRadioAnchor() : null;
+  if (nearMap && !anchor) return false;
+  endRadioTuning();
+  _listeningAnchor = anchor;
+  resetRadioClusterOverlayIdentities();
+  setRadioFilter(_filter);
+  return true;
 }
 
 function viewportRadioAnchor() {
@@ -1168,9 +1188,9 @@ function viewportRadioAnchor() {
 }
 
 function rankedVisibleStations() {
-  const anchor = viewportRadioAnchor();
+  const anchor = _listeningAnchor || viewportRadioAnchor();
   return rankRadioStationsForViewport(visibleStations(), anchor, {
-    preferEnglish: Boolean(anchor?.globalView),
+    preferEnglish: !_listeningAnchor && Boolean(anchor?.globalView),
   });
 }
 
@@ -1216,7 +1236,8 @@ export function getRadioUIState() {
     error: _error,
     updatedAt: _updatedAt,
     filter: _filter,
-    categories: _categories,
+    categories: _listeningAnchor ? buildRadioCategories(radioStationsNear(_stations, _listeningAnchor)) : _categories,
+    listeningArea: _listeningAnchor ? 'near-map' : 'worldwide',
     acceptedCatalogGeneration: _acceptedCatalogSnapshot.generation,
     presentationActive: radioPresentationAllowed(),
     stationCount: _stations.length,
@@ -2154,7 +2175,7 @@ function publishRadioOverlayEntries() {
       .map((entity) => String(entity?.id || '').slice(RADIO_PREFIX.length))
       .filter((id) => {
         const station = _stationById.get(id);
-        return station && stationMatchesRadioCategory(station, _filter);
+        return station && stationMatchesRadioCategory(station, _filter) && (!_listeningAnchor || radioAngularDistance(station, _listeningAnchor) * 6371 <= 200);
       })
       .sort();
     if (stationIds.length < 3) continue;
@@ -2300,7 +2321,7 @@ export function cycleRadioStation(direction = 1, {
     ? stationIds
       .slice(0, RADIO_TUNER_DIRECTORY_LIMIT)
       .map((id) => _stationById.get(String(id)))
-      .filter((station) => station && stationMatchesRadioCategory(station, _filter))
+      .filter((station) => station && stationMatchesRadioCategory(station, _filter) && (!_listeningAnchor || radioAngularDistance(station, _listeningAnchor) * 6371 <= 200))
     : rankedVisibleStations();
   if (!ranked.length) return false;
   const current = ranked.findIndex((station) => station.id === _selectedId);
@@ -2357,7 +2378,8 @@ function updateRenderVisibility({ force = true } = {}) {
   const occluder = horizonOccluder(_viewer.camera);
   let visibilityChanged = false;
   for (const [id, record] of _renderById) {
-    const matches = stationMatchesRadioCategory(record.station, _filter);
+    const matches = stationMatchesRadioCategory(record.station, _filter)
+      && (!_listeningAnchor || radioAngularDistance(record.station, _listeningAnchor) * 6371 <= 200);
     const visible = matches && occluder.isPointVisible(record.position);
     if (record.entity.show !== visible) visibilityChanged = true;
     record.entity.show = visible;
@@ -2799,6 +2821,7 @@ export const radioLayer = {
     _stationById.clear();
     _categories = Object.freeze([]);
     _filter = DEFAULT_RADIO_FILTER;
+    _listeningAnchor = null;
     _renderById.clear();
     resetRadioClusterOverlayIdentities();
     _lastHorizonCameraPosition = null;
@@ -2861,6 +2884,7 @@ export const radioLayer = {
   cancelTuning: cancelRadioTuning,
   endTuning: endRadioTuning,
   setFilter: setRadioFilter,
+  setListeningArea: setRadioListeningArea,
   selectStation: selectRadioStation,
   selectRequestedStation: selectRequestedRadioStation,
   cycleStation: cycleRadioStation,

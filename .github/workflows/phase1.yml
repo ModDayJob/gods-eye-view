@@ -1,0 +1,22 @@
+name: Phase 1 checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PUPPETEER_SKIP_DOWNLOAD: 'true'
+      GEV_FREE_ONLY: '1'
+      GEV_REQUIRE_ALLOCATION_GATE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run test:phase1
+      - run: npm run build

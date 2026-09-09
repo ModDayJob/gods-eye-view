@@ -151,3 +151,19 @@ test('the shipped layer boots keyless-honest before any status check', () => {
   assert.ok(!LIVE_CLAIM.test(stats.loadingLabel), `boot label implies live data: ${stats.loadingLabel}`);
   assert.equal(layerFeedState(stats), 'fallback');
 });
+
+test('road network failure overrides configured LIVE traffic and clears after recovery', () => {
+  const roadError = 'Road network unavailable · retrying';
+  const failed = trafficFeedPresentation({liveMode:true,roadError});
+  assert.equal(failed.error,roadError);
+  assert.equal(failed.loadingLabel,roadError);
+  assert.equal(layerFeedState({count:0,error:failed.error}),'unavailable');
+  assert.equal(layerFeedState({count:5,error:failed.error}),'degraded');
+  const recovered=trafficFeedPresentation({liveMode:true,coveragePct:75,roadError:null});
+  assert.equal(recovered.error,null);
+  assert.match(recovered.loadingLabel,/75%/);
+});
+test('zoomed-out traffic gives an actionable activation message instead of a LIVE label',()=>{
+ const state=trafficFeedPresentation({liveMode:true,zoomedOut:true,roadError:'old failure'});
+ assert.equal(state.error,null);assert.match(state.loadingLabel,/below 8 km/);assert.doesNotMatch(state.loadingLabel,/LIVE/);
+});

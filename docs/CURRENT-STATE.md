@@ -2611,3 +2611,23 @@ Replay transport uses one Play/Pause toggle plus Cancel. During ascent only the 
 ## Maintenance Rule
 
 When runtime behavior or architecture changes, update this file in the same change set as code updates.
+
+## Phase 1 community branch
+See FREE-START.md and PHASE-1.md for the free-only launch path, source-health
+diagnostics, expanded cameras, city favorites, Boston transit, GDACS, Open-Meteo
+and RainViewer. Run npm start for localhost-only free mode. All credentials remain
+user-supplied. This branch starts from ac927de and requires reconciliation with
+newer upstream changes before merging; it does not remove those upstream changes.
+
+## Phase 2
+Integrated upstream through 7596522. Situation Desk and original-creator credits
+are initialized from main.js. The /api/situation-news proxy serves bounded,
+cached headline metadata; source status, stale flags and region semantics are
+documented in PHASE-2.md. Closing the panel stops its polling and removes markers.
+
+### Local briefing-room preview
+The Briefing Room exposes a front-page overview, report filters, map-layer
+switches, country-mention links, source-linked local evidence search and manual
+snapshot history. Snapshots are bounded browser storage, not a backfilled event
+archive. Only news context replays; other layers remain live. The first-view
+launcher includes Briefing Room. Unshared fresh visits open its overview.

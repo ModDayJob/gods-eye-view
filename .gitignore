@@ -10,5 +10,16 @@ output/
 .DS_Store
 .gstack/
 3d-models/
+
+# Private configuration and local development artifacts
+.env.*
+!.env.example
+*.pem
+*.key
+.codex/
+.agents/
 pinokio/ENVIRONMENT
 pinokio/.installed
+
+# Local QA evidence and downloaded test exports
+qa-results/

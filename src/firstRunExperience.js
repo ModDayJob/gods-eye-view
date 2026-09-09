@@ -434,6 +434,11 @@ export function initFirstRunExperience({
   const onChoice = async (event) => {
     if (busy || closing) return;
     const choice = event.currentTarget?.dataset?.firstRunChoice;
+    if (choice === 'briefing') {
+      dismiss({ restoreFocus: false });
+      documentRef.dispatchEvent(new Event('gev:open-briefing'));
+      return;
+    }
     if (!FIRST_RUN_MISSIONS[choice]) return;
     if (status) delete status.dataset.sticky;
     setBusy(true, choice);

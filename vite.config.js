@@ -1,3 +1,4 @@
+import { situationNewsPlugin } from './server/situationNews.js';
 /**
  * Vite configuration for God's Eye View — a cinematic geospatial app.
  *
@@ -26,6 +27,9 @@
  */
 
 import fs from 'node:fs';
+import { liveViewsPlugin } from './server/liveViews.js';
+import { loadWashingtonCameras, balanceCameraCities, publicVideoUrl } from './server/cameraExpansion.js';
+import { freeServicesPlugin } from './server/freeServices.js';
 import os from 'node:os';
 import { promises as fsp } from 'node:fs';
 import { spawnSync } from 'node:child_process';
@@ -3529,7 +3533,7 @@ const AUSTIN_DOWNTOWN = { lat: 30.2672, lon: -97.7431 };
 const CALTRANS_CCTV_URL = (district) =>
   `https://cwwp2.dot.ca.gov/data/d${district}/cctv/cctvStatusD${String(district).padStart(2, '0')}.json`;
 /** Districts fetched by default: SF Bay (4), LA (7), San Diego (11), Sacramento (3). */
-const DEFAULT_CALTRANS_DISTRICTS = '4,7,11,3';
+const DEFAULT_CALTRANS_DISTRICTS = '1,2,3,4,5,6,7,8,9,10,11,12';
 const DEFAULT_CALTRANS_MAX_SOURCES = 300;
 /** Prioritization anchors: downtown cores of the four default metros. */
 const CALTRANS_ANCHORS = [
@@ -4054,6 +4058,7 @@ async function loadCaltransSourcesFromOpenData() {
         city: String(loc.nearbyPlace || `Caltrans D${district}`),
         cityId: `ca-d${district}`,
         provider: 'Caltrans',
+        liveVideoUrl: publicVideoUrl(cctv.imageData?.streamingVideoURL),
         lat,
         lon,
         headingDeg: hasHeading ? heading : fallbackHeadingFromId(cameraId),
@@ -4087,7 +4092,7 @@ async function loadCaltransSourcesFromOpenData() {
 
   const maxRaw = Number(process.env.CCTV_CALTRANS_MAX_SOURCES || DEFAULT_CALTRANS_MAX_SOURCES);
   const maxCount = Number.isFinite(maxRaw) ? Math.max(8, Math.min(600, Math.floor(maxRaw))) : DEFAULT_CALTRANS_MAX_SOURCES;
-  const prioritized = prioritizeSources(cameras, maxCount, CALTRANS_ANCHORS);
+  const prioritized = balanceCameraCities(cameras, maxCount, source => source.cityId);
   console.log(`[CCTV] Loaded Caltrans camera sources: ${cameras.length} inService (using nearest ${prioritized.length})`);
   return prioritized;
 }
@@ -4193,6 +4198,7 @@ function normalizeSourceItem(item) {
     feedType: normalizeFeedType(item.feedType || item.type || ''),
     url: typeof item.url === 'string' ? item.url : '',
     snapshotUrl: typeof item.snapshotUrl === 'string' ? item.snapshotUrl : '',
+    liveVideoUrl: publicVideoUrl(item.liveVideoUrl),
     license: String(item.license || item.licenseNote || ''),
     sourceKind: String(item.sourceKind || item.kind || 'configured'),
     // Optional CAL badge input (cctv-v2 design §3b/§9.2, additive-only per the
@@ -4248,18 +4254,21 @@ async function refreshCctvSources() {
   let fromAustin = [];
   let fromCaltrans = [];
   let fromTfl = [];
+  let fromWashington = [];
   if (needsLiveSources) {
-    const [austinResult, caltransResult, tflResult] = await Promise.allSettled([
+    const [austinResult, caltransResult, tflResult, washingtonResult] = await Promise.allSettled([
       loadAustinSourcesFromOpenData(),
       loadCaltransSourcesFromOpenData(),
       tflEnabled ? loadTflSourcesFromOpenData() : Promise.resolve([]),
+      loadWashingtonCameras(),
     ]);
     fromAustin = austinResult.status === 'fulfilled' ? austinResult.value : [];
     fromCaltrans = caltransResult.status === 'fulfilled' ? caltransResult.value : [];
     fromTfl = tflResult.status === 'fulfilled' ? tflResult.value : [];
+    fromWashington = washingtonResult.status === 'fulfilled' ? washingtonResult.value : [];
   }
   // Live sources first so file/env overrides win on duplicate IDs (Map last-write).
-  const merged = [...fromAustin, ...fromCaltrans, ...fromTfl, ...fromFile, ...fromEnv];
+  const merged = [...fromAustin, ...fromCaltrans, ...fromTfl, ...fromWashington, ...fromFile, ...fromEnv];
 
   // Deduplicate by camera ID (last-write wins because of Map.set)
   const byId = new Map();
@@ -4276,7 +4285,7 @@ async function refreshCctvSources() {
   if (mergedSources.length > maxCount) {
     console.warn(`[CCTV] source catalog ${mergedSources.length} exceeds cap ${maxCount}; keeping the first ${maxCount} (raise CCTV_MAX_SOURCES or lower a per-pack cap to change which).`);
   }
-  const capped = mergedSources.length > maxCount ? mergedSources.slice(0, maxCount) : mergedSources;
+  const capped = mergedSources.length > maxCount ? balanceCameraCities(mergedSources, maxCount) : mergedSources;
   if (capped.length > 0 || _cctvSourceCache.length === 0) {
     _cctvSourceCache = capped;
   } else {
@@ -4621,6 +4630,7 @@ function cctvProxy() {
                 sourceKind: source.sourceKind || (source.url ? 'configured' : 'fallback'),
                 poseSource: source.poseSource,
                 license: source.license,
+                liveVideoUrl: source.liveVideoUrl || '',
               })),
             };
             res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
@@ -7735,10 +7745,19 @@ export default defineConfig(({ mode }) => {
   for (const [key, val] of Object.entries(loaded)) {
     if (process.env[key] === undefined) process.env[key] = val;
   }
+  // Explicit free mode suppresses metered Google/OpenAI credentials even when
+  // inherited from a shell. Optional free-account keys remain server-side.
+  if (process.env.GEV_FREE_ONLY === '1') {
+    process.env.GOOGLE_MAPS_API_KEY = '';
+    process.env.OPENAI_API_KEY = '';
+  }
   const env = { ...process.env };
   const localAllowedHosts = ['localhost', '127.0.0.1', '.local'];
   return {
     plugins: [
+      freeServicesPlugin({ fetchJson: fetchRegionalJson }),
+      liveViewsPlugin({ fetchJson: fetchRegionalJson }),
+      situationNewsPlugin({ fetchText: fetchRegionalText, parseArticles: normalizeRssArticles }),
       cesium(),
       openSkyProxy(),
       celestrakProxy(),
@@ -7786,6 +7805,7 @@ export default defineConfig(({ mode }) => {
     },
     // Expose selected API keys to the browser via import.meta.env.*
     define: {
+      'import.meta.env.GEV_FREE_ONLY': JSON.stringify(env.GEV_FREE_ONLY === '1'),
       'import.meta.env.GOOGLE_MAPS_API_KEY': JSON.stringify(env.GOOGLE_MAPS_API_KEY),
       'import.meta.env.CESIUM_ION_TOKEN': JSON.stringify(env.CESIUM_ION_TOKEN),
     },

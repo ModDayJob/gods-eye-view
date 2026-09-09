@@ -9164,6 +9164,53 @@ body.scene-playback-mode #first-run-launcher {
   /* Scrolling a tile into view must not animate either. */
   .first-run-choices { scroll-behavior: auto; }
 }
+/* Source health is on demand; no extra polling or panel work while closed. */
+#source-status-dialog {
+  margin: auto;
+  box-sizing: border-box;
+  width: min(680px, calc(100vw - 40px));
+  max-height: 80vh;
+  overflow: auto;
+  color: #d8f4f3;
+  background: #0b171f;
+  border: 1px solid #46777d;
+  border-radius: 14px;
+  padding: 24px;
+  font: 14px/1.5 system-ui, sans-serif;
+}
+#source-status-dialog::backdrop { background: #000b; }
+#source-status-dialog h2 { font-size: 22px; margin: 0 0 12px; }
+#source-status-dialog section { padding: 10px 0; border-bottom: 1px solid #29414b; }
+#source-status-dialog p { margin: 6px 0 14px; color: #b5ced3; }
+#source-status-dialog section p { margin: 4px 0 0; font-size: 12px; }
+#source-status-dialog a { color: #86e5e8; }
+#source-status-dialog button { padding: 8px 14px; margin: 0 8px 10px 0; border: 1px solid #568d97; border-radius: 6px; color: #e1ffff; background: #163b46; cursor: pointer; }
+#source-status-dialog button:disabled { opacity: .55; cursor: wait; }
+#camera-browser-dialog h2 { margin: 0 0 12px; font-size: 24px; }
+#camera-browser-dialog p { margin: 12px 0; line-height: 1.5; }
+#camera-browser-dialog button, #camera-browser-dialog select {
+  font: inherit; color: #e1edf2; background: #19323e;
+  border: 1px solid #547783; border-radius: 6px; padding: 8px 12px;
+  margin: 4px 8px 4px 0;
+}
+#camera-browser-dialog button { cursor: pointer; }
+#camera-browser-dialog button:disabled { opacity: .5; cursor: default; }
+#camera-browser-dialog::backdrop { background: rgba(0,0,0,.55); }
+#live-views-panel { position:fixed;z-index:10000;right:16px;top:85px;width:min(390px,90vw);max-height:78vh;overflow:auto;padding:20px;background:#0b1922;color:#e1edf2;border:1px solid #547783;border-radius:12px;font:14px/1.5 sans-serif; }
+#live-views-panel h2 { font-size:22px;margin:0 0 12px; }
+#live-views-panel button,#live-views-panel select,#live-views-panel input { color:#e1edf2;background:#19323e;border:1px solid #547783;border-radius:6px;padding:8px;margin:4px;max-width:100%;font:inherit; }
+#live-views-panel button { cursor:pointer; }
+#live-views-panel section { border-top:1px solid #34505c;padding:8px 0; }
+#live-views-panel p { margin:8px 0; }
+
+#live-views-panel fieldset { border:1px solid #39526e; border-radius:10px; margin:12px 0; padding:12px; background:#101c30; }
+#live-views-panel fieldset legend { color:#8fd9ff; font-weight:600; }
+#live-views-panel fieldset label { display:flex; align-items:center; gap:8px; }
+#live-views-panel fieldset input[type=checkbox] { width:auto; }
+#live-views-panel fieldset input[type=range] { width:100%; }
+#live-views-panel a { color:#8fd9ff; }
+#live-views-panel > div > section { border:1px solid #2e4158; border-radius:9px; padding:10px; margin:8px 0; background:#101a28; }
+#live-views-panel [hidden] { display:none!important; }
 
 /* ============================================================
    POWER UP — in-app key setup (dev server only, src/keySetup.js)
@@ -9520,3 +9567,169 @@ body.scene-playback-mode #key-setup {
   border-color: rgba(255, 170, 150, 0.65);
   outline: none;
 }
+
+#situation-desk { position:fixed; z-index:190; right:16px; top:76px; width:min(510px,calc(100vw - 32px)); max-height:calc(100dvh - 110px); overflow:auto; box-sizing:border-box; padding:22px; border:1px solid #426579; border-radius:16px; color:#e5f3f5; background:linear-gradient(140deg,#102333f5,#08131cfb); box-shadow:0 20px 70px #0009; font:14px/1.55 system-ui,sans-serif; }
+#situation-desk[hidden] {display:none}
+#situation-desk h2 {font-size:26px;margin:0;letter-spacing:-.5px}
+#situation-desk header>button {float:right}
+#situation-desk header>p {color:#64d9d2;font-size:10px;letter-spacing:2px}
+#situation-desk button,#situation-desk select,#situation-desk input,#situation-desk textarea,.gev-credits button {font:inherit;background:#172e40;color:#e4f4f7;border:1px solid #3d6176;border-radius:7px;padding:8px;margin:3px;box-sizing:border-box;max-width:100%}
+#situation-desk button {cursor:pointer}
+#situation-desk button[aria-pressed=true] {background:#295c66;border-color:#70d6cc}
+#situation-desk button:disabled{opacity:.5}
+#situation-desk nav {display:flex;flex-wrap:wrap;margin-top:12px;border-bottom:1px solid #34505c;padding-bottom:10px}
+#situation-desk input,#situation-desk textarea{width:100%}
+#situation-desk article{padding:15px 0;border-bottom:1px solid #294454}
+#situation-desk article>a {font-size:16px;font-weight:600;color:#e3f6ff;text-decoration:none}
+#situation-desk article>a:hover{text-decoration:underline}
+#situation-desk article p,#situation-desk footer {font-size:11px;color:#9bb7c5}
+#situation-desk footer {margin-top:20px}
+.situation-disclaimer {padding:10px;background:#193442;border-left:3px solid #6bc8bf;font-size:12px}
+.situation-brief {white-space:pre-wrap;overflow-wrap:anywhere}
+.gev-credits {max-width:560px;color:#e5f3f5;background:#102333;border:1px solid #426579;border-radius:16px;padding:25px;font:15px/1.6 system-ui}
+.gev-credits a{color:#71dad5}
+.gev-credits::backdrop{background:#0009}
+
+/* Local briefing-room preview: one readable rail, with the globe alongside. */
+#situation-desk-button {background:linear-gradient(120deg,#1c716f,#24465d);border:1px solid #73dcd0;color:#effffd;font-weight:700;padding:8px 14px;border-radius:9px}
+#situation-desk {width:min(540px,calc(100vw - 32px));top:82px;padding:24px;background:linear-gradient(160deg,#132e3bf7,#08151ffb);border-color:#3c6678;backdrop-filter:blur(18px)}
+#situation-desk header h2 {font-size:32px;line-height:1.15;margin:14px 0;color:#f4fcff}
+#situation-desk header>p:last-child {font-size:13px;letter-spacing:0;color:#abc3cf}
+#situation-desk .situation-disclaimer {font-size:11px;color:#a9c6cd;border-left-width:2px}
+#situation-desk .situation-controls {display:grid;grid-template-columns:1fr 1fr;gap:4px}
+#situation-desk .situation-controls select:first-child {grid-column:1/-1;font-size:16px;font-weight:650}
+#situation-desk nav {position:sticky;top:-24px;background:#102734;z-index:2;padding:12px 0 8px;gap:3px}
+#situation-desk nav button {padding:7px 9px;font-size:12px;margin:0}
+#situation-desk h3 {font-size:17px;letter-spacing:-.2px;margin:24px 0 8px}
+.briefing-metrics {display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:16px 0}
+.briefing-metrics>div {padding:15px 10px;border:1px solid #335568;border-radius:12px;background:linear-gradient(140deg,#21445380,#0b202c)}
+.briefing-metrics strong {display:block;font-size:30px;line-height:1.3;color:#94f0df}
+.briefing-metrics span {display:block;font-size:11px;color:#b8ccd5}
+.briefing-region-grid {display:grid;grid-template-columns:1fr 1fr;gap:5px}
+#situation-desk .briefing-region-grid button {text-align:left;padding:12px}
+#situation-desk .briefing-layer {display:block;width:100%;text-align:left}
+.briefing-archive {background:#574223;border:1px solid #b49350;padding:12px;border-radius:8px;font-size:12px}
+body.briefing-room-open #right-context-rail {visibility:hidden;pointer-events:none}
+body.briefing-room-open #situation-desk {visibility:visible;pointer-events:auto}
+body.ui-clean-view #situation-desk,body.recording-mode #situation-desk,body.cockpit-mode #situation-desk,body.scene-playback-mode #situation-desk {display:none}
+@media(max-width:700px){#situation-desk{top:76px;right:8px;width:calc(100vw - 16px);padding:17px;max-height:calc(100dvh - 160px)}#situation-desk header h2{font-size:27px}.briefing-metrics strong{font-size:24px}}
+@media(prefers-reduced-motion:reduce){#situation-desk{scroll-behavior:auto}}
+#top-center-actions #situation-desk-button {width:auto;min-width:108px;flex-shrink:0;border-radius:9px;font:600 12px system-ui;padding:0 12px;white-space:nowrap}
+#top-center-actions #creator-credits-button {width:auto;padding:0 9px;border-radius:9px;font:12px system-ui}
+#situation-desk .briefing-filters {border:1px solid #3d6176;border-radius:9px;background:#122a39;padding:10px 12px;margin:14px 0 8px}
+#situation-desk summary {cursor:pointer;color:#afdedf;font-size:13px}
+#situation-desk .briefing-actions {display:flex;gap:4px}
+#situation-desk .briefing-actions button {font-size:12px;flex:1}
+#situation-desk header>p {font-size:10px;letter-spacing:2px;margin:0;color:#80c5bf}
+#situation-desk header h2 {font-size:30px;margin:12px 0 18px;max-width:320px}
+#situation-desk [role=status] {font-size:11px;color:#a8c8cf;margin:10px 0}
+@media(max-width:900px){body.briefing-room-open #left-panel-stack {visibility:hidden;pointer-events:none}#situation-desk {width:min(480px,calc(100vw - 24px))}}
+@media(max-width:900px){
+ #situation-desk {top:auto;bottom:20px;right:12px;width:calc(100vw - 24px);max-height:56dvh;padding:18px}
+ #situation-desk header h2 {font-size:25px;margin:10px 0 14px}
+ #situation-desk nav {top:-18px}
+ #top-center-actions {top:64px;gap:5px}
+ .briefing-metrics {margin-top:8px}
+}
+@media(max-width:900px){body.briefing-room-open #data-panel,body.briefing-room-open #scene-panel {visibility:hidden;pointer-events:none}}
+.view-preferences {width:min(430px,90vw);margin:auto;max-height:90dvh;overflow-y:auto;box-sizing:border-box;border:1px solid #45697a;border-radius:16px;padding:24px;background:#112735;color:#e2f0f4;font:14px/1.6 system-ui}
+.view-preferences::backdrop {background:#0009}
+.view-preferences h2 {margin-top:0}.view-preferences label {display:block;margin:18px 0}
+.view-preferences select,.view-preferences button {font:inherit;color:#e2f0f4;background:#1a3a49;border:1px solid #507787;padding:10px;border-radius:8px;margin:5px 0}
+.view-preferences select {display:block;width:100%}.view-preferences button {cursor:pointer}.view-preferences button:disabled {opacity:.5;cursor:default}
+#top-center-actions #view-preferences-button {width:auto;border-radius:9px;padding:0 10px;font:12px system-ui}
+.last-place-offer {border-left:2px solid #80cbbb;padding-left:8px}
+#startup-pending-notice {position:fixed;z-index:200;bottom:100px;left:50%;transform:translateX(-50%);max-width:85vw;padding:12px 16px;border:1px solid #4a7b87;border-radius:10px;background:#132e3eee;color:#d6edf3;font:13px/1.5 system-ui}
+#startup-pending-notice button {margin-left:12px;color:inherit;background:#254857;border:1px solid #709da5;border-radius:5px;padding:5px 9px;cursor:pointer}
+#situation-desk>select {width:100%;font-size:15px;font-weight:650;margin:4px 0 8px}
+#situation-desk .briefing-place-search {display:flex;gap:6px;align-items:center}
+#situation-desk .briefing-place-search input {min-width:0;flex:1;margin:0;font-size:12px}
+#situation-desk .briefing-place-search button {flex-shrink:0;font-size:12px;margin:0}
+/* Keep the main navigation clickable above compact map panels. */
+#top-center-actions {z-index:240}
+@media(max-width:900px){#top-center-actions {background:#0d1f29ed;border:1px solid #365160;border-radius:12px;padding:5px;max-width:calc(100vw - 20px);gap:4px}#top-center-actions button{flex-shrink:0}}
+/* A tall Display panel scrolls inside its rail, above the dock. */
+#right-context-rail {bottom:calc(2vh + 7.5rem);max-height:none;overflow-y:auto}
+#right-context-rail > * {flex-shrink:0}
+/* Compact browser panes retain side rails instead of full-width empty bars. */
+@media(max-width:900px){
+ #left-panel-stack {top:124px;left:12px;right:auto;bottom:calc(2vh + 7.5rem);width:min(290px,43vw);max-height:none;overflow-y:auto;pointer-events:none;align-items:flex-start}
+ #right-context-rail {top:124px;right:12px;left:auto;bottom:calc(2vh + 7.5rem);width:min(290px,43vw);max-height:none;overflow-y:auto;pointer-events:none;align-items:flex-end}
+ #left-panel-stack>* ,#right-context-rail>* {pointer-events:auto;max-width:100%;box-sizing:border-box}
+ #left-panel-stack>#data-panel.collapsed,#left-panel-stack>#scene-panel.collapsed {width:150px;min-width:0;flex:none}
+ #right-context-rail>#pp-toggles.collapsed,#right-context-rail>#cctv-panel.collapsed,#right-context-rail>#global-context-panel.collapsed {width:150px;min-width:0;flex:none}
+ #right-context-rail>#pp-toggles.collapsed .pp-header-row {width:100%;box-sizing:border-box}
+ #right-context-rail>#pp-toggles {align-self:flex-end}
+ #left-panel-stack .panel-header,#right-context-rail .panel-header {max-width:100%;box-sizing:border-box}
+}
+@media(max-width:480px){
+ #left-panel-stack,#right-context-rail {width:43vw}
+ #left-panel-stack>#data-panel.collapsed,#left-panel-stack>#scene-panel.collapsed,
+ #right-context-rail>#pp-toggles.collapsed,#right-context-rail>#cctv-panel.collapsed,#right-context-rail>#global-context-panel.collapsed {width:125px}
+ #top-center-actions {gap:2px;overflow-x:auto;justify-content:flex-start;width:calc(100vw - 24px);box-sizing:border-box}
+}
+@media(min-width:481px) and (max-width:900px){#right-context-rail>#global-context-panel.collapsed {width:180px}}
+/* Some panel descendants explicitly restore visibility; remove the rail while briefing. */
+body.briefing-room-open #right-context-rail {display:none}
+@media(max-width:900px){body.briefing-room-open #left-panel-stack {display:none}}
+.view-preferences label[hidden] {display:none}
+
+/* Navigation gained several actions: reserve a second row before it can
+ * collide with the wordmark. Keep the compact-pane row defined above. */
+@media (max-width:900px) {
+  #title-bar {top:22px;left:20px}
+  #title-bar h1 {font-size:16px;letter-spacing:3px;gap:8px}
+  #title-bar .title-logo {width:30px}
+  #title-bar .subtitle {font-size:8px;letter-spacing:3px;margin-top:4px}
+}
+@media (min-width:901px) and (max-width:1800px) {
+  #top-center-actions {top:94px;max-width:calc(100vw - 48px)}
+  #intel-hud[data-variant='operator'] .hud-top-bar {top:142px}
+  #intel-hud[data-variant='operator'] .hud-top-left,
+  #intel-hud[data-variant='operator'] .hud-top-right {display:none}
+  #global-loading-status {top:136px}
+}
+/* Operator already shows coordinates in its central strip. Do not repeat
+ * them in a corner, or draw lower telemetry behind an expanded side panel. */
+#intel-hud[data-variant='operator'] .hud-bottom-left {display:none}
+body:has(#right-context-rail > [data-panel-id]:not(.collapsed)) #intel-hud .hud-bottom-right,
+body:has(#left-panel-stack > [data-panel-id]:not(.collapsed)) #intel-hud .hud-bottom-left {display:none}
+@media (max-width:900px) {
+  #intel-hud .hud-corner,
+  #intel-hud .hud-left-edge,
+  #intel-hud .hud-right-edge {display:none}
+  #intel-hud[data-variant='operator'] .hud-top-bar {top:112px}
+}
+
+.radio-area-controls {display:grid;gap:6px;margin:8px 0;font:10px/1.5 var(--font-mono);color:var(--text-secondary)}
+.radio-area-controls select,.radio-area-controls button {max-width:100%;min-width:0;padding:6px;background:#132731;color:#d9f1f4;border:1px solid #39525c;border-radius:5px;font:inherit}
+.radio-area-controls p {margin:0;font-size:9px;line-height:1.5}
+.radio-area-controls [hidden] {display:none}
+
+/* Camera directory: consistent cards and clear external-viewing actions. */
+#camera-browser-dialog {box-sizing:border-box;font:14px/1.55 system-ui;box-shadow:0 24px 90px #0009}
+#camera-browser-dialog::backdrop {background:#020911b8;backdrop-filter:blur(5px)}
+#camera-browser-dialog [hidden] {display:none!important}
+.camera-browser-header {display:flex;align-items:center;justify-content:space-between;gap:16px}
+.camera-browser-eyebrow {font-size:10px;letter-spacing:2px;color:#89c1ce}
+.camera-browser-header h2 {font-size:30px;letter-spacing:-1px;margin:4px 0 10px}
+.camera-browser-nav {display:flex;gap:8px;padding:12px 0;border-bottom:1px solid #294551;margin-bottom:16px}
+#camera-browser-dialog button,.earthcam-card a {border:1px solid #3e6473;border-radius:8px;background:#162f3b;color:#e6f5f7;padding:9px 13px;cursor:pointer;font:inherit}
+#camera-browser-dialog button:disabled {opacity:.45;cursor:default}
+#camera-browser-dialog :focus-visible {outline:2px solid #76e3ea;outline-offset:3px}
+.camera-browser-nav button[aria-pressed=true] {background:#1b4652!important;border-color:#7bd6d8!important}
+.earthcam-toolbar {display:flex;align-items:center;gap:18px;margin:22px 0 8px;flex-wrap:wrap}
+.earthcam-toolbar input[type=search] {flex:1;min-width:160px;background:#08151f;color:#e3f2f5;border:1px solid #395968;border-radius:8px;padding:12px;font:inherit}
+.earthcam-toolbar label {white-space:nowrap;font-size:12px}
+.earthcam-coverage,.earthcam-footnote {color:#93acb7;font-size:12px}
+.earthcam-cards {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.earthcam-card {padding:20px;border:1px solid #365363;border-radius:12px;background:linear-gradient(145deg,#182f3d,#0e202c)}
+.earthcam-badge {color:#f0c995;font-size:9px;letter-spacing:1.2px}
+.earthcam-card h3 {font-size:20px;margin:14px 0 3px;line-height:1.25}
+.earthcam-card p {margin:0 0 12px;color:#b8cdd6;font-size:13px}
+.earthcam-card small {color:#89aab9}
+.earthcam-card-actions {display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.earthcam-card-actions a {text-decoration:none;background:#235663!important;border-color:#60a8b4!important;font-size:12px!important}
+.earthcam-card-actions button {font-size:12px!important}
+#earthcam-directory>a {color:#8ed9df;font-size:13px}
+@media(max-width:620px){.earthcam-cards{grid-template-columns:1fr}.camera-browser-header h2{font-size:24px}.camera-browser-nav{flex-wrap:wrap}.camera-browser-nav button{flex:1;font-size:12px!important}}

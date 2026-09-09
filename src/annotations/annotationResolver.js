@@ -603,8 +603,12 @@ function ringAreaM2(ring) {
  * viewport so "the marina" resolves near where the user is looking.
  */
 async function geocodePlace(query, biasRect, signal) {
-  const apiKey = window.__GOOGLE_MAPS_API_KEY__ || import.meta.env.GOOGLE_MAPS_API_KEY;
-  if (!apiKey) return null;
+  const apiKey = window.__GOOGLE_MAPS_API_KEY__ || import.meta.env?.GOOGLE_MAPS_API_KEY;
+  if (!apiKey || apiKey === 'your_google_maps_api_key_here') {
+    const { findFreePlace } = await import('../freeGeocode.js');
+    const place = await findFreePlace(query, { signal }).catch(() => null);
+    return place ? { ...place, viewport: normalizeGeocodeViewport(place.viewport) } : null;
+  }
 
   const cacheKey = `${query.toLowerCase()}|${biasRect || ''}`;
   const cached = cacheRead(geocodeCache, cacheKey);

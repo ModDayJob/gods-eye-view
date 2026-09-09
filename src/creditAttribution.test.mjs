@@ -523,7 +523,7 @@ test('a pinned tray still stacks above its sibling at narrow widths', () => {
   }
 });
 
-test('the full-width context rail clears the required credit at every modelled viewport', () => {
+test('the compact context rail clears the required credit at every modelled viewport', () => {
   const anchors = [];
   for (const rule of RULES) {
     if (!rule.parts.includes('#right-context-rail')) continue;
@@ -531,11 +531,11 @@ test('the full-width context rail clears the required credit at every modelled v
       if (decl.prop === 'bottom') anchors.push({ rule, decl });
     }
   }
-  assert.equal(anchors.length, 1, 'the rail has exactly one bottom anchor to reason about');
-  assert.equal(parseMediaCondition(anchors[0].rule.media[0]), 720, 'the rail only goes full-width below 720px');
+  assert.ok(anchors.length > 0, 'the rail has a bottom anchor');
+  assert.equal(parseMediaCondition(anchors.at(-1).rule.media[0]), 900, 'compact side rails begin at 900px');
 
   const failures = [];
-  for (const width of WIDTHS.filter((w) => w <= 720)) {
+  for (const width of WIDTHS.filter((w) => w <= 900)) {
     // `bottom` only governs the floor while the box is not height-capped:
     // top + bottom + a resolved height is over-constrained and drops `bottom`.
     assert.equal(

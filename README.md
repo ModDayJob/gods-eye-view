@@ -1,3 +1,45 @@
+# God’s Eye View — Community 0.2.0
+
+Built on [Bilawal Sidhu's God's Eye View](https://github.com/bilawalsidhu/gods-eye-view).
+Created by **Bilawal Sidhu**, maintained with **Sameh Khamis** at **Halfpixel**.
+Thank you to the original creators and contributors for making this possible.
+[Bilawal](https://github.com/bilawalsidhu) · [Sameh](https://github.com/samehkhamis) · [Halfpixel](https://halfpixel.ai)
+
+Community extensions by **ModDayJob**, developed with AI assistance.
+The original MIT license and attribution are preserved.
+
+See [release setup and supported scope](RELEASE.md) for the public local edition.
+
+## Start the community edition
+
+1. Install Node.js **24.14+ within 24.x** (recommended) or **26.x**.
+2. Download this repository using **Code → Download ZIP**, extract it, and open a terminal in the extracted folder.
+3. Run:
+
+```sh
+npm ci
+npm start
+```
+
+The app opens at **http://localhost:4173**. Keep the terminal open; Ctrl+C stops it.
+This start command enables free-only mode on Windows, macOS and Linux.
+No API keys are needed to explore the free map, weather, radar and public feeds.
+Add optional ship, fire, traffic and Cesium terrain keys through **Power Up → Save Keys**.
+They are stored in your own ignored `.env` file. Never publish that file.
+
+Phase 2 integrates upstream v0.1.1 through commit 7596522 and adds a free Situation Desk: region/topic/time filters, headline maps, watchlists, saved stories, briefings, and scenario notes. See [Phase 2 notes](PHASE-2.md).
+
+Phase 1 adds source-health reporting, expanded cameras and live video, city
+favorites, Boston transit, global hazard reports, weather and precipitation radar.
+Read [the setup and limitations](FREE-START.md) and [Phase 1 release notes](PHASE-1.md).
+
+This is a local application with a server, not a standalone GitHub Pages site.
+Public data providers have their own usage limits and coverage. Free-only mode
+disables Google photorealistic tiles and OpenAI voice; the original documentation
+below also describes those optional upstream features.
+
+---
+
 <div align="center">
 
 # 🌐 God's Eye View
@@ -111,7 +153,7 @@ Use **Node.js 24.x (24.14.0 or later) or 26.x**. The setup doctor warns about
 Node 25, which is end-of-life.
 
 ```bash
-git clone https://github.com/bilawalsidhu/gods-eye-view.git
+git clone https://github.com/ModDayJob/gods-eye-view.git
 cd gods-eye-view
 npm ci
 npm run doctor

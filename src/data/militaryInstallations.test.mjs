@@ -795,7 +795,7 @@ test('the unavailable retry backs off 30s to a 240s ceiling and restarts clean',
 
 test('the retry is wired to every lifecycle edge, not just declared', () => {
   assert.match(installationsSource,
-    /setInstallationStatus\('unavailable',[^]*?\);\n\s*scheduleUnavailableRetry\(\);/,
+    /setInstallationStatus\(state\.stale \? 'stale' : 'unavailable',[^]*?\);\n\s*scheduleUnavailableRetry\(\);/,
     'a failed load schedules the retry immediately after reporting unavailable');
   assert.match(installationsSource,
     /clearUnavailableRetry\(\);\n\s*setInstallationStatus\(\n?\s*state\.records\.length/,
@@ -811,4 +811,18 @@ test('the retry is wired to every lifecycle edge, not just declared', () => {
   assert.match(installationsSource,
     /state\.enabled && !state\.loading\) loadInstallations\(\)/,
     'the fired retry re-checks enablement and never races an in-flight load');
+});
+
+test('a refresh failure retains existing mapped sites as stale until recovery', async () => {
+  const harness = await runInstallationLoad({elements:[{type:'node',id:9191,lat:30.5,lon:-97.5,tags:{military:'range',name:'Retained site'}}]});
+  try {
+    const before=harness.stats();
+    globalThis.fetch=async()=>({ok:false,status:503,json:async()=>({error:'Temporarily unavailable'})});
+    await militaryInstallationsLayer.update();
+    assert.equal(harness.stats().status,'stale');
+    assert.equal(harness.stats().stale,true);
+    assert.equal(harness.stats().count,before.count);
+    assert.equal(harness.stats().lastUpdate,before.lastUpdate);
+    assert.ok(harness.stats().retryAt>0);
+  } finally {harness.restore();}
 });

@@ -1,0 +1,28 @@
+name: Local release readiness
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  clean-start:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    env:
+      PUPPETEER_SKIP_DOWNLOAD: '1'
+      GEV_FREE_ONLY: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.14.0'
+          cache: npm
+      - run: npm ci
+      - run: npm run test:release
+      - run: npm run test:phase1
+      - run: npm run build
+      - run: npm run release:package

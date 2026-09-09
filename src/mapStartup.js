@@ -22,13 +22,16 @@ export function selectMapStartupRoute({ googleApiKey = '', cesiumToken = '' } = 
  */
 export async function loadPhotorealisticTileset(
   Cesium,
-  { googleApiKey = '', cesiumToken = '' } = {},
+  { googleApiKey = '', cesiumToken = '', allowPhotorealistic = true } = {},
 ) {
   const googleKey = clean(googleApiKey);
   const ionToken = clean(cesiumToken);
   const errors = [];
 
   if (ionToken) Cesium.Ion.defaultAccessToken = ionToken;
+
+  // A terrain token is not permission to opt a free-only user into Google tiles.
+  if (!allowPhotorealistic) return { tileset: null, route: 'osm', errors };
 
   const attempts = [];
   if (googleKey) attempts.push({ route: 'google-direct', googleKey });

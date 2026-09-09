@@ -3702,7 +3702,10 @@ function _onMilitaryActiveChange(active) {
     _count = _billboards.size;
   } else if (_billboardCollection.show) {
     // Fire-and-forget refresh; only while the layer is actually enabled.
-    void flightsLayer.update(_viewer);
+    void flightsLayer.update(_viewer).catch((error) => {
+      // Clear can disable flights while this opportunistic refresh is pending.
+      if (error?.name !== 'AbortError') console.warn('[Data:Flights] Refresh failed:', error);
+    });
   }
 }
 

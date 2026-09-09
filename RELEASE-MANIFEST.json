@@ -1,0 +1,2113 @@
+{
+  "version": "0.2.0",
+  "files": [
+    {
+      "path": ".env.example",
+      "sha256": "bc3d233ed5e84fba8f6f92da4174efdef66c099a0a87300392e94cb0671d9a9d"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "e859b1c76827ee7fed508c8f24597b9f85a6596d65e74d5eea006a0e238b23d8"
+    },
+    {
+      "path": ".github/CODEOWNERS",
+      "sha256": "9456e6e16ab639e85fb55f567da12881dc21c42df99a506751ff547271537cf9"
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "sha256": "d500962f380d1677a0af18c79215c69ccb2dad42ef676a3b1de0bf6d8a9ed67d"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "2c41f2ba0e9f87e2b7fa384de618c882674e1b405cc27dcc0fad0a6110692944"
+    },
+    {
+      "path": ".github/workflows/phase1.yml",
+      "sha256": "b8545098b0491755062cb438f3f18d2c03a91e083a6b5d2692b5a39090ddc104"
+    },
+    {
+      "path": ".github/workflows/release-readiness.yml",
+      "sha256": "f2281f3b3a504ac7c04a31aa140aeeef2332f77c5b7d54d7aa9349b3ea43630b"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "50cb96d4ef5413046800679c7c1940dd1f2f231cace80161a7c9cbd1c1c4d006"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "77a553b24649c82fe2301e3c17deb125501dba9baf01a1d2e4cc174553e338c2"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha256": "194342a298b6e742f8256a155d69bb559d45d6f227a7ada3f04a0c4c768ced46"
+    },
+    {
+      "path": "DATA_SOURCES.md",
+      "sha256": "d9d422f68a34933871c79b96e5d7c7643329e01c3d950ca494b45d29ee33e4b5"
+    },
+    {
+      "path": "FREE-START.md",
+      "sha256": "427e2a2e2041e774ce97fc51269818bc8cfefbc7abd981250ffe18d999244199"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "ffebc8bb68c9a25c164d4182837b32f25ab4d05db866c149a7358f0521523171"
+    },
+    {
+      "path": "PHASE-1-PR.md",
+      "sha256": "9afbda9264eb2c0e3f20a907fd04822081d9a69079ed41e963088cfeb77ea831"
+    },
+    {
+      "path": "PHASE-1-PUBLICATION.md",
+      "sha256": "5451165b736aa95ddd7666d35acdffb579b979907dd0960f97dce1a3cb192115"
+    },
+    {
+      "path": "PHASE-1.md",
+      "sha256": "d33fcd471ced66cc6715c06c6b4802debc6e4a2cbde6667314820e04b3472fd7"
+    },
+    {
+      "path": "PHASE-2.md",
+      "sha256": "65bd1a6d3c88a12c0fa007df9123cf190a21885d929df14afba28170173140c4"
+    },
+    {
+      "path": "QA-REPORT.md",
+      "sha256": "5abab32deb9fb45861bf04c59a8db3bb0009e99d34a52bbb6c4b851ce8e3818a"
+    },
+    {
+      "path": "README.md",
+      "sha256": "0031cee7653bb134ba5e6bb1cf3f51cba4fee101ceb407c9634379063551e9e5"
+    },
+    {
+      "path": "RELEASE-VERIFICATION.md",
+      "sha256": "18d5188c705be6b1ba14752186ede922b044ad010f12551f343c869292f08bcd"
+    },
+    {
+      "path": "RELEASE.md",
+      "sha256": "7d525c15f5cfc4c765521b15efa48b354b228c06180273c63eac0a6c281f0454"
+    },
+    {
+      "path": "SECURITY.md",
+      "sha256": "0f5bf43867872b4705e1b3ab02affced8939fd3bd8c0834c463dc30c5efe3eee"
+    },
+    {
+      "path": "STABILITY-REPORT.md",
+      "sha256": "321622439849e2f3fd24c514fedddbb4a4307d1fd0b56dbfa5c07bb44e36ca20"
+    },
+    {
+      "path": "Start Gods Eye.command",
+      "sha256": "942877f9d332ec27eed30a16d65831fa9a21d82a85c5a509d3a18c45022fa47b"
+    },
+    {
+      "path": "TESTING.md",
+      "sha256": "d4945245e3630e58a83975e2145c1b0fc8479d4fc7832ec430d0505fa55dd5cf"
+    },
+    {
+      "path": "config/cctv_sources.austin.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "config/cctv_sources.shinjuku.json",
+      "sha256": "8467da43b9770f318d70d2780925876671e6261b032a00596a9f2fda86df66ea"
+    },
+    {
+      "path": "docs/CURRENT-STATE.md",
+      "sha256": "e71f07239b6e5811d474cb7aac548ccad12473b83fef014d49a974eacd02be00"
+    },
+    {
+      "path": "docs/KNOWN-ISSUES.md",
+      "sha256": "3df1ceaf1a973d70544b805ff75c924c727b62e298f5129d48ebc22179837f06"
+    },
+    {
+      "path": "docs/PERFORMANCE.md",
+      "sha256": "5b464a78ca49376d1e327ab99619736a23b536e55b5c7c35de5adfa02653f512"
+    },
+    {
+      "path": "docs/media/01-style-sweep.gif",
+      "sha256": "990b50146640d1060def7a15a0460ee5fb210dcbbf3d9b4e7add930be18f81af"
+    },
+    {
+      "path": "docs/media/01-voice-annotate-zilker.gif",
+      "sha256": "ca91378f5db86c7ebb06ae0c81889a23edee23ae072e71a06f93480dcfe5df8e"
+    },
+    {
+      "path": "docs/media/03-austin-cctv.gif",
+      "sha256": "dc4eaeba74a517ee62ca6c7e85bb64afaf132f771a732b3922e26c8fc12946be"
+    },
+    {
+      "path": "docs/media/04-airport-distance.gif",
+      "sha256": "e49bae11fc7f74203745ba483be5d90699aab5fcb257d7eab38fb1f7d0643b16"
+    },
+    {
+      "path": "docs/media/05-traffic-to-cctv.gif",
+      "sha256": "d1982dccb00ef04509848a9599bc1694fb80aac69e66f7f2388528ca093a269e"
+    },
+    {
+      "path": "docs/media/06-cockpit-ar.gif",
+      "sha256": "d04fc1326f7828d88510deb43321b0a9795842a4a0e226112310851d67fa7322"
+    },
+    {
+      "path": "docs/media/07-helicopter-loops.gif",
+      "sha256": "2327154649403cba406b4451722eb94cecb837ec60389b24fd3bcddd04019dfd"
+    },
+    {
+      "path": "docs/media/08-boneyard.gif",
+      "sha256": "d4c0e1ff24693f1bee61db3ecf04290a7c3457d730026eed6e373c04e6d429d9"
+    },
+    {
+      "path": "docs/media/08-falcon9-replay.gif",
+      "sha256": "729fee66c6e2465358f3f2a3b981271b45066d15e203b4450faff153cfb957c1"
+    },
+    {
+      "path": "docs/media/09-undersea-cables.gif",
+      "sha256": "8504852abcc786d7b9e35efc4e6ba68da6bca5e56f8a914389a3fa57edff612c"
+    },
+    {
+      "path": "docs/media/10-walking-route-flythrough.gif",
+      "sha256": "c8578f5e41ed738e25e0802339d05788f78dd7dff9d0b267566767c94805a903"
+    },
+    {
+      "path": "docs/media/12-switch-aircraft-cockpit.gif",
+      "sha256": "d35e2e5fcd3c5e37d4b5fb4142033187460cabcd0f05fd0ac487b355c1131a33"
+    },
+    {
+      "path": "docs/media/14-iss-over-ukraine.gif",
+      "sha256": "f32b93f513b35a3bd746824af72b00cfb51aba0c9ef18708282068bfc19bf52b"
+    },
+    {
+      "path": "docs/media/15-global-radio-layer.gif",
+      "sha256": "2bc85b54570f48bc6aeae833481dd4e4f697a148226fca6861b63ff2a4c9d4bf"
+    },
+    {
+      "path": "docs/media/README.md",
+      "sha256": "86f9c9551dedabedd1346c39e2847b233c396c3044f86de35e4ee2e431b4d7d6"
+    },
+    {
+      "path": "docs/media/hero-open-source-reveal.gif",
+      "sha256": "8da6943138231c130a62cba938c7508bcd77857f554ce59fd2805cd81adfda8a"
+    },
+    {
+      "path": "docs/media/open-source-survey.png",
+      "sha256": "d1eee944eaf04d9063d0251d21e1c8eb3b30471dc576044bab58917e35995924"
+    },
+    {
+      "path": "docs/media/start-here/airport-ground-traffic-google-3d.gif",
+      "sha256": "3f1a57d5a9cf17d3371e936a86ea6aff82a406d6f30771bc82c217d8261f6876"
+    },
+    {
+      "path": "docs/media/start-here/military-cockpit-dense-google-3d.gif",
+      "sha256": "7e25e49d08bcfee317e25496751fcee55844e5cdb0b3911c7cd395244eadfc3c"
+    },
+    {
+      "path": "docs/media/youtube-popular-videos.png",
+      "sha256": "2bab334300d0327d9016fde5bd973eb662ad1c20f7c7ded7888e7660250010a3"
+    },
+    {
+      "path": "docs/opensky-auth.md",
+      "sha256": "79a31d439db34fd17b910595322d1f4052f9b8b8b4ab3a284bc3bd1562f46d21"
+    },
+    {
+      "path": "index.html",
+      "sha256": "4f8621fe9640210f3c84b41f8dce1aa681f1aab49ee6889fdb99241d822b9eea"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "d605f9cc3cfc003f4f41adc50e22addc9eb872d938390878a727ad48f39d0a2e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "fc46904c65001afd38d485cd32997996a0078fbde0e14c9cfc63d6ce016fb1bc"
+    },
+    {
+      "path": "pinokio/_ENVIRONMENT",
+      "sha256": "042e3fd7bb858f0a48f969715cc40327b8917ea7328497af60d5eff5113b8754"
+    },
+    {
+      "path": "pinokio/install.js",
+      "sha256": "9c8be5d2eefaea56c7579fa5e8d04499ca0d625e388831119d182435d53ec1e2"
+    },
+    {
+      "path": "pinokio/package.json",
+      "sha256": "8005a3491db7d92f36ac66369861589f9c47123d3a7c71e643fc2c06168cd45a"
+    },
+    {
+      "path": "pinokio/pinokio.js",
+      "sha256": "ab4ab15675c8a79515446e39ff9ff7bbadf5d4291933a5cb4893377be441993d"
+    },
+    {
+      "path": "pinokio/reset.js",
+      "sha256": "7cbb25dd4ab93c3221adb892c7c4eb0a734a44a468aa15aa0b999865e5ba3d91"
+    },
+    {
+      "path": "pinokio/start.js",
+      "sha256": "98141a8ef3ad1aacfe743ad43dc71f02ae477712b17db62c4514e1944ea48d2a"
+    },
+    {
+      "path": "pinokio/update.js",
+      "sha256": "0f951e46b6e4161c9f5466f761de323e1911dbe2cbaf9b987f954772a20ae2d4"
+    },
+    {
+      "path": "public/location.svg",
+      "sha256": "3d4472c928f7d01afb121ad7fcd949f516b7ea9e8125d9e63fd2c6abec3df74b"
+    },
+    {
+      "path": "public/logo.svg",
+      "sha256": "9984443bf385b0f2eb41401ff0416cf2250db3c176e8ddd8a6d5d91c93a6b880"
+    },
+    {
+      "path": "public/mic.svg",
+      "sha256": "628b68fcdf9d2cd0bd37b07adfb918f7804c6d35ddfa3b169703dd21a10a4eb1"
+    },
+    {
+      "path": "public/models/README.md",
+      "sha256": "0e773b75019c0c39f8689d8cc1ce6d4e4a8ab3f995d413413d775c27827612f9"
+    },
+    {
+      "path": "public/models/airplane.glb",
+      "sha256": "6780e81a4ce48c04e4c36404bf8bdd2e647933b2995f8cc62a81f9b9d9caf91f"
+    },
+    {
+      "path": "public/models/atr72.glb",
+      "sha256": "4641e4cd87015dfcbd94d6ec2f1f0a1d6423d814413ce6df8e8f874cb96b1915"
+    },
+    {
+      "path": "public/models/b789.glb",
+      "sha256": "182963a700f02102c8aa3a11e467a33df383cdf1c58418e561104439dfec61af"
+    },
+    {
+      "path": "public/models/bell206.glb",
+      "sha256": "6a47c8b2c13106e40219483598ef772da35b63261688406f427f24c5a8f92027"
+    },
+    {
+      "path": "public/models/c172.glb",
+      "sha256": "aba52b6b784534db63c1712b0189ce1b74a94edea586b41db9b795f9be3601d8"
+    },
+    {
+      "path": "public/models/citation2.glb",
+      "sha256": "5c8a7a98cdbb24faac928370df7f3adc03da8388663a6bb856b59366d271af1e"
+    },
+    {
+      "path": "public/models/jet.glb",
+      "sha256": "ac33dc352dc4ef17946680d0ada5cd530e7a4bed95c6ef4aaf2153c381d4bd1a"
+    },
+    {
+      "path": "public/models/mq9.glb",
+      "sha256": "18e8588f44ed4522f838b5d1ce1ead6ef4c08dc5536e21cf7f2d8e60b045ad35"
+    },
+    {
+      "path": "public/models/ship.glb",
+      "sha256": "48665716be710479635171b3169f3f056e4785ca1e979089e3d47a83bf480d9a"
+    },
+    {
+      "path": "public/pin.svg",
+      "sha256": "01184acd8cc80fc19525b3b1bbd4904c77cac38cc43329a8ed0e861e74fcfa62"
+    },
+    {
+      "path": "public/visual-presets.svg",
+      "sha256": "bcab34a5a2b20c958a1c2bfbafe6344feb2595da9d338431036cf002009d5177"
+    },
+    {
+      "path": "scripts/build-sf-neighborhoods.mjs",
+      "sha256": "d56e7e30be925343da1aab69f51fcd6d7f9681a6ccc253fa068198cee83173ea"
+    },
+    {
+      "path": "scripts/check-free-sources.mjs",
+      "sha256": "cbe1b95eca40a1f7d3caed2d86c5562e9a60957880162410d364fb52907404d6"
+    },
+    {
+      "path": "scripts/dev-cctv.sh",
+      "sha256": "7809ec460a56e5d75411b68cbb67f2bbd83209c545eedc50c3d561040f1bebb8"
+    },
+    {
+      "path": "scripts/dev-fresh.sh",
+      "sha256": "2bf548ba50c178c20be8303ba8d7638d177e6b10dabaa865b64ddd9501df0ab7"
+    },
+    {
+      "path": "scripts/dev-secure.sh",
+      "sha256": "e7d3e591ec7fb72d32f47dbc03940b6315c47c1fd6413a78fdc00a482606fa0f"
+    },
+    {
+      "path": "scripts/fixtures/voice/README.md",
+      "sha256": "b54c9589db0f39d6629f13522e5b9f852bdfafd4e63f54edc52996fac2805500"
+    },
+    {
+      "path": "scripts/fixtures/voice/full-globe-turn-on-radio.wav",
+      "sha256": "b57af70db1922b72fec2c6c58348ccd3309e10aa1e8edec2890277dff26cc7bb"
+    },
+    {
+      "path": "scripts/focus-allocation-check.mjs",
+      "sha256": "687c50e654dc20fce1a4e96cbb18cd478cf355272dac4928950e786dd0835861"
+    },
+    {
+      "path": "scripts/opensky-import-client.sh",
+      "sha256": "d6f4aae640d3b267d8c0c5e5839c7fc13e40a0db49f35c8da644dfd304f35288"
+    },
+    {
+      "path": "scripts/package-release.mjs",
+      "sha256": "9c3c9cd621c71f5d1bd9fe698302afd462227b1b77bbae8c3b58f1f1b1baca9d"
+    },
+    {
+      "path": "scripts/pinokio-environment.mjs",
+      "sha256": "91cc8a36cecfa4e1097611dbe79702e44d553a92c4e2d8beb633f622ed9b50b2"
+    },
+    {
+      "path": "scripts/pinokio-install.mjs",
+      "sha256": "d1ae32441cc3a5fb5535c985b361285b1dcf4b86d634728f2985551dde698d33"
+    },
+    {
+      "path": "scripts/pinokio-preflight.mjs",
+      "sha256": "f5b332e64f4d05dfb637f907a0ddb8d54822db3837a86d60ef82217a9961bf2e"
+    },
+    {
+      "path": "scripts/pinokio-reset.mjs",
+      "sha256": "be558e5a6b9deacec6bbce7ea3b5c6e91b7cfb036a1b9bd8fe232a581ad0b511"
+    },
+    {
+      "path": "scripts/pinokio-start.mjs",
+      "sha256": "c483baccb1145ec3942341affdc9500019292380e4b15f2793cdc0e39be4c5cc"
+    },
+    {
+      "path": "scripts/pinokio-update.mjs",
+      "sha256": "177b692b0cb7d5c34922e9e5d4df0847fe9bec3aeee5c67ddd87c8b6bc7ad027"
+    },
+    {
+      "path": "scripts/qa-attribution-b12.mjs",
+      "sha256": "7a0d00f1b03ea202d6429b65806133467f0b32a3e5c8537054e1f2f57cd1d1df"
+    },
+    {
+      "path": "scripts/qa-cables-overlay.mjs",
+      "sha256": "359247843852e68a1fe94ab095803560d779c00ec2394a3fc0a4ca901834e358"
+    },
+    {
+      "path": "scripts/qa-cables-render-probe.mjs",
+      "sha256": "1e52ff78f340119b59bd895fa812a1ec2ae96e1b097109d53a42e22956fea44f"
+    },
+    {
+      "path": "scripts/qa-cables-shot.mjs",
+      "sha256": "5ddb55a71f4332c51f0f3e18dcdde319733e0de290454c09adbff6fc7f81cf29"
+    },
+    {
+      "path": "scripts/qa-cctv-v2.mjs",
+      "sha256": "5221f1228304a9adfd745e022402bcb32b20b83a52f65e743bce74f6bc788d33"
+    },
+    {
+      "path": "scripts/qa-cockpit-plates.mjs",
+      "sha256": "0d83510d06ba0c7d80372924c2854c1f4642f05c6bee889c106e6ca0bfa15c6f"
+    },
+    {
+      "path": "scripts/qa-cockpit-utility.mjs",
+      "sha256": "cd02bb7e77cedc3d7611fb8018f7bc512be5c8fc0250325bb9a3228b3fbf0858"
+    },
+    {
+      "path": "scripts/qa-combined.mjs",
+      "sha256": "55e2359607e1229160651e833791fe755ad1de7bf4c981e8b17d3da074200f3e"
+    },
+    {
+      "path": "scripts/qa-enrich-ambient.mjs",
+      "sha256": "69a9c8faec5c0d700cd734ef537eecfbfe5b6e7b567ade75b0de2fa229d9b5ea"
+    },
+    {
+      "path": "scripts/qa-failstate-b10.mjs",
+      "sha256": "d32ac8333b66dfd71323f245cca77078faef42c6028fc4df6ce5cc11c3af8274"
+    },
+    {
+      "path": "scripts/qa-feature-flows.mjs",
+      "sha256": "add3ed74811cc952278724294ed940a96a72a48f81fbb702985ebdecd862e492"
+    },
+    {
+      "path": "scripts/qa-firms.mjs",
+      "sha256": "1032da7107f2e5bb0b194ce26be73cce040859c3fd3abe940368135b292c8143"
+    },
+    {
+      "path": "scripts/qa-firstrun-mutations.mjs",
+      "sha256": "99a45624e7967ebb0d74de13656d0970617cf6d44186c2bfe3eeae2824ad62c3"
+    },
+    {
+      "path": "scripts/qa-firstrun.mjs",
+      "sha256": "728ddceadaf7bce9a4f193d299188d7d752539dd8cc5b41c91a32ca86e0d944c"
+    },
+    {
+      "path": "scripts/qa-floor-hold.mjs",
+      "sha256": "30543f145d99984645401e94dae3f020f0979ceb9e0996136f9ee2a5c37dc096"
+    },
+    {
+      "path": "scripts/qa-floor-verify.mjs",
+      "sha256": "9405be14437900695afc4fdc32bf283f25a31e7483b1f99ea54184364289707e"
+    },
+    {
+      "path": "scripts/qa-floorhold-mutations.mjs",
+      "sha256": "35712849e4698bc0a859cb78da44bdf6a2473d0e0ca296c28701ed82c28aaf28"
+    },
+    {
+      "path": "scripts/qa-floorhold-probe-cost.mjs",
+      "sha256": "d0371c649d0fdca3aa73c968e3c777684ec3a46ff31cb49faf6b4fccebb0c234"
+    },
+    {
+      "path": "scripts/qa-floorhold-staircase.mjs",
+      "sha256": "25a8a8f3d364e306a842dd84a5a6bd684e5adcf01a2a0e0ebb890b189398438c"
+    },
+    {
+      "path": "scripts/qa-flyroute-cinema.mjs",
+      "sha256": "6c538af8689a41fa2c67cf25740019644907cac0371b1e575f3b419495545660"
+    },
+    {
+      "path": "scripts/qa-flyroute-mutations.mjs",
+      "sha256": "63b4d002b3c0912291b1aec204937823e98f5f1aeabf5b2241a1bad5fe1d3853"
+    },
+    {
+      "path": "scripts/qa-focus-evidence.mjs",
+      "sha256": "b6dd072a78ce514d32f366774e023ea2392094095ccd2572d449d079b294e886"
+    },
+    {
+      "path": "scripts/qa-followup.mjs",
+      "sha256": "e8c41e21efd09b5be7048c33e7e2c1efeae8c5310e7bee2940fc87a219c8a000"
+    },
+    {
+      "path": "scripts/qa-full-walkthrough.mjs",
+      "sha256": "515e6fb43ba5b22f49945b92654f137ea260bc637c4588d4bc5ce4bc0a15de09"
+    },
+    {
+      "path": "scripts/qa-heading-b3.mjs",
+      "sha256": "2525e755890f389b1b9ca930389a0324ff0a705b5ae527aa2978c20dc3bedfe2"
+    },
+    {
+      "path": "scripts/qa-height-datum.mjs",
+      "sha256": "69f1594cc06ada651346b8768e788132bd5397b055e4e3ffc67f9e8b3b99c586"
+    },
+    {
+      "path": "scripts/qa-l9-matrix.mjs",
+      "sha256": "06dfa2033587ec05220456b6fa27cc31d4151d26c68f4c6fc18d96fadf1ecee6"
+    },
+    {
+      "path": "scripts/qa-label-readability.mjs",
+      "sha256": "303729de54ec62202f4189dc8352ee6dc2dd7fdacac3a1193f2c049e59039089"
+    },
+    {
+      "path": "scripts/qa-labels.mjs",
+      "sha256": "fa4ebea357c27c9df76f530a40b5c235a3cc50f2acb074bbba0e154207e0b0de"
+    },
+    {
+      "path": "scripts/qa-map-source-tray.mjs",
+      "sha256": "69f717143b6db97a8ffe1023048ea08cca62473d8a6ef9c50703970424727353"
+    },
+    {
+      "path": "scripts/qa-overlay-baseline.mjs",
+      "sha256": "3f70deff31fddf03a140b9ebe7457366355e37e55e4c49dc0bd519b9171ab0f4"
+    },
+    {
+      "path": "scripts/qa-perf.mjs",
+      "sha256": "9f5b07c2b99bcb5f3ac27aa9da6f92e07c808783925206d0abdfa9b4cb68df61"
+    },
+    {
+      "path": "scripts/qa-radio.mjs",
+      "sha256": "b66b1de11bfdf5d7b464ee3c6ef0f61e36ba89f6bf4636588a61ece0204c351d"
+    },
+    {
+      "path": "scripts/qa-sprites-b5.mjs",
+      "sha256": "668329c603245a1cb26731de6e93df850e3d2238ea0c7da788641010defc2b88"
+    },
+    {
+      "path": "scripts/qa-stability-recovery.mjs",
+      "sha256": "05e7e18f6b3c16d98d3609cdc3a5dd08774f03f61909d0d5c9e3838ccb752a27"
+    },
+    {
+      "path": "scripts/qa-stability.mjs",
+      "sha256": "59edf816f31859ae2dd3eebfafe4490779b98cee8f2d31cc3b0cc6ecfec48a82"
+    },
+    {
+      "path": "scripts/qa-traffic-baseline.mjs",
+      "sha256": "2742a3b7cbae4b895f5a8ee20858b7bf0637bdbcae518947ac24609ec55511cc"
+    },
+    {
+      "path": "scripts/qa-traffic-jamviz-ab.mjs",
+      "sha256": "a34c8c402ab07ce449d9b461160c860bd82f9cd3e94ac0e3cfc5e8e37f39591d"
+    },
+    {
+      "path": "scripts/qa-traffic-preset-ab.mjs",
+      "sha256": "de27a1f34aa04b01d284c9e5bae0949fc013c6921d115be5a11febf0cbd55649"
+    },
+    {
+      "path": "scripts/qa-traffic.mjs",
+      "sha256": "6b71ac68c08a2b2923ba0081d125b9fc4ad3befc9761a0424809aefbb8382ba4"
+    },
+    {
+      "path": "scripts/qa-vessel-cards.mjs",
+      "sha256": "504e6d1a3728b1bfacf32536566951c0f433d7fc3d23645274a4d75b93e6d7a9"
+    },
+    {
+      "path": "scripts/qa-vessel-datum.mjs",
+      "sha256": "d120d1419938b36e9232cc61d473a1933361341509717495c19b7a9711e3d0d4"
+    },
+    {
+      "path": "scripts/qa-view-target-prewarm.mjs",
+      "sha256": "b45e0f08fe4f302767e140f3b157c19ed10e04fa1549d141c3237d3759d96c6f"
+    },
+    {
+      "path": "scripts/qa-voice-routing.mjs",
+      "sha256": "35f94f1b0f8757899dc1b593cfb2e65f56f5f5a401001228148a99e522bbcf47"
+    },
+    {
+      "path": "scripts/qa-voice-wav.mjs",
+      "sha256": "8c826d6b84d27ca73d42a80fb63bd7bce9a2994560a74904055d5c257673302f"
+    },
+    {
+      "path": "scripts/qa-walkthrough-repairs.mjs",
+      "sha256": "6852156abd38b5058e2086b98dadc07d718ffe0eaa81fddc84fd7875c1f642e2"
+    },
+    {
+      "path": "scripts/read-dotenv-value.mjs",
+      "sha256": "9751e5641766f12b5f74507479520f5c99148d3c01c1ffad33164a4109953d21"
+    },
+    {
+      "path": "scripts/release-smoke.mjs",
+      "sha256": "691034899f2ab883af5a6c9543aa3b68b3b6b295bf6bce30c9b2f0bd54801129"
+    },
+    {
+      "path": "scripts/run-unit-tests.mjs",
+      "sha256": "c5d3e4d59dc7d83d3258f31cb35896da488cce92eb0b37453378fe44eafd4c5e"
+    },
+    {
+      "path": "scripts/setup-doctor.mjs",
+      "sha256": "81ae69cee6de0d7cc78f99b9106142b594b3bfe19a39776c0a82f6cb5d9f9ebd"
+    },
+    {
+      "path": "scripts/shot-sink.mjs",
+      "sha256": "cbcbc004b32f295b64dfac0b89267a2fe4b21655f34a6273271b369957998d42"
+    },
+    {
+      "path": "scripts/start-free.mjs",
+      "sha256": "db0875805aa7379d7097a7cd1288615e0c6b2959b08720596d084b598f0cb5cf"
+    },
+    {
+      "path": "scripts/track-regression.mjs",
+      "sha256": "545653817e102e8a82d572b1640d42255c7e168b2961106ddbe48d6561ddc566"
+    },
+    {
+      "path": "scripts/verify-keyed-data.mjs",
+      "sha256": "f3872cfee30ce6d6b64d1fdc2e62eebde9b4c63936c169effaf65fe87a1762fb"
+    },
+    {
+      "path": "server/cameraExpansion.js",
+      "sha256": "a71dfd16b4a0a30bd001c6b0fbd66ad2cf7077d35547a03a49c458cb47672aa9"
+    },
+    {
+      "path": "server/cameraExpansion.test.mjs",
+      "sha256": "60e0f224990b9bc3a927fd0aef3cbd4d290ce5299c07d526b853dd6002d98e60"
+    },
+    {
+      "path": "server/freeServices.js",
+      "sha256": "61b2d88a91dc81639bb5d7074726488d0fbee3e3ded1174d9536012e0f97ee5d"
+    },
+    {
+      "path": "server/liveViews.js",
+      "sha256": "e1c20ea5376a5782d0b5520bd456da1a4550c0b74792b6084174d1b0dbd37b66"
+    },
+    {
+      "path": "server/liveViews.test.mjs",
+      "sha256": "6da856ff62334e3cfd3a1b4af0205c294bf9fb8d02077214e70c68662d7ef3b8"
+    },
+    {
+      "path": "server/situationNews.js",
+      "sha256": "c654bfad9a41fd6041c403f9a584d13dbc5441328409ce3bd21326203d27817c"
+    },
+    {
+      "path": "server/situationNews.test.mjs",
+      "sha256": "f9e826dbf2a6e10dd3cea2e5f43f0c42b3b3812dc878c8005046b35e8f506b9e"
+    },
+    {
+      "path": "src/annotations/annotationEngine.js",
+      "sha256": "bf89b2906910183d0f0a2261f724720c4473b41221c3941dc53be1048d3b8d97"
+    },
+    {
+      "path": "src/annotations/annotationEngine.test.mjs",
+      "sha256": "55408d4e034f30f20a214c34b9f5b899413a3e62704393f32890fff1ef0ea816"
+    },
+    {
+      "path": "src/annotations/annotationGeoJson.js",
+      "sha256": "fc7c3542a07cd0a052ea2325922c483b4f20e22028e3b62206448ce67de9f6d4"
+    },
+    {
+      "path": "src/annotations/annotationGeoJson.test.mjs",
+      "sha256": "96e2e43122437e9bf47915128226e763ee4baa880545fcbb1682968e1941d1c4"
+    },
+    {
+      "path": "src/annotations/annotationResolver.js",
+      "sha256": "8d7f802acf4795e23544aac87e3873e129a813bba7fd2c0e2dc86bc85015945d"
+    },
+    {
+      "path": "src/annotations/annotationResolver.test.mjs",
+      "sha256": "f07413b414710b425cda416943ac9558f54331e94328c21785cffbfb26aecd5f"
+    },
+    {
+      "path": "src/annotations/hybridAnnotationRenderer.js",
+      "sha256": "b1f7c6d9d1b3fc282a8033d4a02ecbe2d8e479a24cab865b6056b40fc05b7102"
+    },
+    {
+      "path": "src/annotations/hybridAnnotationRenderer.test.mjs",
+      "sha256": "fcf9a42989ba6cc40be41513ea26b41164efb08637089a3665a7fa63c2ea3b0e"
+    },
+    {
+      "path": "src/annotations/index.js",
+      "sha256": "db416c2ab14e2725d1381cdf8cf8ceffbf16494f20dc5dca07a2f890866b17c2"
+    },
+    {
+      "path": "src/annotations/screenAnnotationRenderer.js",
+      "sha256": "102de5c4c7320a7559c5c54fc117be6c28c4dd56e7fc6c51e2ffc409905bafed"
+    },
+    {
+      "path": "src/annotations/screenAnnotationRenderer.test.mjs",
+      "sha256": "53038983cb44ee350d3af49c12abeac37f522abdd45fa5f42f87dc3ace9b3b68"
+    },
+    {
+      "path": "src/annotations/worldAnnotationRenderer.js",
+      "sha256": "5f3b5d426b0fc7f67815b292121a7d8bd6102c88f2b679374013a65f7b28385a"
+    },
+    {
+      "path": "src/bloom.js",
+      "sha256": "94ac2198b4837e9691c56b29f8b6f6ce258b12eb3669c59a69cb54a0df88b69a"
+    },
+    {
+      "path": "src/briefingAnalysis.js",
+      "sha256": "27b7c2a5d06a9e8c7d55a87dd4e21d5724888261cc70f9ec4ffe5be8f0e34df5"
+    },
+    {
+      "path": "src/briefingAnalysis.test.mjs",
+      "sha256": "823f17676031395e808edcc33351f9a203de0473398bb2f2830d7f789fd31ed8"
+    },
+    {
+      "path": "src/browserModuleBoundary.test.mjs",
+      "sha256": "d9181dff661036e6fb52c3bf17742aafa7f9e4d01a6dfdf5a042c057b08b9819"
+    },
+    {
+      "path": "src/camera.js",
+      "sha256": "0239e59ff47eb148458170943ac64049d6e1e0a55cfb6f0fbbc16dbf965cc413"
+    },
+    {
+      "path": "src/cameraBrowser.js",
+      "sha256": "a28419fd374f7197b114e066c315c2031825705659c02688b6e41ab4d1013fa2"
+    },
+    {
+      "path": "src/cameraBrowser.test.mjs",
+      "sha256": "6cac99287b35e0596f786e0094c749d5008d31e3605c97732e10e42e4ec2957b"
+    },
+    {
+      "path": "src/cameraHandoff.test.mjs",
+      "sha256": "07de8555860f2c5bddbaef59c5cce640cf3ddab9876ecf46d3cb3b089f992718"
+    },
+    {
+      "path": "src/cameraVerbs.js",
+      "sha256": "0fb385172325e24b41ac528640d788fdf561b14bcc9b63f7e6c1e709fa4cd83b"
+    },
+    {
+      "path": "src/cctvFocusPolicy.js",
+      "sha256": "9d9a33998af979d506b7888d14081ea0636648d0742590262c76d2442e3ae699"
+    },
+    {
+      "path": "src/cctvFocusPolicy.test.mjs",
+      "sha256": "38417227385a95b5ff2f51a9d2de6274f529b8556ce853de9c021f49491c4d24"
+    },
+    {
+      "path": "src/cctvFocusRequest.js",
+      "sha256": "0ce65d21e9063a77d1e38838d6aa3a8f7459d17b90ba111b0ddc84d74f0a94a6"
+    },
+    {
+      "path": "src/cctvFocusRequest.test.mjs",
+      "sha256": "6ce768a535d708da8da1b4384254857b9d06c7ff8f1a06a38a7d2c03747ae2af"
+    },
+    {
+      "path": "src/celestialRing.js",
+      "sha256": "da46ceb974cd792e0531700db0b49914da6a596e575a823d5c23a5642272fd6f"
+    },
+    {
+      "path": "src/celestialRing.test.mjs",
+      "sha256": "8860f86376bca901dec4efc03a43e9d31ab41cd961aef5c63b35e32437f48208"
+    },
+    {
+      "path": "src/cockpitCloudEffects.js",
+      "sha256": "20e957a11b7c8942701b0c2bf84db65307cca3f7d15a3b14dc13dfc932b76105"
+    },
+    {
+      "path": "src/cockpitCloudEffects.test.mjs",
+      "sha256": "f0c15f94fb67988c19626952199e346ea8e2dc6692f7dc6c0127017c45aade0e"
+    },
+    {
+      "path": "src/cockpitMarkup.test.mjs",
+      "sha256": "8d9d797ecfab163c00cf2ed7ea9c35443681661a43a1896b81f167e9aaf55555"
+    },
+    {
+      "path": "src/cockpitMath.js",
+      "sha256": "a1f79f2ffc87bab0886073080a372d9daae506fcbab7ef52d079c5578b773b4e"
+    },
+    {
+      "path": "src/cockpitMath.test.mjs",
+      "sha256": "47d797e23f601a5f7cd6cae8839dc2d7acd8967fa387ee0a72e7fd184a7b8367"
+    },
+    {
+      "path": "src/cockpitTracking.js",
+      "sha256": "3b8ceab901bcb75ab3837b81555c9ca87fcf2199fbd05d145969c8fb74df5cff"
+    },
+    {
+      "path": "src/cockpitTracking.test.mjs",
+      "sha256": "8ba8a0871cd344301a278df819be719a225ac7a8757775c2d588a86cbd29c722"
+    },
+    {
+      "path": "src/cockpitUtilityLayout.js",
+      "sha256": "b230b249e6e093fab3c9f7d37b27d7447217cfcb2edff47fa3110ae841b079f3"
+    },
+    {
+      "path": "src/cockpitUtilityLayout.test.mjs",
+      "sha256": "92ed41c5d4d11c65b721e338476baa62453ad8f822b34b720b02a210b4a01fe5"
+    },
+    {
+      "path": "src/cockpitVisionPolicy.js",
+      "sha256": "d011e7ebc5a4f945665e26279b78e2dcdb6301330ed7096600d09c386923f12b"
+    },
+    {
+      "path": "src/cockpitVisionPolicy.test.mjs",
+      "sha256": "e47e175596cd12a1f2fdf5d5f127b090c020590955284b588da4e035c3de2e1b"
+    },
+    {
+      "path": "src/contactsDetectionPolicy.js",
+      "sha256": "430c7234e489155f548bf6aaa0dc40d0d7583e4ce27e2044245607fec47ad530"
+    },
+    {
+      "path": "src/contactsDetectionPolicy.test.mjs",
+      "sha256": "98d3ce6ae79c215f20401a32efb56ed5fecb3a5e7bec72d8e9607e0e832640e4"
+    },
+    {
+      "path": "src/contextModePolicy.js",
+      "sha256": "9064b905eae9bdb3af1407aae00588f842c6dd395c8c33b22061c0007504264d"
+    },
+    {
+      "path": "src/contextModePolicy.test.mjs",
+      "sha256": "4a54ced739344e00aef94c499e44cb9379f979caec7d2e12662936879f848e72"
+    },
+    {
+      "path": "src/contextSessionOrdering.test.mjs",
+      "sha256": "945036bdc2172500c7d15f64c2e5512b2baae8cb97b65ba9af09d6b89ab198db"
+    },
+    {
+      "path": "src/creatorCredits.js",
+      "sha256": "a7f755f5b297b1553bd5a8f3c0714579f447aa6ff08a5bf6c26cb6de4e20e1cf"
+    },
+    {
+      "path": "src/creditAttribution.test.mjs",
+      "sha256": "e094da01ce233bd07e3a153e2d193873c6a8248cbbe89820da10b0740743c5a8"
+    },
+    {
+      "path": "src/data/adsbLolFallback.js",
+      "sha256": "41fd166561f2b3988adc6b95ef9b5d79dd92724fbd91cb716c77a219bc54acab"
+    },
+    {
+      "path": "src/data/adsbLolFallback.test.mjs",
+      "sha256": "c00762d5b0bd4b7ca17b9f1b845622807d0cf1259747e7a4e60db204598608d5"
+    },
+    {
+      "path": "src/data/aircraftClass.js",
+      "sha256": "bfd6c17e63ebdd2627e4e2e0627be291b5c28580eebc312b9026186bf98be5e1"
+    },
+    {
+      "path": "src/data/aircraftClass.test.mjs",
+      "sha256": "c37016c9415d0552cc874fa26cec64f34da8e94da1676c1659aa442b4f1c2dea"
+    },
+    {
+      "path": "src/data/aircraftIcons.js",
+      "sha256": "32c8ad2bcd97f80f51e7d9875cef17d55d3fbfd4fea6c9257b5c82b242e50306"
+    },
+    {
+      "path": "src/data/aircraftMeta.js",
+      "sha256": "ffa50ad7028df38c357ce683261a2a321671c6bd6cc57723b7fd5c8bf6eeace4"
+    },
+    {
+      "path": "src/data/aircraftMeta.test.mjs",
+      "sha256": "f9f67ce82e65510f4db7fa4d6f0b901eca972ee72ab47e6e6d206681ba4ad81a"
+    },
+    {
+      "path": "src/data/aircraftNearbyPolicy.js",
+      "sha256": "4a1a51209ec70d96e1e68f7beec27c895e4cab5cf76c018b88fa5621fa9c2f78"
+    },
+    {
+      "path": "src/data/aircraftNearbyPolicy.test.mjs",
+      "sha256": "48eab9ddfac58305fb19aec345c45fbea1456343d36b9ed8cc74c4a107d763ac"
+    },
+    {
+      "path": "src/data/aircraftRecession.js",
+      "sha256": "e2435e3faf7cc65a59f86d3d3bb6c9ba4ed3e46125b8bfda0f1c8c773a9f3e46"
+    },
+    {
+      "path": "src/data/aircraftRecession.test.mjs",
+      "sha256": "e1b5366de03637d8b09c7d0e2f022b1aff7b8a16e8200056313749fc7169f4b9"
+    },
+    {
+      "path": "src/data/aisLiveVessels.analyst.test.mjs",
+      "sha256": "25b712f670160a54361b241b49c1ad278ab4e82161aa95aef4d2926b93e072c4"
+    },
+    {
+      "path": "src/data/aisLiveVessels.js",
+      "sha256": "5f1ce495b9f4a22368d33c7299ec06f02f58881f6ded23a3e404e86ebcae6760"
+    },
+    {
+      "path": "src/data/aisLiveVessels.test.mjs",
+      "sha256": "1ea349c6995a1ea7e827329740d4b4ea272654073ee106f31be6ba4a66e56820"
+    },
+    {
+      "path": "src/data/aisStreamAdapter.js",
+      "sha256": "db5ba9b758e0d3ae4b39f8fca72cd8205cdc690c7bcd55c6822033716abe48d9"
+    },
+    {
+      "path": "src/data/aisStreamAdapter.test.mjs",
+      "sha256": "8e8929b1a5e361a5914545013e36d27e0b2704e880a5253e9c36c3be523c5483"
+    },
+    {
+      "path": "src/data/aisWatchdog.js",
+      "sha256": "4aef0d99a1fea4507d4e0a26552ca7bd144d082563d18fb4328eab346ffe76fc"
+    },
+    {
+      "path": "src/data/aisWatchdog.test.mjs",
+      "sha256": "943e0af5ba42040285fc3a05b7e6b250f168a52bdbc29b99613490e92ffe7921"
+    },
+    {
+      "path": "src/data/aisWatchdogTransport.test.mjs",
+      "sha256": "c3ad6206e75de1051ac0b64cca39fe78cf700583f322a1072353ddd31ae80c0b"
+    },
+    {
+      "path": "src/data/analystEngine.js",
+      "sha256": "de84d8b0ea487f45861a9480a04dee6cca2a01612d06a2fb13bc8e7e1216a5fb"
+    },
+    {
+      "path": "src/data/analystEngine.test.mjs",
+      "sha256": "e474cbf9589cccc44493df0715b7c210f46fb9fe5d33da1641b7ca5f7f6239b7"
+    },
+    {
+      "path": "src/data/bikeshare.js",
+      "sha256": "4d919b1bb0321732669ce1f21824b23a4360db4a6e26a5267ea7102312c57956"
+    },
+    {
+      "path": "src/data/bikeshare.test.mjs",
+      "sha256": "74c6556f40575c6832293e8c2d830f0b7139bc5b24ecb30f8e7de9abb9c8596e"
+    },
+    {
+      "path": "src/data/cctv.js",
+      "sha256": "5af7d47cece5bcb074f31dc7088df7dd81b52f17edbbceb7bfa1e4385cd3d461"
+    },
+    {
+      "path": "src/data/cctv.test.mjs",
+      "sha256": "5b638d79e2192f5567d012f74fcf30b4ef37888c42bb1bf7ce6be48cb210c22b"
+    },
+    {
+      "path": "src/data/cctvCards.js",
+      "sha256": "3df4738fd24f3273f47c41c6827a471be320806f7a69781034dc28b1e23a777b"
+    },
+    {
+      "path": "src/data/cctvCards.test.mjs",
+      "sha256": "5f96ae25bde1e1ec65d521ce6daf02f2bbb896e0e8f568dc682fa568616fac14"
+    },
+    {
+      "path": "src/data/cctvGizmo.js",
+      "sha256": "ee0c08674470254daa71b22a840e011b1932d755cc46f5f0c0ac61e6aba608bf"
+    },
+    {
+      "path": "src/data/cctvGizmo.test.mjs",
+      "sha256": "7fdeec256e90bc70463e08db0101ab45bb6a119f169e3b15dee0cb3553da4b40"
+    },
+    {
+      "path": "src/data/cctvLod.js",
+      "sha256": "5a7bc21c7b503e21ab95cd2c996b1b419b9d09346b2f993dabc607d146942656"
+    },
+    {
+      "path": "src/data/cctvLod.test.mjs",
+      "sha256": "2fd7bbf67c9c1ca4ff8b518065b1d3311cf3eecebcc711d9452e48795c7bce48"
+    },
+    {
+      "path": "src/data/cctvProxy.test.mjs",
+      "sha256": "19e3d167d963d8645b0991dc85c06e1a8bb182d0daa26cb3a5188457a378bc80"
+    },
+    {
+      "path": "src/data/cctvViewshed.js",
+      "sha256": "049a4bdc9133f1fc3b5457baf2c27ba337ece509ada14335c8b7dc42f5a2cd34"
+    },
+    {
+      "path": "src/data/cctvViewshed.test.mjs",
+      "sha256": "9b6b32f7e0e94aa73cebbd72133b293f42fc9e57867f3b4a079b2860c76d33c9"
+    },
+    {
+      "path": "src/data/cockpitAirLod.js",
+      "sha256": "68295b032e0e7fe9d9bb3a2cc188f39ef63aba2a00fa95f0f1c6f5af121991fb"
+    },
+    {
+      "path": "src/data/cockpitAirLod.test.mjs",
+      "sha256": "7a02abfc11caf46e3cce9126c276124a9e94e5aab7e7efd354751c5ce3781695"
+    },
+    {
+      "path": "src/data/cockpitContactDot.js",
+      "sha256": "e190c70ed84d60607018a99d5dd2f6e914df5e3e37459a4874f3a0349a245011"
+    },
+    {
+      "path": "src/data/cockpitDetectionSubjects.test.mjs",
+      "sha256": "98c3dca74c2d2a03738c6c657e61f2f05670ebb7a7d9ca206d5869421d2bb3a1"
+    },
+    {
+      "path": "src/data/cockpitModels.test.mjs",
+      "sha256": "ca39b31e642579e202596f9d5d54d0910602b91002f2b12bc4a7dd838d8e2c79"
+    },
+    {
+      "path": "src/data/contactMatch.js",
+      "sha256": "842665d570c18611ce9abaa34aeb35bc1ae6a916d7e1e44e68a8441ad73b81dc"
+    },
+    {
+      "path": "src/data/contactMatch.test.mjs",
+      "sha256": "261b733d7c1253d94bd41edc352768278905551c154eaa891c5ab5c1687ffb70"
+    },
+    {
+      "path": "src/data/contextStore.js",
+      "sha256": "e302125b7fc01f857f311751a8e983e7f234fec5aaaa44301a3059dfcf26c422"
+    },
+    {
+      "path": "src/data/contextStore.test.mjs",
+      "sha256": "38221d60950f8f28bb71bb0778557c3a127753879c1a3a7f31208aaf56d6292c"
+    },
+    {
+      "path": "src/data/dataCredits.js",
+      "sha256": "d2ba3ad11f6ce480f0092db2654b56e51f3533c0c0cbbdac6ce51515de578764"
+    },
+    {
+      "path": "src/data/detection.js",
+      "sha256": "aa5f979f25a423016a324ec84a3c23d43258bfbb9271f528ac1c55dd739102b2"
+    },
+    {
+      "path": "src/data/detectionCohort.js",
+      "sha256": "8a7707274278fcebe94a2e1e21d19be218b3c3d45fe2983c2b7941ad790f7205"
+    },
+    {
+      "path": "src/data/detectionCohort.test.mjs",
+      "sha256": "e2ba1dd358069ee36763f61009ca822f0d41bb24c6f8adab8c262c9470057242"
+    },
+    {
+      "path": "src/data/detectionDraw.js",
+      "sha256": "e4853c07e3ada009aa80795e8e977e2d4776d98a8db344c0b9fce9e3213c2f62"
+    },
+    {
+      "path": "src/data/detectionDraw.test.mjs",
+      "sha256": "d4930e45569bc3b59514a34ec8fd011a34ffd583557b592489d8f319d84a374e"
+    },
+    {
+      "path": "src/data/detectionHost.test.mjs",
+      "sha256": "035caead75d2c8dba6bdcebe1b400f73a8d73c483c71c6bf18a3ad0ca8e84fa6"
+    },
+    {
+      "path": "src/data/detectionPolicy.js",
+      "sha256": "31909d4bbb6a5f65fb0f0625b2824f178d7a639f5efc4549b3d891b0092a422e"
+    },
+    {
+      "path": "src/data/detectionPolicy.test.mjs",
+      "sha256": "fe051f414c7ee0cb59ceeb5446a5242410d68b70fdd09fcc4fb41ef0e5ca3820"
+    },
+    {
+      "path": "src/data/detectionPresentation.js",
+      "sha256": "b0b5eb2fcd46667ac38a80969a6d8b0c72cad04a7957a99377b2780ad42f15d2"
+    },
+    {
+      "path": "src/data/detectionPresentation.test.mjs",
+      "sha256": "75895560a3a398339514f422a0923789eb52b7e966fc3a8d8d2b073a0686de2a"
+    },
+    {
+      "path": "src/data/detectionRenderDemand.js",
+      "sha256": "cadfcbe4d94bc5c9c224e07ab134cbf8dab28e294e98f38432dc99119581e2c5"
+    },
+    {
+      "path": "src/data/detectionRenderDemand.test.mjs",
+      "sha256": "c4cc54766ea6f01b975ad668d663a7442edd75cd4f3a80b99821969f9716599b"
+    },
+    {
+      "path": "src/data/directionText.js",
+      "sha256": "8e093defdeda1cda46855cc8f205f6fb0408dce2b5d00ecd2e998e2dc3b87de1"
+    },
+    {
+      "path": "src/data/directionText.test.mjs",
+      "sha256": "48bd1ffbaacb385c3a02652322a6a0cdb0c247dce509bb094fadcae1a5d44bed"
+    },
+    {
+      "path": "src/data/earthquakes.js",
+      "sha256": "bff66a85f996254d2829d715b195c1af6ca6675a1cd2a36170a28edb0eb152b5"
+    },
+    {
+      "path": "src/data/earthquakes.test.mjs",
+      "sha256": "a164e981b7fe00331fa326a1c0ca4bc0ebbfd2abf34ec5f200053b1fcfe0a306"
+    },
+    {
+      "path": "src/data/fireAnchors.js",
+      "sha256": "dce41497731cd8be1027e99b55a4bb4f066d4b20ece97c9c68a4a25a7dd96335"
+    },
+    {
+      "path": "src/data/fireAnchors.test.mjs",
+      "sha256": "7120a81dc032a4a71ef6660a8076823d2417cc08444e46c81a0392f1fb91394f"
+    },
+    {
+      "path": "src/data/firmsAdapt.js",
+      "sha256": "b365118216941a24cc7b8334708fb3aabbc4ccdd3c3ece8315f7b9580657a4f5"
+    },
+    {
+      "path": "src/data/firmsAdapt.test.mjs",
+      "sha256": "931a8f59a6071cf1199a866760015f0d92df205fb27f794f1787d2af4346ed70"
+    },
+    {
+      "path": "src/data/firmsCards.test.mjs",
+      "sha256": "d44ba6b3ae6b65b4bbd3820d08b97aae26130a994acfa7b56f26da05dba26214"
+    },
+    {
+      "path": "src/data/firmsCsv.js",
+      "sha256": "c394cd7f43a58667f50d50f65e1da86aaf24a1c8c6110a2928b0809c4b661f75"
+    },
+    {
+      "path": "src/data/firmsCsv.test.mjs",
+      "sha256": "53ba80fd578e650f707caa16bdfb60cd677f8ad46df7643c6842fd4718ed8273"
+    },
+    {
+      "path": "src/data/firmsHeatmap.js",
+      "sha256": "fc2667c2bf097330903e414554768eb4ec8ad5aa08addf9ebfaa37ad36bb34d4"
+    },
+    {
+      "path": "src/data/firmsHeatmap.test.mjs",
+      "sha256": "1d5a57c6f949ba55ada3363a25f8b8f196e96968f766cfaf8ae752fb23fdd309"
+    },
+    {
+      "path": "src/data/firmsHorizonCull.test.mjs",
+      "sha256": "8976e2a5213d358d7c324386e4a76026755090fe54b32aa34362f296ad448054"
+    },
+    {
+      "path": "src/data/firmsInteraction.test.mjs",
+      "sha256": "c85a7a2d8dab0c7021e18a6902e0079f6d0e2fd61eeda9362731b4ca07cf7777"
+    },
+    {
+      "path": "src/data/firmsLabels.js",
+      "sha256": "527adb2e5e6e0ba7ff06582fdc40ab0f123a91ca03e35b2e6ac5d814f1b177e7"
+    },
+    {
+      "path": "src/data/firmsLabels.test.mjs",
+      "sha256": "62992c65dfd9f20efa4a5f35cc2a98bb4c0747de07e00e063947566012fe076d"
+    },
+    {
+      "path": "src/data/fixtures/README.md",
+      "sha256": "d08a7845e2ae732cb60561dac2058678284d916780355728bc6c4ac2113cf693"
+    },
+    {
+      "path": "src/data/fixtures/firms-viirs-noaa20-sample.csv",
+      "sha256": "a8ce4c656efe39b34959e3f2e4ff10ca39c7a4caaacd1a77c3c432227cf11d15"
+    },
+    {
+      "path": "src/data/fixtures/tomtom-flow-austin-12-935-1686.pbf",
+      "sha256": "2b613e5ab730aaf697c69b1d8ca905184fc9a33f99c40ce47c34f9ff886ac4e5"
+    },
+    {
+      "path": "src/data/flights.js",
+      "sha256": "858662eaf6dac8e18f989c51782d273c8e2e2d70ecd667e660e092e1ef456e77"
+    },
+    {
+      "path": "src/data/flights.test.mjs",
+      "sha256": "e609f8014347df24d92ec2ed74072af4f8699722a720325cb4da16d58b96fcce"
+    },
+    {
+      "path": "src/data/flowMatch.js",
+      "sha256": "ffda76884f55d2d4d1d4766e7227f694b9705162d08b525bcddc5cdf4492914b"
+    },
+    {
+      "path": "src/data/flowMatch.test.mjs",
+      "sha256": "c587363d2e2efdd4b560c0692f5dfae6d4b89bfb0ef42301ed56bc295553a953"
+    },
+    {
+      "path": "src/data/flowTiles.js",
+      "sha256": "35f5f841d3638c9ad2b54f954defecaf052dc48cb6adabdf7687aa2e59625849"
+    },
+    {
+      "path": "src/data/flowTiles.test.mjs",
+      "sha256": "a9ced3f9b1803b60f8cc31d2b649faff9d2a1b811d0adca82cccbdb1fcb8589d"
+    },
+    {
+      "path": "src/data/focusAllocations.test.mjs",
+      "sha256": "4415dc4715508fbd5d54ab49bad0edf1cc2a8fff0f0564b57ae4a1a74731aee1"
+    },
+    {
+      "path": "src/data/focusDeemphasis.js",
+      "sha256": "642f790e6d3aaa7b165c07b358500ff71cd444fca5cad14b024d3b8f9acf2488"
+    },
+    {
+      "path": "src/data/focusDeemphasis.test.mjs",
+      "sha256": "8b479aa8d0036c2a6fb295821b2ec20973b0b034063d877ffee2c8b64c1618cf"
+    },
+    {
+      "path": "src/data/focusResumeGate.test.mjs",
+      "sha256": "8bf34e59d4c8413cb1b2a33e80d9f8bfbc6172cfd26fbf93d959618687620610"
+    },
+    {
+      "path": "src/data/geoid.js",
+      "sha256": "036da29427173faf6577558f6157dd5c3649dd86dc22a8c2c2e7b4a224a238fa"
+    },
+    {
+      "path": "src/data/geoid.test.mjs",
+      "sha256": "dbcc65d27c60bf1dbba465abfa6db7cb963c93c4511cafbe57867821b0f03910"
+    },
+    {
+      "path": "src/data/groundFloor.js",
+      "sha256": "c290c7d22ca88334b1448b1cc94ce9b372f475628a0e2be2e2dbc883502381de"
+    },
+    {
+      "path": "src/data/groundFloor.test.mjs",
+      "sha256": "51486e6e5377104344e1a9de7a8735ffa6532f5f83bf971b601e88b075a5e67b"
+    },
+    {
+      "path": "src/data/groundSnap.js",
+      "sha256": "6699b94252f5c24516d0af70bb35ebea99a1446835479b5135afd651b10a97f7"
+    },
+    {
+      "path": "src/data/iconOrientation.js",
+      "sha256": "fac433e1340a1ff11c57256010bf66d8fc90a84f881aafbb0949196276c81393"
+    },
+    {
+      "path": "src/data/iconOrientation.test.mjs",
+      "sha256": "c9a57240c07e972ac4879b9a9d2aef47d60881a331aa1024ba89b1a0c26c2e01"
+    },
+    {
+      "path": "src/data/installationFeedback.js",
+      "sha256": "4f7e411078420055401e5db67891706ff650614cfe5efbc0edae4b9d68d5201b"
+    },
+    {
+      "path": "src/data/installationFeedback.test.mjs",
+      "sha256": "7b5dbbacf421cd2dc9e77bc8708fd7ddf0fe442209fd92c7d195ee83f9ee46ff"
+    },
+    {
+      "path": "src/data/installationProxy.test.mjs",
+      "sha256": "670a56c7eaadb4f90212a63d5d27e6baa96f2f34b3c7576916a46e4ef2c53ef8"
+    },
+    {
+      "path": "src/data/issPass.js",
+      "sha256": "9143390daef5c70db65b588103f8614b2717f9f9966fda246aded6ba846c1d62"
+    },
+    {
+      "path": "src/data/issPass.test.mjs",
+      "sha256": "d1e78d24d0f7b6dc7e29f1dc38598f9608ec06e6432119b69266bf210791a85b"
+    },
+    {
+      "path": "src/data/labelArbiter.js",
+      "sha256": "86cc0fab84963a9f0ab168cf0d9f3e44ac00401d2650f91f883cec1f97ce5275"
+    },
+    {
+      "path": "src/data/labelArbiter.test.mjs",
+      "sha256": "853be7496e99d640db2de52ea8224fb7842e0d06107dd4b388896e0eeb8e82e7"
+    },
+    {
+      "path": "src/data/labelArbiterDifferential.test.mjs",
+      "sha256": "a8e5dad36e3be203e65e66c99232e6170a5527245a8a669723629d3c5762c6e1"
+    },
+    {
+      "path": "src/data/layerState.js",
+      "sha256": "c37dc1eef89ba9f3eea7a29245fb421516a51db560fda35431195822272deaf2"
+    },
+    {
+      "path": "src/data/layerState.test.mjs",
+      "sha256": "959fe40350f155625fb02812d1886cf67be91509bb636431da7ae2880ecdf02a"
+    },
+    {
+      "path": "src/data/localGeojson.js",
+      "sha256": "92ae223c6a8b2872cab599d99d17c654f6372bc167cfe443ea156f4d1461ddd8"
+    },
+    {
+      "path": "src/data/localGeojson.test.mjs",
+      "sha256": "0380cbf17995c44014ce9e4b30133ff905021a6d308e183ce7257b78ab57b843"
+    },
+    {
+      "path": "src/data/localLayers.js",
+      "sha256": "b64b8e3b23c57f64fa7f878be9ad5a3a9e0475d89f16ccfb4ae6f5438409035c"
+    },
+    {
+      "path": "src/data/local_data/dams/README.md",
+      "sha256": "38fd328c121aa798bd9e3d770acb8bf9602058b18e4e8806dc2de5a9f58ab401"
+    },
+    {
+      "path": "src/data/local_data/dams/dams.geojson",
+      "sha256": "034f57cd88bbfc53e78b92328a044365dee7571b1f66e6e13278d54691244efa"
+    },
+    {
+      "path": "src/data/local_data/dams/dams.geojsonl",
+      "sha256": "f2b6f3166bee6dba4f0b569553a14c84faeb0048eb522bacd4d9c78e93d30d30"
+    },
+    {
+      "path": "src/data/local_data/datacenters/README.md",
+      "sha256": "f132b903c041a15e6d898e379e86004382dfac9bc86b506c9f30647630682089"
+    },
+    {
+      "path": "src/data/local_data/datacenters/datacenters.geojsonl",
+      "sha256": "089144857a5ca001b0238c8f9316a3cc229b6c79a73558ac2660e206e0e59968"
+    },
+    {
+      "path": "src/data/local_data/natural_earth/README.md",
+      "sha256": "5c8d4073e7490fbcbb0943b722df0b5a3f54fa8a8eca0498577161c425f9cf51"
+    },
+    {
+      "path": "src/data/local_data/natural_earth/marine.json",
+      "sha256": "3fd509366f15ab086755a62a99150f65da407572e48ad4c602172fea716fa74f"
+    },
+    {
+      "path": "src/data/local_data/natural_earth/regions.json",
+      "sha256": "0c7652965095db0365a9bdf3170994b48e0138a781ab4110af533f42fe9f48c7"
+    },
+    {
+      "path": "src/data/local_data/neighborhoods/SOURCE.md",
+      "sha256": "083f5ce50d27aa6eaca3a82fd7571c23c1369bb9339f33b21d4d9ff943ca2c38"
+    },
+    {
+      "path": "src/data/local_data/neighborhoods/san-francisco.json",
+      "sha256": "55c538680628b1ed5afa6627ec3abd83c3ba70b5dd4912a46d3d0f6892f807e5"
+    },
+    {
+      "path": "src/data/local_data/telegeography_submarine_cables/README.md",
+      "sha256": "512bfe853af9bacaf29cc09a55082ede42ebea303decb1cb51c20e5304ca25aa"
+    },
+    {
+      "path": "src/data/local_data/telegeography_submarine_cables/cable-geo.json",
+      "sha256": "3d28db104e57982e7ae67fabe66f2ff8dc01e137458454e0de0032a8878c6bad"
+    },
+    {
+      "path": "src/data/local_data/telegeography_submarine_cables/landing-point-geo.json",
+      "sha256": "11fc154189db51237099ffe1da2183984d666a906e5ed0e89b86421192eb622b"
+    },
+    {
+      "path": "src/data/local_data/telegeography_submarine_cables/source.json",
+      "sha256": "16d7ea86bf43ab286a07612b5ae23bd9bac7d21f28d598bf41754b3a1a94dc31"
+    },
+    {
+      "path": "src/data/manager.js",
+      "sha256": "290949b2cf7d7c55d849f1a3fd2b96ee023989d91a40587c4e05d583a2061068"
+    },
+    {
+      "path": "src/data/manager.test.mjs",
+      "sha256": "773792e3e34d6d6b421032204eba1718a838e1e5cfdb62a581750921ae2c0fbd"
+    },
+    {
+      "path": "src/data/meshFloorSampler.js",
+      "sha256": "b78cb729d47e646159b6a1e306caa27b81bc3eee4554d8eec22f660b4f89b76f"
+    },
+    {
+      "path": "src/data/meshFloorSampler.test.mjs",
+      "sha256": "7d1f409782b38530b4db6ee45081e91b172f8c91780972f332e3864ad27cb309"
+    },
+    {
+      "path": "src/data/militaryAwareness.js",
+      "sha256": "13afc4a9fd840175ad1ba32d1e72be2e833693c83739c74329d67797dab2264c"
+    },
+    {
+      "path": "src/data/militaryAwareness.test.mjs",
+      "sha256": "e32ea7d6aefde3992cd36fe26dcc79775f0213e54b6984d0bacbf7b726bb80c4"
+    },
+    {
+      "path": "src/data/militaryAwarenessEngine.js",
+      "sha256": "e70dbbffe794621ffcb987502cfa4817966ad3fcc4e50b391f4f7a1e235b98ec"
+    },
+    {
+      "path": "src/data/militaryAwarenessEngine.test.mjs",
+      "sha256": "eb4f18dec45ddb429d724936f8f6f96c9c13575f864ea99b68fe4a87af9d6402"
+    },
+    {
+      "path": "src/data/militaryFlights.js",
+      "sha256": "4a76e6aa492a4a74851d85c14a8e218a25e567429d22a90e93da1643d1bc8d4f"
+    },
+    {
+      "path": "src/data/militaryFlights.test.mjs",
+      "sha256": "2e61f17c85ceec9572da1c067ee2c36d2eb7691c1444f14e3994ef0354740e08"
+    },
+    {
+      "path": "src/data/militaryInstallationData.js",
+      "sha256": "365e102d66971b668b51112aa1a713af9e1356065862caa5a4418f963a38e139"
+    },
+    {
+      "path": "src/data/militaryInstallationData.test.mjs",
+      "sha256": "729d43c680652ce0fc0bcde32c2f34814951ac1d873a3d74ce5f9478a47f0509"
+    },
+    {
+      "path": "src/data/militaryInstallations.js",
+      "sha256": "6c42960f37ca9842054ec03f8def3490aa319943d87121fea78e63d652f22ac7"
+    },
+    {
+      "path": "src/data/militaryInstallations.test.mjs",
+      "sha256": "2aada1462e1362b50d3adbfb5f5c07fe3254e29dd0f8fd4a46a1d0f4efc7d6d1"
+    },
+    {
+      "path": "src/data/militaryRegistry.js",
+      "sha256": "9921093c71ac705a77b26a16ae19597377f4d8d46118495304739a390e4901c1"
+    },
+    {
+      "path": "src/data/militaryRegistry.test.mjs",
+      "sha256": "b078986606ee3fe4595976b7845226661894717bffb72b812bbe32ffafe27658"
+    },
+    {
+      "path": "src/data/modelMatrix.test.mjs",
+      "sha256": "f9a9116d0315f05fb6e0fe0af778fad9e6d9ca4f717d6214352892c180c0a83a"
+    },
+    {
+      "path": "src/data/modelScale.test.mjs",
+      "sha256": "aca554b7dc89526437d55e604b8a1268210c1e1a9b3000cf1ca45a4d53763aa0"
+    },
+    {
+      "path": "src/data/modelVisualAnchor.js",
+      "sha256": "615cc51e36d280cf371f0184c0f4c95f8747c9b25ec3599f34d31daf42dc495c"
+    },
+    {
+      "path": "src/data/motionModel.js",
+      "sha256": "2a39ed740b9395ade14851636ea6220a56747980049f7192babb59d5469b211e"
+    },
+    {
+      "path": "src/data/motionModel.test.mjs",
+      "sha256": "c9d3539559fdd80671b30786f0c27b9ea4a961bf987b31c5093fc55b53c54370"
+    },
+    {
+      "path": "src/data/naturalEarthRegions.js",
+      "sha256": "982864a0ee27f9ee0f3df1bde935c74258e628ea72ebf8042253ac3fb557b263"
+    },
+    {
+      "path": "src/data/naturalEarthRegions.test.mjs",
+      "sha256": "237af5e3350fafc7f79974f5af4a64962e25fa657c0dc127092b1bcfa7793e56"
+    },
+    {
+      "path": "src/data/nearbyModelHandoff.test.mjs",
+      "sha256": "068ba1addd582b0461264cacf73962d0cda2e82d31805c0c42a3a57f30883f0f"
+    },
+    {
+      "path": "src/data/neighborhoodPolygons.js",
+      "sha256": "0e5aab3d13194f82f84a09be96ae96130fc118df9408b672fb45c865555ffeaa"
+    },
+    {
+      "path": "src/data/neighborhoodPolygons.test.mjs",
+      "sha256": "5caf41bc5ece13ef1a7d102ba1df35abab91920a145fae627487b6f9f5c3154c"
+    },
+    {
+      "path": "src/data/overpassProxy.test.mjs",
+      "sha256": "da8bc66b7f42954e04358f4c87977c811ad5a6ed57765be451c935b15cc09d31"
+    },
+    {
+      "path": "src/data/pickRegistry.js",
+      "sha256": "c27d1e5eae209f22a62460bc4bf51a0be34ec0abd1e573817c70a970cbef93fd"
+    },
+    {
+      "path": "src/data/pickRegistry.test.mjs",
+      "sha256": "1d7df15ae1217626aa6f39525a31e39ab536e0efaf43d22b47ca7a3ebadc530c"
+    },
+    {
+      "path": "src/data/radio.js",
+      "sha256": "f62a15d2e57ac84f1688aa9ceb81de8ab6a864fced705b81c6ac1825718a0af0"
+    },
+    {
+      "path": "src/data/radio.test.mjs",
+      "sha256": "6f0bdcc119de3c13689ede99ff715d0e625b608dd8299904db7fc6d0ab0fed14"
+    },
+    {
+      "path": "src/data/radioCountry.js",
+      "sha256": "702a5c83a0293cde87bbf425bf7dfe0a59faeca3b01df06805f3dc84593fea6c"
+    },
+    {
+      "path": "src/data/radioCountry.test.mjs",
+      "sha256": "369dedb18e4c7ae50b8c42123c1546c8a7aa1814a4b39ec9dfa9b76b2897c4fa"
+    },
+    {
+      "path": "src/data/radioLocal.test.mjs",
+      "sha256": "734e8e55ef95c417e1a7a0201c4f99d9fa1dd4e50319a3ebea5b3d227fc89c55"
+    },
+    {
+      "path": "src/data/radioProxy.test.mjs",
+      "sha256": "582a11e512997f6b0cced92a5d78265d3a1e499dd5cc3bc0c6709898c22df0c7"
+    },
+    {
+      "path": "src/data/regionalBrief.js",
+      "sha256": "3e309c63b87845348339b80bdfb306a707b281491233a0707c7aae7a94876f9c"
+    },
+    {
+      "path": "src/data/regionalBrief.test.mjs",
+      "sha256": "57c3895b605ecd9652b317a691b0fb81a527ea26c7742ce1f2626a77df41f8b1"
+    },
+    {
+      "path": "src/data/regionalProxy.test.mjs",
+      "sha256": "9115ed2e64eb041beb6a132ab7eb7dd12d29cf731210093532405bd13308aa24"
+    },
+    {
+      "path": "src/data/renderAltitude.js",
+      "sha256": "a587a9d19e5107b86e52a6fad6f3a45e1920d089d1234ba45fe8412645c9c737"
+    },
+    {
+      "path": "src/data/renderAltitude.test.mjs",
+      "sha256": "cac788bb47c1735ea93734948560729063599202f006e5853ecf13f51313d88e"
+    },
+    {
+      "path": "src/data/retryableLoad.js",
+      "sha256": "5db6e741c395d3faaff57f78385c1b0ac82616678a60ab5ab34da10bdeefd31c"
+    },
+    {
+      "path": "src/data/retryableLoad.test.mjs",
+      "sha256": "80ce0cf79b3ebed75d00f80d64e8b1000ad97ac4918b897e1d72bf131158a028"
+    },
+    {
+      "path": "src/data/rocketLaunches.js",
+      "sha256": "d905331c2c498e41ef59184813ad9a7e129301eb4951a8bba4050dce00ff051c"
+    },
+    {
+      "path": "src/data/rocketLaunches.test.mjs",
+      "sha256": "ca6a3e7eba7b327718178edc6edef7e6168f492ebe8b30a145f7861aaed082ce"
+    },
+    {
+      "path": "src/data/routePlausible.js",
+      "sha256": "f86769d0d695f7c094428fb3cd9320f131081a8206343b4f3ab4af088ac4b0c0"
+    },
+    {
+      "path": "src/data/routePlausible.test.mjs",
+      "sha256": "00545c711c97eca945274a19e63ff3ffefcbc267bc30b489302e6ffaf7c7ea86"
+    },
+    {
+      "path": "src/data/satelliteClass.js",
+      "sha256": "ed4ac9d893764814d60a73b3de40db2608d35d467089b57df7b02290ae2c7721"
+    },
+    {
+      "path": "src/data/satelliteClass.test.mjs",
+      "sha256": "62a717891dbf2e8d8f0dce66498e898ce25472494cd494eac661ff918e00edb4"
+    },
+    {
+      "path": "src/data/satellites.js",
+      "sha256": "a9e8da7855d4e8b5939d16c9fab90a1fcb85473bd2596e3e80a03d4a3f5c40dd"
+    },
+    {
+      "path": "src/data/satellitesTrackedRefresh.test.mjs",
+      "sha256": "16f5c9d3d8f84e27c99334cf3f8968eeda7a6e8a94a46d4c121052159c51a8a9"
+    },
+    {
+      "path": "src/data/satellitesVisibility.test.mjs",
+      "sha256": "78c9086462fa13e575a48cd1af06422510e40357814958de586a81cbbe8960b4"
+    },
+    {
+      "path": "src/data/scenePick.js",
+      "sha256": "48338c0230c043454d0009e1a6cfd3d4797e9a6807e11bb33606e1fb69f399d5"
+    },
+    {
+      "path": "src/data/scenePick.test.mjs",
+      "sha256": "babd85d1bf8541efef52b5bc815dbf7d2003c766ebeefdf6cb4de188cfc622c1"
+    },
+    {
+      "path": "src/data/spriteOrder.js",
+      "sha256": "30f65fef022d6f6433e93b38bafb6f42d83fd088a39f88534ba190af5eacfd9b"
+    },
+    {
+      "path": "src/data/spriteOrder.test.mjs",
+      "sha256": "4be1208fd4e75ce6603590465b85cf7e2b95025634cd84a2fa9948ed615b88fa"
+    },
+    {
+      "path": "src/data/telegeographySubmarineCables.js",
+      "sha256": "17f922050493fe447407866d78e8aa16119df1dd7699c8622a93f7ce2d97792a"
+    },
+    {
+      "path": "src/data/telegeographySubmarineCables.test.mjs",
+      "sha256": "37e9a94d363f83e48ad550a3bb4e819ee5291a88bce4f90ef750b7eb040094a6"
+    },
+    {
+      "path": "src/data/terrainHeights.js",
+      "sha256": "476c2036e8517a41b0c58dd71df0d5ac7f1b3245acb3ca4d27252a24a5fcb4a9"
+    },
+    {
+      "path": "src/data/terrainHeights.test.mjs",
+      "sha256": "5e9ce3efbf866f8902e2e4e010239c27fcb1a5fe36ab35214b05a1141350f0fc"
+    },
+    {
+      "path": "src/data/terrainHeightsProxy.js",
+      "sha256": "e066fd6cc98512adca810277ade39c6bd865fe87e301c838012cffbf09ef4db0"
+    },
+    {
+      "path": "src/data/terrainHeightsProxy.test.mjs",
+      "sha256": "334e0fd77ac5858cfc32b396df468a042486d1d59a2f963f51d330825ae42606"
+    },
+    {
+      "path": "src/data/tomtomTiles.js",
+      "sha256": "1f442ec9cac5c4d3542e2ea3b7cd54deacb82dcbb3801ac31bb52b02be0bec3a"
+    },
+    {
+      "path": "src/data/tomtomTiles.test.mjs",
+      "sha256": "6e2567040bf9eea3e32f1631edb52b77a3de72d456b05a7a1aae078dc05a8949"
+    },
+    {
+      "path": "src/data/tr3bRegistry.js",
+      "sha256": "e4233d0b325262df201aefe027434910977b969a0e7ff983063836144d40f90e"
+    },
+    {
+      "path": "src/data/tr3bRegistry.test.mjs",
+      "sha256": "df80f49af51ae180676e63c92200b0fb80d4579bc53341f5bd43849be35223a2"
+    },
+    {
+      "path": "src/data/trackedCamera.js",
+      "sha256": "9cd8f5426aedf23a511e04c89ef2f6e27d6ebf776ad6a92d25bfe607e0e84b9c"
+    },
+    {
+      "path": "src/data/trackedCamera.test.mjs",
+      "sha256": "5c6c68dc0d5f2cb7a5770ff1b9634eb19426555fa76e907b6a51318013d5d891"
+    },
+    {
+      "path": "src/data/trackedModelRegime.js",
+      "sha256": "914487f6a4371c310b36f629fe9aa99be2139c86877a839ca616de2a4b5ee54c"
+    },
+    {
+      "path": "src/data/trackedModelRegime.test.mjs",
+      "sha256": "ba96b06353c80f2372d8928be5f176303bc4f456e1216edd78083d6dcd8ec975"
+    },
+    {
+      "path": "src/data/trackedReadout.js",
+      "sha256": "d216cba8e231818fc2a09716384d3555fbda4b7c33fc0d8e9dff1b06163d489c"
+    },
+    {
+      "path": "src/data/trackedReadout.test.mjs",
+      "sha256": "a0819b2abd2ce060187a094e993ef772c9852fda77281ddb6834c025fbbdc243"
+    },
+    {
+      "path": "src/data/trackingClickGesture.js",
+      "sha256": "bf4efb9c03a76f7d3cd508bb98c04bf09bfd095bc42c327cc374cfdd4098304d"
+    },
+    {
+      "path": "src/data/trackingClickGesture.test.mjs",
+      "sha256": "e64f29eaedd6ff7bf9938317e92d8cc03c5549570d0e8eb134bc743fb31af979"
+    },
+    {
+      "path": "src/data/traffic.js",
+      "sha256": "3695e4be54b4ccea286fe252bdb46b84f76f1ac9d3d6807950ac4f948c7cf001"
+    },
+    {
+      "path": "src/data/traffic.test.mjs",
+      "sha256": "7e5c5f8f4d8c5928b2bbe515f451ae7c5a7b54cb19a4de185a3e0b4e549141cf"
+    },
+    {
+      "path": "src/data/trafficBounds.js",
+      "sha256": "a6f0847bbbd6ba06d7de1cc4e4f320321f4e9b34e23576d4e0922bc7b3b1811c"
+    },
+    {
+      "path": "src/data/trafficBounds.test.mjs",
+      "sha256": "6b58ee57420356156c17a2afc951b1ccdd1e0b86213b962eeb350560199671d7"
+    },
+    {
+      "path": "src/data/trafficFlowStyle.js",
+      "sha256": "3c696483337dbad5525d090af4449deea445f9a34c9b323313187326707d0c9b"
+    },
+    {
+      "path": "src/data/trafficFlowStyle.test.mjs",
+      "sha256": "bf7642cf3f75f3304be0b3dbd98fdc2d69021a7bda39efdd788f981d6ed45244"
+    },
+    {
+      "path": "src/data/trafficPresetStyle.js",
+      "sha256": "21128ab6aa611ae1e016d7b19d905b02974048d678700e6f5434ae03b2e85a23"
+    },
+    {
+      "path": "src/data/trafficPresetStyle.test.mjs",
+      "sha256": "ffa3df29055d5bd87e59e648d124a186699612e530da80555cb1f22f418b93b6"
+    },
+    {
+      "path": "src/data/trafficQueue.js",
+      "sha256": "d1b326138bd98f40574065f63574411e071f4663a0ad7d22bc65d76e94f95654"
+    },
+    {
+      "path": "src/data/trafficQueue.test.mjs",
+      "sha256": "1fc5cec8b98949918fd99e79da074ae65dfb152c6d96628bb40046e1a17cbcd4"
+    },
+    {
+      "path": "src/data/trafficTiming.test.mjs",
+      "sha256": "3c12ad386c38d30ceaf68ee411b2d00579361bf8278cccf85ae1aed291671b7d"
+    },
+    {
+      "path": "src/data/trailRenderer.js",
+      "sha256": "8549ca559605681ac9c1288a3b752278d4b9f3ce79076c629e1abef849bafbb2"
+    },
+    {
+      "path": "src/data/trailRenderer.test.mjs",
+      "sha256": "3c53dd58d48dee488df99305b1d6648c88a6b9eae54dbdf312186ce694bfb108"
+    },
+    {
+      "path": "src/data/vesselLabels.js",
+      "sha256": "9ca1300ccc839129002d29aca26145cd49c217f12f6fe8161fe1548dcd951c31"
+    },
+    {
+      "path": "src/data/vesselLabels.test.mjs",
+      "sha256": "29c721b0dfe241c3510dc5b7ebcb48196204e4162d3a6904ae9a5afdf7b27885"
+    },
+    {
+      "path": "src/devFreshDotenv.test.mjs",
+      "sha256": "38e72efe02db9afa297919339a58316589f0a574cffe0ba0373d6bdec8264624"
+    },
+    {
+      "path": "src/earthCamDirectory.js",
+      "sha256": "1f42fd40a470eeb3348fa1171f102077b7144488f2b18d78fceb85eb665271de"
+    },
+    {
+      "path": "src/earthCamDirectory.test.mjs",
+      "sha256": "d3dfd9ab75605345464b020b46796b9a5c19e31b9410150713a22efb6bb7362c"
+    },
+    {
+      "path": "src/earthCamMap.js",
+      "sha256": "bff1e25c55a8015031746348ce35df70a2144b194de70d4f473ec88541b6f13a"
+    },
+    {
+      "path": "src/firstRunExperience.js",
+      "sha256": "853f100a0dcf7cfdf3465fb18e042e7539110994c7d7a1432a3cbbb2cc3b769b"
+    },
+    {
+      "path": "src/firstRunExperience.test.mjs",
+      "sha256": "4899b38ac1306fa48308595b90e959a64b1c06d895ca9306ae6197668faf850a"
+    },
+    {
+      "path": "src/freeGeocode.js",
+      "sha256": "048e31bc1ed1dc49848148935256defedb9363d58f70106925389777e3dca3c6"
+    },
+    {
+      "path": "src/freeServices.test.mjs",
+      "sha256": "c485a2fab3ebd4433e4cb6d13f21fa1ce4ce33f20c6463234a3ee773248ddc27"
+    },
+    {
+      "path": "src/googlePlacesKeyless.test.mjs",
+      "sha256": "bcd6310d6ea29389dc052dad77777c54b19357858754ff72996b518e7d88a13a"
+    },
+    {
+      "path": "src/hud.js",
+      "sha256": "a55b26d962851a5d735247d9976b35f3f7aee05650e6696f47227b965749089a"
+    },
+    {
+      "path": "src/hudAltitudeDatum.test.mjs",
+      "sha256": "e3a035fa3dfd2fbaf59f411c6b2e277b71e4104ff037ce46ce4ba3ea28d16f23"
+    },
+    {
+      "path": "src/hudLocality.js",
+      "sha256": "4ef13b2a3cc5c431f6f12d6b00f8ace3b00ef7860284b69df089421cfc843e26"
+    },
+    {
+      "path": "src/hudLocality.test.mjs",
+      "sha256": "edb73c5ed846ad82eb220de285ac8f05c275239f4f880ae4dbf4e0dbb223bc63"
+    },
+    {
+      "path": "src/hudSummaryResponse.js",
+      "sha256": "98e1a151d21dfd5c6dda6c4b1c8385c3a40ca365cbfb157407a67892faef3ea9"
+    },
+    {
+      "path": "src/hudSummaryResponse.test.mjs",
+      "sha256": "e878d4175894dd0171a98b337bb6bba153b40d5a83b8ea41a7ca030d4f5594e5"
+    },
+    {
+      "path": "src/keySetup.js",
+      "sha256": "915606c69de2e1d02170b11d9ef4ff9bfadb72afe3711f8ac0467323013ca8e2"
+    },
+    {
+      "path": "src/keySetup.test.mjs",
+      "sha256": "beb0065f698cad4008070e1e66c9c9698dda43525e8c81e0021dc75048b33e02"
+    },
+    {
+      "path": "src/keySetupCore.mjs",
+      "sha256": "bb84651418d8851434a21db2c7a7d96e6829ffc88a6aa345a524d30ec33c11c9"
+    },
+    {
+      "path": "src/keySetupCore.test.mjs",
+      "sha256": "23708b2f327e947636f97d46f3b0eec2074dd14d0123f685730b1ba5685477d4"
+    },
+    {
+      "path": "src/keySetupHardening.mjs",
+      "sha256": "e277a42eba89c292243e8b06ac84e56a15cbe19e3a0e23b28d3ad1e568d113c4"
+    },
+    {
+      "path": "src/keySetupHardening.test.mjs",
+      "sha256": "de510d3c477690fb19d8ff0f97256dc47528daee948cb474fb9278a9ff1a75fe"
+    },
+    {
+      "path": "src/limitedWork.js",
+      "sha256": "3432fda7abbebefb75700909d467c314f06ff2336aec120c11c7b7aeeddd879d"
+    },
+    {
+      "path": "src/limitedWork.test.mjs",
+      "sha256": "2e6f9fdf901cb5e6fdf46177ae214035454657fdde6703ba36ec8891c46b437e"
+    },
+    {
+      "path": "src/liveViewPreferences.js",
+      "sha256": "83d2d7ceca5fc39d03b78f506cd5cb9e358ed2edf971655c31cc64908d5796b1"
+    },
+    {
+      "path": "src/liveViewPreferences.test.mjs",
+      "sha256": "9e414750d9471eb02afa717f8c7fbc6232b3395d14cdf06de2f92ca516d6e26f"
+    },
+    {
+      "path": "src/liveViews.js",
+      "sha256": "7ef18c5fdbc0a4eda1bff455dfec76ba9f515db4b31d9c25cd966eae07ee461a"
+    },
+    {
+      "path": "src/loadingFeedback.js",
+      "sha256": "2818b7db4bfdc20de548d46814b374ea2d85a7aa1a464023bedfcbf083109d05"
+    },
+    {
+      "path": "src/loadingFeedback.test.mjs",
+      "sha256": "0b45457d159e34aa98e9111ed21b4f9f79ddc162923bf816c3133b2f3fce9858"
+    },
+    {
+      "path": "src/locationReadouts.test.mjs",
+      "sha256": "eef186f6dff8beee4df569ec07983adfc8af63e61a11bbd96fc37bab0bc8f48e"
+    },
+    {
+      "path": "src/locationStatus.js",
+      "sha256": "11b2a1e534443207b16a123cb012d7f32114accf6787ca144f075829063721a7"
+    },
+    {
+      "path": "src/locationStatus.test.mjs",
+      "sha256": "97cc673b328a77b3e71d444e5192406c36a6c6a4c7777dd2e3ea489ec7ecf071"
+    },
+    {
+      "path": "src/locations.js",
+      "sha256": "550fa822ec8a527b4bd0de5eb78927c1f58fc0558be674a8e434753e2f577798"
+    },
+    {
+      "path": "src/locations.test.mjs",
+      "sha256": "0fd47fa434ce53d68e23eb8d2349b7e5826ab72ddd4356d095a9492bb49742a2"
+    },
+    {
+      "path": "src/logoGaze.js",
+      "sha256": "6f2b9a750c3305edac7c37b1342ca62119a6a6936cab5c4cffe70eaa2ea40fd6"
+    },
+    {
+      "path": "src/logoGaze.test.mjs",
+      "sha256": "2b221159932a321c04bbd41a83d26c305f6b1f1f7a537f68cfa335059c87e4f4"
+    },
+    {
+      "path": "src/main.js",
+      "sha256": "5c0a7d9e5339b382b4afbcb61156d4059dda1ce58656568ea588e549dee1080e"
+    },
+    {
+      "path": "src/mapStackChips.js",
+      "sha256": "47a47ca470fd523ba994b412f1774206c5f9adfec5bb551c875606c037e3276c"
+    },
+    {
+      "path": "src/mapStackChips.test.mjs",
+      "sha256": "5409046cebdb35498af38beecd740edd4141806fe9c6d979df616361b0ca8be1"
+    },
+    {
+      "path": "src/mapStackController.js",
+      "sha256": "412e5c6968d8e00272b10c8d6534c40c98f785af192424f8e96ee3f1704078ee"
+    },
+    {
+      "path": "src/mapStackUnavailableReason.test.mjs",
+      "sha256": "482d5fd07284b8f48a5fe4b9e3ef6816c0744078dcd606d5c31bb23d8bddfa55"
+    },
+    {
+      "path": "src/mapStartup.js",
+      "sha256": "20146b5457fdd954f8fc1e2dd8b3b64f61dda40421044fb74d4613a8d26f64c2"
+    },
+    {
+      "path": "src/mapStartup.test.mjs",
+      "sha256": "8d77740b1dc4dd8f128573ecf540c5d16905f851f826623895b88a86b4fb7fce"
+    },
+    {
+      "path": "src/navigationPolicy.js",
+      "sha256": "e9c472ce8f26922500ddb21504689968440aa9088c18ccd20a7a3de7f95ee099"
+    },
+    {
+      "path": "src/navigationPolicy.test.mjs",
+      "sha256": "cc37e080823d334106d84e531e4820df22b8a2fc78dc5f07b8bed8831f6a1e25"
+    },
+    {
+      "path": "src/orbit.js",
+      "sha256": "ca591aad17f5421397b97e178d536cb1984e4e34d96504c30b9896aab366e51a"
+    },
+    {
+      "path": "src/overlays/worldOverlay.js",
+      "sha256": "3d0ac8e95d670d8666bb24550358391bcd72a4a18464881f8625917ae90600df"
+    },
+    {
+      "path": "src/overlays/worldOverlay.test.mjs",
+      "sha256": "71377890d131216823d57d59701ea8c4d12d18b728e096e8dc0680bc73ad9478"
+    },
+    {
+      "path": "src/overlays/worldOverlayAllocation.test.mjs",
+      "sha256": "bdc3b74a8901a21520923f02cbfd88665120c39bd0de92eda69543e5ab17efd7"
+    },
+    {
+      "path": "src/overlays/worldOverlayAllocation.worker.mjs",
+      "sha256": "1f860543f25c49b23a5f0c364183d335aeadd0c2d582347a27d50e6b32f0e032"
+    },
+    {
+      "path": "src/overlays/worldOverlayDraw.js",
+      "sha256": "4bc4025b371b134e0aece231bdbd60f234740425c248d9ee1f9bafb698f2deac"
+    },
+    {
+      "path": "src/overlays/worldOverlayDraw.test.mjs",
+      "sha256": "0fecff9355613bb3cdf3b5130be12566cf1af8c1abe077763c5face80758749b"
+    },
+    {
+      "path": "src/overlays/worldOverlayTokens.js",
+      "sha256": "f2999594d347033fa8ebce14c4f636511f613f13c7b815df328f8c4f78f133f1"
+    },
+    {
+      "path": "src/overpassProxy.test.mjs",
+      "sha256": "4ca6c4f585b58e2550c1da178a93c54fd56d7cb1d8402a9a3eabf49983f75008"
+    },
+    {
+      "path": "src/panelStackLayout.js",
+      "sha256": "d9a0483516dd8c1f55fceb97cf4e9e802dc757a1f2f73369bcff3155336f5acc"
+    },
+    {
+      "path": "src/panelStackLayout.test.mjs",
+      "sha256": "ce68004ff0d39111529987e25bce551779b9a2fcab3aed3cef578201a6738e12"
+    },
+    {
+      "path": "src/pinokioEnvironment.test.mjs",
+      "sha256": "f6778899f5fc26a439c115060e1417c2f88a93d46bb3ea1d888fd96c515df88e"
+    },
+    {
+      "path": "src/pinokioLauncherContract.test.mjs",
+      "sha256": "7020997350159efa6d8b06f6cb5a86a466149f2f128feeea7b85493e61cb161a"
+    },
+    {
+      "path": "src/pinokioPreflight.test.mjs",
+      "sha256": "ce9781af742a177db1b3edbaf71ebc336615eb9e281ee0bdaf3a5aa99a911217"
+    },
+    {
+      "path": "src/qaL9MatrixVerdicts.test.mjs",
+      "sha256": "d220c46cff9fccdd809d83b499acdb45608c41ffbca5e78b49b37bfdaec86a45"
+    },
+    {
+      "path": "src/qaVesselCardsHarness.test.mjs",
+      "sha256": "83cf16fbae5f821ff297e1ff12039e3c787c00f16a11d7224e6c42d7f99de773"
+    },
+    {
+      "path": "src/radioMarkup.test.mjs",
+      "sha256": "3764cb29214579f25010459c60b4453de0068bed3efe72643de47b1e07896065"
+    },
+    {
+      "path": "src/reasonableDefaults.test.mjs",
+      "sha256": "7b325c89bf6e9cbac617b8cf4c747add75c16926d5cbf7e7f3a4c10494bd7cb0"
+    },
+    {
+      "path": "src/releasePackage.test.mjs",
+      "sha256": "4afd5e3ed64937b4d5656701da8dcc94a45676a2381cf60db1722ebc33f8b228"
+    },
+    {
+      "path": "src/renderGovernor.js",
+      "sha256": "e7f510092f543159bb7def1d73a31cc5b54b3458ed791758c27a108990aaf371"
+    },
+    {
+      "path": "src/renderGovernor.test.mjs",
+      "sha256": "7321f59cfbc7a12097c83fb0bd17d478e4c92367feacb1e01702da7272038833"
+    },
+    {
+      "path": "src/rightRailPolicy.js",
+      "sha256": "4988e86bfbac28bc9bdf615d6f49b4037a519b6d70c6dc75119d835fbdc67d47"
+    },
+    {
+      "path": "src/rightRailPolicy.test.mjs",
+      "sha256": "58c5a5095f3678457324d29160b8d4c64c2413092c378864f5d319b11289c286"
+    },
+    {
+      "path": "src/routeCinematics.test.mjs",
+      "sha256": "2e629458db46a1bff37330bc67ef458288f1a75b5a5e3ce81618273232606c52"
+    },
+    {
+      "path": "src/scenes/director.js",
+      "sha256": "2c608cc34afc4fdaf02bb3e09f3c2a3ac6733317dc59a66f92c83de162a82304"
+    },
+    {
+      "path": "src/scenes/director.test.mjs",
+      "sha256": "016e2c32d2ac39211984e529ffa7d1e44270b7e5064fc7caaf9799e2d9ee450c"
+    },
+    {
+      "path": "src/scenes/recipes.js",
+      "sha256": "8fd2bffb3460131c0459e79802d00d420448efa6d41480e553b8be3866bc7273"
+    },
+    {
+      "path": "src/scenes/scenePolicy.js",
+      "sha256": "e2c177811e38ffd9b49bedc5b887bf71c18b8247efef0f35ecfde524f8a6eb7f"
+    },
+    {
+      "path": "src/scenes/scenePolicy.test.mjs",
+      "sha256": "b469e41f610e5e663020bf760db4f45880174c2296cefb99ca9da187aec0c41b"
+    },
+    {
+      "path": "src/scopeMask.js",
+      "sha256": "002e12e670c6157f76fd152b2cfd025385f3c5225a9038910f8cc305b9433123"
+    },
+    {
+      "path": "src/scopeMask.test.mjs",
+      "sha256": "31a3a54ba5e86b2ad1df48af522be66d30ab7bdf762961ed407d3aef4d56eae7"
+    },
+    {
+      "path": "src/setupDoctor.test.mjs",
+      "sha256": "a1a1b73455110ac663a561f83c75ac1c818958626093387b3e83633a6107f5ec"
+    },
+    {
+      "path": "src/sharelink.celestial.test.mjs",
+      "sha256": "53d7b327a401af75669caa089d00ed35dbfad88eee0e2abc74cbeb3f8147bbd5"
+    },
+    {
+      "path": "src/sharelink.js",
+      "sha256": "2d2c7a646daad263b5c70603f9bb98859399bb4ffc7c955b1fd8135d599fb514"
+    },
+    {
+      "path": "src/situationDesk.js",
+      "sha256": "8da3a838cbf1a5d32b8bb8450d5f41dec5a40584a2cb26bc55b0a0efc4dbd8f2"
+    },
+    {
+      "path": "src/situationModel.js",
+      "sha256": "b1a32ade0ac2b4446fcadfe96e734a0837baa5cf47acb0ac7605a3426b24ba82"
+    },
+    {
+      "path": "src/situationModel.test.mjs",
+      "sha256": "a6241cbb7791cc01d2d4349aff083828c9f204712fb395e74e3368e8541a8f89"
+    },
+    {
+      "path": "src/sourceHealth.js",
+      "sha256": "e85d21dd46cfa7210849a9b6ed3dc232b70db4b2857876c7e4aa5c90c5a6bc7f"
+    },
+    {
+      "path": "src/sourceHealth.test.mjs",
+      "sha256": "44c583062a148fba8f3d5af2d091b2f0ae2f25a37aee0b5bf55e12d156e81a61"
+    },
+    {
+      "path": "src/sourceStatus.js",
+      "sha256": "4926cde22d49d8977afc2310dcbcc7a29271d3cf255ba10b8b9023b2b6c98cbc"
+    },
+    {
+      "path": "src/splitFlap.js",
+      "sha256": "376ee0dfbde2121834666ba8078a8f5dc67b4fd3c0694bda42991974087dca84"
+    },
+    {
+      "path": "src/splitFlap.test.mjs",
+      "sha256": "1d080b3b5d28b6f155ba6be5a0f10ff0c2f28c3302e77e990d093eba77c2a434"
+    },
+    {
+      "path": "src/startupGate.js",
+      "sha256": "b45a6329bf76ff924571dd2ede9cb44977d848068ca69e80dcb68b82edba1862"
+    },
+    {
+      "path": "src/startupGate.test.mjs",
+      "sha256": "fcdea08ce761c6303034bf6b8e5a6799d73652ee193b35eb0a1b65641935ad32"
+    },
+    {
+      "path": "src/styles/anime.js",
+      "sha256": "f7edc2bde2aeb4aa83ac2e25cd93268e4cfd7c1e966fa232d4ed74e15dde708c"
+    },
+    {
+      "path": "src/styles/noir.js",
+      "sha256": "9c75ea2d213a7ad6534ce897bcf0d043f727726da189cea1249c2f8c89b88a8d"
+    },
+    {
+      "path": "src/styles/retro.js",
+      "sha256": "ac74550b9c60bb9d03b0c2732f450aa96f28e5fa38426301b74afb3a3e406f80"
+    },
+    {
+      "path": "src/styles/snow.js",
+      "sha256": "c2a504c7d993a3dbd6462aaeb7d9598ce38c9bc205a70b34b0ed057cec3cfe6f"
+    },
+    {
+      "path": "src/styles/surveillance.js",
+      "sha256": "8c33819a7e5821a6b629d5b79217d2f0bef71a7b3f2da3b6742ef06f41a25453"
+    },
+    {
+      "path": "src/styles/thermal.js",
+      "sha256": "3d70fc4f9af7976923d33339af4d3b38a7ca86cc0f7f496a86b3e0b9a0264940"
+    },
+    {
+      "path": "src/ui.js",
+      "sha256": "e2aaefd73fec54cd35c7909840a3a0851ba9d7c0882d96f3a36c7361804fa639"
+    },
+    {
+      "path": "src/unitTestRunner.test.mjs",
+      "sha256": "7e662d0812ee9f58c4fab40a57420726750a9261a9d15a0b18004526623f219a"
+    },
+    {
+      "path": "src/viewPreferences.js",
+      "sha256": "012b5c26f355022c0d036e068fe584ce91e2c5b0256704523c13405545aaee83"
+    },
+    {
+      "path": "src/viewPreferencesModel.js",
+      "sha256": "fa40695bf0c8a4febb2c006085c6f26c9009685b2edb42d3b790facb26f58a8a"
+    },
+    {
+      "path": "src/viewPreferencesModel.test.mjs",
+      "sha256": "fb6a62c5b4ac475049320223f0064f57ce8ededbbf71cc921bea4f8f5b811ed4"
+    },
+    {
+      "path": "src/voice/aircraftIdentityNarration.test.mjs",
+      "sha256": "891eb13dbb21e2d1f74c69b1f37c455190ba615cdf47def2be96f4cd3bde8359"
+    },
+    {
+      "path": "src/voice/gevActions.js",
+      "sha256": "230820d200fcd0bdbf0e1c659b3f778326bb8cdf9d0abf6e93fb38bf34a70ac0"
+    },
+    {
+      "path": "src/voice/gevActions.test.mjs",
+      "sha256": "0923ec912c15e8c0dd2bb0c0ceab535fe1be40f4b5d8a8ff4b43103ffe3e5574"
+    },
+    {
+      "path": "src/voice/gevRealtime.js",
+      "sha256": "c996deb27028d28c94a152dc780348e4ea337a67012f3b0e4ee91927f8f502b6"
+    },
+    {
+      "path": "src/voice/gevRealtime.test.mjs",
+      "sha256": "f4e84d137ba0d3a71fd6ecd05fe863d337804c628576ba995bb53ae32a7f409a"
+    },
+    {
+      "path": "src/voice/voiceCost.js",
+      "sha256": "8890e65ffe58ad0bad8ee433e3205c473ea2183f013c0ced037ddc3f6b0e9bbf"
+    },
+    {
+      "path": "src/voice/voiceCost.test.mjs",
+      "sha256": "4b8e96bfa185725dba57d55c03f7dd764d87347a15791cdb3135c9d7dcd36d0a"
+    },
+    {
+      "path": "src/weatherEffectsMath.js",
+      "sha256": "1e90176382679b218bcb9fb533c81fa8a21c2e38d6a5bc8409175a4b01c513d1"
+    },
+    {
+      "path": "src/weatherEffectsMath.test.mjs",
+      "sha256": "f7e7b6a8f8dce43baf3e6f30a7f7e5eb9fccd5ab510701eb7d7884f2ce594dc9"
+    },
+    {
+      "path": "src/weatherRadar.js",
+      "sha256": "846bf56d9e6329ce926c2b8c6a6f04fb4190ca3a8625c55c78cb2ad9c7bb98fe"
+    },
+    {
+      "path": "src/worldFocus.js",
+      "sha256": "e446bf3f336e7d3f14c36b5e26572e5d7f905efbd346cdf9bc380247b4596f18"
+    },
+    {
+      "path": "src/worldFocus.test.mjs",
+      "sha256": "91f10b05c4c47adb99c651d9fce3f0c83453448e9d14b9484758eab8a95eb50d"
+    },
+    {
+      "path": "src/worldPlaces.js",
+      "sha256": "17cc80cab1f93ad2280456a64417cc4d2cc0bf40ee2ed0597047e15a43e1e908"
+    },
+    {
+      "path": "style.css",
+      "sha256": "f2b801a2c33666ba720414ba77cf545a36b3c6cdf5ecc6fabd1b6fcd42c624ee"
+    },
+    {
+      "path": "tools/README.md",
+      "sha256": "0fa6940a0d04ceea6b49e38e57636fe967b49f517b2bded78f7d05e0ca96ba2d"
+    },
+    {
+      "path": "tools/cesium-render.html",
+      "sha256": "7e8d2070e33b09743b99ed2be75b0a79b8503ed3216281f7217b3458cf3c9682"
+    },
+    {
+      "path": "tools/cesium-render.mjs",
+      "sha256": "0a1dc64df37fde78b7dc4858763315a17c70c5ea4bc1b8b546c59fee5fb7b641"
+    },
+    {
+      "path": "tools/pano-pinhole.mjs",
+      "sha256": "58b6cae44e7ff2d157dfecbc947b8e364af36ede44564fa3f5dd6880e2ca2e55"
+    },
+    {
+      "path": "tools/sat-ortho.mjs",
+      "sha256": "9517f2b1b030ebbe7b80563f651e55f0061baf3bed341cac62b809700e2bc209"
+    },
+    {
+      "path": "tools/streetview-headings.mjs",
+      "sha256": "bddfda953cb6d1af314ba1319abe533949015ca2266a824eb6c39532db92a78a"
+    },
+    {
+      "path": "tools/streetview-panorama.mjs",
+      "sha256": "7c016066e43cc9838301eb0ebb75605cb6a3cae68569fd3ebc2c3f7f44e59fac"
+    },
+    {
+      "path": "vite.config.js",
+      "sha256": "106bb52d32d93502f41da8ed262b442fb1ea81288679b07c890e64a7f5ad1b0a"
+    }
+  ]
+}

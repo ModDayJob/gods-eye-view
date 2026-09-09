@@ -166,6 +166,9 @@ let _fetchTimeout = null;
 let _lastBounds = null;
 /** @type {boolean} True while an Overpass fetch is in flight */
 let _fetching = false;
+let _roadError = null;
+let _roadRetryAt = 0;
+let _roadRetryTimer = null;
 /** @type {number} Current count of rendered dots */
 let _count = 0;
 /** @type {number|null} Timestamp of last successful render */
@@ -494,7 +497,7 @@ async function fetchRoads(
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: `data=${encodeURIComponent(query)}`,
-    signal,
+    signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(15000)]) : AbortSignal.timeout(15000),
   });
 
   if (!response.ok) {
@@ -1158,6 +1161,7 @@ function onCameraChanged() {
     return;
   }
 
+  if (Date.now() < _roadRetryAt) return;
   const bounds = getViewBounds();
   if (!bounds) return;
   // C4 fix: center the fetch box on the camera's look-at ground point (with
@@ -1246,11 +1250,15 @@ export function trafficFeedPresentation({
   flowError = null,
   coveragePct = 0,
   statusUnavailable = false,
+  roadError = null,
+  zoomedOut = false,
 } = {}) {
   // `mode` is the CONFIGURED source (live key present vs keyless), not this
   // instant's health — health rides on `error`. The qa-traffic harness pins
   // that meaning.
   const mode = liveMode ? 'live' : 'sim';
+  if (zoomedOut) return { mode, error: null, loadingLabel: 'Zoom below 8 km to load street traffic' };
+  if (roadError) return { mode, error: roadError, loadingLabel: roadError };
   if (liveMode && flowError) {
     // One string for both fields. The manager's meta line renders `error` and
     // drops `loadingLabel` in its error branch, so the owner's SIMULATED copy
@@ -1413,6 +1421,9 @@ async function applyFlowThenRender(roads, clamped, generation, altitude, label, 
   }
   if (generation !== _loadGeneration) return false;
   renderRoadsForAltitude(roads, altitude, label, trace);
+  _roadError = null;
+  _roadRetryAt = 0;
+  clearTimeout(_roadRetryTimer);
   if (outcome === 'timeout') {
     flowJob.then(() => {
       if (generation !== _loadGeneration) return;
@@ -2129,6 +2140,14 @@ async function loadRoadsForBounds(bounds, altitude, trace = null) {
 
   } catch (e) {
     if (e?.name === 'AbortError') return;
+    if (generation === _loadGeneration) {
+      _roadError = 'Road network unavailable · retrying; existing road data may remain';
+      _roadRetryAt = Date.now() + 30000;
+      clearTimeout(_roadRetryTimer);
+      _roadRetryTimer = setTimeout(() => {
+        if (_enabled && !_fetching) onCameraChanged();
+      }, 30000);
+    }
     console.warn('[Data:Traffic] Fetch error:', e);
   } finally {
     if (generation === _loadGeneration) {
@@ -2198,6 +2217,9 @@ const trafficLayer = {
     _lastUpdate = null;
     _lastBounds = null;
     _fetching = false;
+    _roadError = null;
+    _roadRetryAt = 0;
+    clearTimeout(_roadRetryTimer);
     _loadGeneration = 0;
     _densityScale = 1.0;
     _speedScale = 1.0;
@@ -2287,6 +2309,7 @@ const trafficLayer = {
    */
   disable(viewer) {
     _enabled = false;
+    clearTimeout(_roadRetryTimer);
     releaseContinuousRender('traffic');
     clearTimeout(_fetchTimeout);
     clearInterval(_enableKickTimer);
@@ -2322,11 +2345,19 @@ const trafficLayer = {
   },
 
   /**
-   * No-op — traffic updates are entirely camera-driven, not timer-driven.
+   * Explicit refresh retries the current viewport without requiring a camera move.
    * @returns {Promise<void>}
    */
   async update() {
-    // No-op — updates are camera-driven
+    if (!_enabled || _fetching) return;
+    const altitude = getCameraAltitude();
+    if (altitude > ACTIVATION_ALTITUDE) return;
+    const bounds = getViewBounds();
+    if (!bounds) return;
+    const center = getFetchCenter();
+    clearTimeout(_fetchTimeout);
+    _roadRetryAt = 0;
+    await _loadRoadsForBounds(center ? clampBoundsAroundCenter(bounds, center) : clampBounds(bounds), altitude);
   },
 
   /**
@@ -2471,6 +2502,8 @@ const trafficLayer = {
       flowError: _flowError,
       coveragePct: _flowCoveragePct,
       statusUnavailable: _flowStatusUnavailable,
+      roadError: _roadError,
+      zoomedOut: _viewer && getCameraAltitude() > ACTIVATION_ALTITUDE,
     });
     return {
       count: _count,

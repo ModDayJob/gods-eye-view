@@ -55,7 +55,9 @@ const _scratchFocusScreen = new Cesium.Cartesian2();
 const DEFAULT_API_URL = '/api/ais-live';
 const DEFAULT_RENDER_ROWS = 12000;
 const DEFAULT_ACTIVE_LABELS = 900;
-const REFRESH_MS = 60000;
+// The local server already receives a live WebSocket stream; poll its cached
+// snapshot every 10 seconds instead of adding a full minute of client delay.
+const REFRESH_MS = 10000;
 /** Bounded wait for the first accepted vessel position in one enabled session. */
 export const AIS_FIRST_CONNECT_GRACE_MS = 30000;
 const AIS_FIRST_CONNECT_LABEL = 'awaiting first AIS position…';

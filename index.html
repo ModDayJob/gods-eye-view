@@ -783,6 +783,15 @@
                 <option value="all">All</option>
               </select>
             </div>
+            <div class="radio-area-controls">
+              <label for="radio-area">LISTENING AREA</label>
+              <select id="radio-area" aria-label="Radio listening area">
+                <option value="worldwide">Worldwide</option>
+                <option value="near-map">Near map · 200 km</option>
+              </select>
+              <button id="radio-area-update" type="button" hidden>Use current map area</button>
+              <p id="radio-area-note" role="status">Directory tags describe stations, not what is playing right now.</p>
+            </div>
             <div id="radio-station-card" class="radio-station-card" aria-live="polite">
               <strong id="radio-station-name">NO STATION SELECTED</strong>
               <span id="radio-station-meta">Enable Radio, then choose a globe marker or use next.</span>
@@ -845,6 +854,11 @@
          public → the data is real. Tile subcopy stays purely functional. -->
     <p id="first-run-description">It feels like a forbidden cockpit—then you realize the sources are public and the data is real.</p>
     <div class="first-run-choices">
+      <button type="button" data-first-run-choice="briefing">
+        <span class="material-symbols-outlined" aria-hidden="true">public</span>
+        <span><strong>YOUR WORLD · BRIEFING ROOM</strong><small>Watch regions, explore reports and build your assessment</small></span>
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+      </button>
       <button type="button" data-first-run-choice="contacts">
         <span class="material-symbols-outlined" aria-hidden="true">radar</span>
         <span><strong>LIVE CONTACTS</strong><small>Aircraft, vessels and nearby intelligence</small></span>
