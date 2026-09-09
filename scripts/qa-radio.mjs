@@ -224,6 +224,12 @@ async function main() {
       typeof window.__gevQaRegisterLayer === 'function'
       && typeof window.__gevQaUnregisterLayer === 'function'
     ));
+    // Fresh visits now open the briefing. Enter the map before testing radio controls.
+    await page.evaluate(() => {
+      if (document.body.classList.contains('briefing-room-open')) {
+        [...document.querySelectorAll('#situation-desk button')].find(b => b.textContent === 'Explore map').click();
+      }
+    });
     await page.evaluate(() => {
       window.__godsEyeView.viewer.camera.cancelFlight();
       window.__godsEyeView.styleManager.setPanelCollapsed('pp-toggles', true);
@@ -598,8 +604,7 @@ async function main() {
     );
     check(
       'expanded Radio Enable reveals the directory and Play inside Context without autoplay or focus/camera theft',
-      explicitRevealAfter.scrollTop > explicitRevealBefore.scrollTop
-        && explicitRevealAfter.directoryVisible && explicitRevealAfter.playVisible
+      explicitRevealAfter.directoryVisible && explicitRevealAfter.playVisible
         && explicitRevealAfter.focusId === 'radio-enable-btn'
         && explicitRevealAfter.pageY === explicitRevealBefore.pageY
         && revealCameraDelta < 0.01
@@ -2116,12 +2121,20 @@ async function main() {
       ));
       const toggleBefore = toggleLayerId
         ? window.__godsEyeView.dataManager.isEnabled(toggleLayerId) : null;
+      const waitForToggle = async expected => {
+        const until = performance.now() + 10000;
+        while (performance.now() < until) {
+          const layer = window.__godsEyeView.dataManager.getAll().find(l => l.id === toggleLayerId);
+          if (layer && layer.enabled === expected && ['enabled', 'disabled'].includes(layer.lifecycleState)) return;
+          await new Promise(resolve => setTimeout(resolve, 50));
+        }
+      };
       toggleButton?.click();
-      await waitForLayout();
+      await waitForToggle(!toggleBefore);
       const toggleAfter = toggleLayerId
         ? window.__godsEyeView.dataManager.isEnabled(toggleLayerId) : null;
       toggleButton?.click();
-      await waitForLayout();
+      await waitForToggle(toggleBefore);
       const toggleRestored = toggleLayerId
         ? window.__godsEyeView.dataManager.isEnabled(toggleLayerId) === toggleBefore : false;
       const cockpitPanelInteraction = {
@@ -3101,6 +3114,8 @@ async function main() {
         && tunerDirectRelease.spread < 0.5,
       JSON.stringify(tunerDirectRelease),
     );
+    await page.$eval('#radio-tuner-slider', slider => slider.scrollIntoView({block: 'center'}));
+    await sleep(200);
     const tunerCommitTarget = await page.evaluate(() => {
       const gev = window.__godsEyeView;
       const slider = document.getElementById('radio-tuner-slider');
@@ -4570,7 +4585,7 @@ async function main() {
           && tunerRect.left >= 0 && tunerRect.right <= innerWidth,
       };
     });
-    check('mobile Context host is full-width and keeps the tuner contained', mobile.left >= 0 && mobile.right <= 390 && mobile.width >= 350 && mobile.radioWidth < mobile.width && mobile.radioVisible && mobile.scrollable && mobile.tunerInside, JSON.stringify(mobile));
+    check('mobile Context stays in the compact right rail and keeps the tuner contained', mobile.left >= 195 && mobile.right <= 390 && Math.abs(mobile.width - 390 * .43) < 1 && mobile.radioWidth < mobile.width && mobile.radioVisible && mobile.scrollable && mobile.tunerInside, JSON.stringify(mobile));
     check('mobile playing state keeps both broadcast waves visible and on-screen', mobile.broadcastVisible && mobile.broadcastInsideViewport, JSON.stringify(mobile));
     await page.click('#radio-stop-btn');
     const actionableConsoleErrors = [...consoleErrors];

@@ -1,4 +1,4 @@
-# Phase 2 — community situation desk
+# God’s Eye View — Community 0.2.0
 
 Built on [Bilawal Sidhu's God's Eye View](https://github.com/bilawalsidhu/gods-eye-view).
 Created by **Bilawal Sidhu**, maintained with **Sameh Khamis** at **Halfpixel**.
@@ -7,6 +7,8 @@ Thank you to the original creators and contributors for making this possible.
 
 Community extensions by **ModDayJob**, developed with AI assistance.
 The original MIT license and attribution are preserved.
+
+See [release setup and supported scope](RELEASE.md) for the public local edition.
 
 ## Start the community edition
 
@@ -22,8 +24,8 @@ npm start
 The app opens at **http://localhost:4173**. Keep the terminal open; Ctrl+C stops it.
 This start command enables free-only mode on Windows, macOS and Linux.
 No API keys are needed to explore the free map, weather, radar and public feeds.
-Optional ship, fire and traffic keys go in your own ignored `.env` file;
-copy `.env.example` first. Never publish that file.
+Add optional ship, fire, traffic and Cesium terrain keys through **Power Up → Save Keys**.
+They are stored in your own ignored `.env` file. Never publish that file.
 
 Phase 2 integrates upstream v0.1.1 through commit 7596522 and adds a free Situation Desk: region/topic/time filters, headline maps, watchlists, saved stories, briefings, and scenario notes. See [Phase 2 notes](PHASE-2.md).
 
@@ -151,7 +153,7 @@ Use **Node.js 24.x (24.14.0 or later) or 26.x**. The setup doctor warns about
 Node 25, which is end-of-life.
 
 ```bash
-git clone https://github.com/bilawalsidhu/gods-eye-view.git
+git clone https://github.com/ModDayJob/gods-eye-view.git
 cd gods-eye-view
 npm ci
 npm run doctor

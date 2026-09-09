@@ -102,3 +102,14 @@ test('failed direct and ion requests preserve the keyless OSM fallback', async (
   assert.equal(Cesium.calls.length, 2);
   assert.equal(Cesium.GoogleMaps.defaultApiKey, undefined);
 });
+
+test('free-only startup retains ion terrain access without requesting Google assets', async () => {
+  const Cesium = fakeCesium();
+  const result = await loadPhotorealisticTileset(Cesium, {
+    googleApiKey: 'unused-google', cesiumToken: 'terrain-token', allowPhotorealistic: false,
+  });
+  assert.equal(Cesium.Ion.defaultAccessToken, 'terrain-token');
+  assert.equal(Cesium.calls.length, 0);
+  assert.equal(result.tileset, null);
+  assert.equal(result.route, 'osm');
+});

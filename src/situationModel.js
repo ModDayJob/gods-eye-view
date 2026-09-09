@@ -1,5 +1,8 @@
 export const REGIONS=[
  {id:'world',name:'Worldwide',query:'',lat:15,lon:0},
+ {id:'united-states',name:'United States',query:'("United States" OR USA)',lat:39,lon:-98},
+ {id:'russia',name:'Russia',query:'Russia',lat:60,lon:90},
+ {id:'eu',name:'European Union (EU)',query:'"European Union"',lat:50.85,lon:4.35},
  {id:'ukraine',name:'Ukraine',query:'Ukraine',lat:49,lon:32},
  {id:'middle-east',name:'Middle East',query:'(Iran OR Israel OR Lebanon OR Yemen)',lat:29,lon:43},
  {id:'sudan',name:'Sudan',query:'Sudan',lat:15,lon:30},
@@ -8,11 +11,30 @@ export const REGIONS=[
  {id:'africa',name:'Africa',query:'Africa',lat:3,lon:20},
  {id:'americas',name:'Americas',query:'(America OR Brazil OR Mexico)',lat:15,lon:-85}
 ];
+const COUNTRIES=[
+ ['canada','Canada',56,-106],['mexico','Mexico',23,-102],['brazil','Brazil',-10,-52],['argentina','Argentina',-34,-64],
+ ['united-kingdom','United Kingdom',54,-2],['france','France',47,2],['germany','Germany',51,10],['italy','Italy',42,12],['spain','Spain',40,-4],
+ ['poland','Poland',52,20],['norway','Norway',62,10],['sweden','Sweden',62,15],['finland','Finland',64,26],['turkey','Turkey',39,35],
+ ['china','China',35,104],['taiwan','Taiwan',23.7,121],['japan','Japan',36,138],['south-korea','South Korea',36,128],['north-korea','North Korea',40,127],
+ ['india','India',22,79],['pakistan','Pakistan',30,70],['bangladesh','Bangladesh',24,90],['indonesia','Indonesia',-2,118],['philippines','Philippines',12,122],
+ ['australia','Australia',-25,134],['new-zealand','New Zealand',-41,174],['iran','Iran',32,54],['israel','Israel',31.5,34.8],['lebanon','Lebanon',33.9,35.9],
+ ['syria','Syria',35,38],['iraq','Iraq',33,44],['yemen','Yemen',15.5,47.5],['saudi-arabia','Saudi Arabia',24,45],['uae','United Arab Emirates',24,54],
+ ['egypt','Egypt',27,30],['south-africa','South Africa',-29,24],['nigeria','Nigeria',9,8],['kenya','Kenya',1,38],['ethiopia','Ethiopia',9,40],['somalia','Somalia',5,46]
+];
+REGIONS.push(...COUNTRIES.map(([id,name,lat,lon])=>({id,name,lat,lon,query:'"'+name+'"'})));
+
+/** Literal place names only; no provider query syntax or arbitrary URLs. */
+export function localNewsPlace(value){
+ if(typeof value!=='string')return null;
+ const name=value.trim().replace(/\s+/g,' ');
+ if(name.length<2||name.length>120||!/[\p{L}]/u.test(name)||!/^[-\p{L}\p{N} ,.'’()]+$/u.test(name))return null;
+ return {id:'local:'+name.toLowerCase(),name,query:name.split(',').map(s=>s.trim()).filter(Boolean).map(s=>'"'+s+'"').join(' ')};
+}
 export const TOPICS={
  conflict:{name:'Conflict & diplomacy',query:'(conflict OR ceasefire OR diplomacy OR sanctions)'},
  humanitarian:{name:'Humanitarian',query:'(humanitarian OR displacement OR refugees OR famine)'},
  disaster:{name:'Disasters',query:'(earthquake OR flood OR wildfire OR cyclone)'},
- all:{name:'World headlines',query:'(world OR international)'}
+ all:{name:'All news',query:'(world OR international)'}
 };
 export function safeNewsUrl(value){
  try{const u=new URL(value);return ['https:','http:'].includes(u.protocol)&&!u.username&&!u.password?u.href:null;}catch{return null;}

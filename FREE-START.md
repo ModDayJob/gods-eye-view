@@ -28,11 +28,13 @@ other feeds stopped working.
 
 ## Free-account connections
 
-Add your own keys to `.env`, keep `GEV_FREE_ONLY=1`, and restart the launcher.
+Use **Power Up → Save Keys** to save your own keys, or edit `.env` and restart.
+Keep `GEV_FREE_ONLY=1`.
 Do not paste keys into chat or save them in browser URLs.
 
 | Feature | Variable | Account / key |
 | --- | --- | --- |
+| Cesium terrain / imagery | `CESIUM_ION_TOKEN` | https://ion.cesium.com/ |
 | Live ships | `AISSTREAM_API_KEY` | https://aisstream.io/ |
 | Fire detections | `FIRMS_MAP_KEY` | https://firms.modaps.eosdis.nasa.gov/api/map_key/ |
 | Real traffic flow | `TOMTOM_API_KEY` | https://docs.tomtom.com/pricing |

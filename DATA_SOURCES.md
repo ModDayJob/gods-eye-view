@@ -147,3 +147,16 @@ Google News RSS indexes publisher headlines and links, retrieved at runtime.
 No article bodies, images, video or Conflictly feeds are bundled. Publisher
 content retains its own terms. Country-name matches use an explicitly labeled
 small country-center catalog for regional context, not incident geolocation.
+
+## EarthCam viewing-page directory
+
+The community camera browser includes five curated links to official EarthCam
+viewing pages: Abbey Road (London), Times Square (New York), Temple Bar (Dublin),
+Bourbon Street (New Orleans), and News Cafe (Miami Beach). Landmark coordinates
+are approximate. Page links were checked September 9, 2026; this is not a live
+availability audit or a complete EarthCam catalogue.
+
+EarthCam owns its feeds. This app does not embed, proxy, download or rebroadcast
+EarthCam images/video. Watch actions open the official page in a separate tab.
+See https://www.earthcam.com/faq.php and
+https://www.earthcam.com/site/linktous.php. No affiliation is implied.

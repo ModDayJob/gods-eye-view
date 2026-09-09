@@ -2624,3 +2624,10 @@ Integrated upstream through 7596522. Situation Desk and original-creator credits
 are initialized from main.js. The /api/situation-news proxy serves bounded,
 cached headline metadata; source status, stale flags and region semantics are
 documented in PHASE-2.md. Closing the panel stops its polling and removes markers.
+
+### Local briefing-room preview
+The Briefing Room exposes a front-page overview, report filters, map-layer
+switches, country-mention links, source-linked local evidence search and manual
+snapshot history. Snapshots are bounded browser storage, not a backfilled event
+archive. Only news context replays; other layers remain live. The first-view
+launcher includes Briefing Room. Unshared fresh visits open its overview.

@@ -273,3 +273,9 @@ represent previously published GitHub Releases.
 - Integrate upstream v0.1.1 through 7596522 while retaining Phase 1.
 - Add original-creator credits and a free, independently implemented Situation Desk.
 - Add region watchlists, headline context maps, saved stories, briefings and notes.
+
+### Local preview — briefing workspace
+- Promote Situation to a front-page Briefing Room with overview and region cards.
+- Add map switches, linked country mentions, evidence questions and bounded snapshots.
+- Compare matching historical samples; export source briefings with analyst notes.
+- Keep history, inference limits and live overlay timing explicit. No paid model added.

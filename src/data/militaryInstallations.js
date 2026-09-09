@@ -435,6 +435,8 @@ async function loadInstallations() {
   }
   state.abort?.abort();
   const requestAbort = new AbortController();
+  let timedOut = false;
+  const deadline = setTimeout(() => { timedOut = true; requestAbort.abort(); }, 12000);
   state.abort = requestAbort;
   state.loading = true;
   clearUnavailableRetry({ resetBackoff: false });
@@ -502,7 +504,7 @@ async function loadInstallations() {
           });
         }
       } catch (error) {
-        if (error?.name === 'AbortError') return;
+        if (error?.name === 'AbortError') throw error;
         placesError = 'Google Places search unavailable; showing mapped sites';
       }
     }
@@ -510,6 +512,7 @@ async function loadInstallations() {
       lat: record.latitude,
       lon: record.longitude,
     })));
+    if (timedOut) throw Object.assign(new Error('Mapped sites took too long to load'), { failureReason: 'timeout' });
     if (requestAbort.signal.aborted || state.abort !== requestAbort || !state.enabled) return;
     state.records = records;
     state.recordById = new Map(state.records.map((record) => [record.id, record]));
@@ -529,11 +532,14 @@ async function loadInstallations() {
     renderRecords();
     warmInstallationFloors(state.records);
   } catch (error) {
-    if (error?.name === 'AbortError') return;
-    state.failureReason = error?.failureReason || 'unavailable';
-    setInstallationStatus('unavailable', error?.message || 'Installation context unavailable');
+    if (state.abort !== requestAbort || !state.enabled) return;
+    if (error?.name === 'AbortError' && !timedOut) return;
+    state.failureReason = timedOut ? 'timeout' : error?.failureReason || 'unavailable';
+    state.stale = state.records.length > 0;
+    setInstallationStatus(state.stale ? 'stale' : 'unavailable', timedOut ? 'Mapped sites took too long to load; retry available in Source Status' : error?.message || 'Installation context unavailable');
     scheduleUnavailableRetry();
   } finally {
+    clearTimeout(deadline);
     // An older aborted request must not clear a newer request's busy state.
     if (state.abort === requestAbort) {
       state.abort = null;
@@ -591,6 +597,12 @@ const militaryInstallationsLayer = {
     clearRendered();
     if (state.dataSource && viewer) viewer.dataSources.remove(state.dataSource, true);
     state.dataSource = null;
+    state.records = [];
+    state.recordById.clear();
+    state.lastUpdate = null;
+    state.stale = false;
+    state.saturated = false;
+    state.viewer = null;
   },
   getNearby(center, rangeM, maxCount = 50) {
     if (!center) return [];

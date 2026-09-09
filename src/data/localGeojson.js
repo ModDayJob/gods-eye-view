@@ -430,7 +430,11 @@ export function createLocalGeoJsonLayer({
           const text = await response.text();
           const lines = text.split('\n').filter(l => l.trim().length > 0);
           
-          const features = lines.map(line => JSON.parse(line));
+          const features = [];
+          for (let i = 0; i < lines.length; i++) {
+            if (i > 0 && i % 256 === 0) await new Promise(resolve => setTimeout(resolve, 0));
+            features.push(JSON.parse(lines[i]));
+          }
           
           const geojson = {
             type: 'FeatureCollection',
@@ -466,6 +470,8 @@ export function createLocalGeoJsonLayer({
           _stemGeometryDirty = true;
           
           for (let i = 0; i < entities.length; i++) {
+            // Let input and rendering proceed between batches during a cold load.
+            if (i > 0 && i % 128 === 0) await new Promise(resolve => setTimeout(resolve, 0));
             const feature = entities[i];
             feature.__localLayerId = id; // Tag it so our click handler knows it belongs to this layer
             

@@ -1,4 +1,4 @@
-import {REGIONS,TOPICS,cleanArticles} from '../src/situationModel.js';
+import {REGIONS,TOPICS,cleanArticles,localNewsPlace} from '../src/situationModel.js';
 export function situationNewsPlugin({fetchText,parseArticles}){
  const cache=new Map(),pending=new Map();
  async function obtain(region,topic,hours){
@@ -8,7 +8,7 @@ export function situationNewsPlugin({fetchText,parseArticles}){
   if(pending.size>=4)throw new Error('Busy');
   const task=(async()=>{
    try{
-    const query=[region.query,TOPICS[topic].query,'when:'+hours+'h'].filter(Boolean).join(' ');
+    const query=[region.query,(region.id.startsWith('local:')&&topic==='all'?'':TOPICS[topic].query),'when:'+hours+'h'].filter(Boolean).join(' ');
     const params=new URLSearchParams({q:query,hl:'en-US',gl:'US',ceid:'US:en'});
     const xml=await fetchText('https://news.google.com/rss/search?'+params,{timeoutMs:12000,maxBytes:1000000});
     // A valid empty channel is distinct from an upstream error page.
@@ -23,7 +23,7 @@ export function situationNewsPlugin({fetchText,parseArticles}){
  const install=m=>m.use('/api/situation-news',async(req,res)=>{
   const send=(code,body)=>{res.writeHead(code,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify(body));};
   if(req.method!=='GET')return send(405,{error:'GET only'});
-  const u=new URL(req.url||'/','http://localhost'),region=REGIONS.find(r=>r.id===(u.searchParams.get('region')||'world')),topic=u.searchParams.get('topic')||'conflict',hours=Number(u.searchParams.get('hours')||24);
+  const u=new URL(req.url||'/','http://localhost'),region=u.searchParams.get('region')==='local'?localNewsPlace(u.searchParams.get('place')):REGIONS.find(r=>r.id===(u.searchParams.get('region')||'world')),topic=u.searchParams.get('topic')||'conflict',hours=Number(u.searchParams.get('hours')||24);
   if(!region||!Object.hasOwn(TOPICS,topic)||![6,24,48].includes(hours))return send(400,{error:'Choose a supported region, topic and time window.'});
   try{send(200,await obtain(region,topic,hours));}catch{send(503,{error:'News provider unavailable; retry later.'});}
  });

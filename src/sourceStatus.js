@@ -1,3 +1,4 @@
+import { settleLimited } from './limitedWork.js';
 import { sourceHealth, createHealthJournal } from './sourceHealth.js';
 
 const CADENCE = {
@@ -91,34 +92,44 @@ export function initSourceStatus({ dataManager }) {
   let config = null;
   let busy = false;
   let nextRefresh = 0;
+  const rowNodes = new Map();
+  const sourceRetryAt = new Map();
   const render = () => {
     if (!dialog.open) return;
-    rows.replaceChildren();
     for (const layer of dataManager.getAll().filter(l => l.showInTogglePanel)) {
-      const row = document.createElement('section');
-      const title = document.createElement('strong');
-      title.textContent = `${layer.name} — ${sourceStatusText(layer)}`;
-      const detail = document.createElement('p');
-      detail.textContent = `${sourceHealth(layer).kind}. ${CADENCE[layer.id] || 'Source cadence varies'}`;
-      row.append(title, detail);
-      rows.append(row);
+      let nodes = rowNodes.get(layer.id);
+      if (!nodes) {
+        const row = document.createElement('section'), title = document.createElement('strong'), detail = document.createElement('p'), retry = document.createElement('button');
+        retry.textContent = 'Retry this source';
+        retry.setAttribute('aria-label', `Retry ${layer.name}`);
+        retry.onclick = () => refreshSources([layer.id]);
+        row.append(title, detail, retry);rows.append(row);
+        nodes = {title,detail,retry};rowNodes.set(layer.id,nodes);
+      }
+      nodes.title.textContent = `${layer.name} — ${sourceStatusText(layer)}`;
+      nodes.detail.textContent = `${sourceHealth(layer).kind}. ${CADENCE[layer.id] || 'Source cadence varies'}`;
+      nodes.retry.hidden = !layer.enabled;
+      const retryIn = Math.max(0, Math.ceil(((sourceRetryAt.get(layer.id) || 0) - Date.now()) / 1000));
+      nodes.retry.textContent = retryIn ? `Retry in ${retryIn}s` : 'Retry this source';
+      nodes.retry.disabled = busy || retryIn > 0 || layer.lifecycleState !== 'enabled';
     }
     const remaining = Math.max(0, Math.ceil((nextRefresh - Date.now()) / 1000));
     refresh.disabled = busy || remaining > 0;
     refresh.textContent = busy ? 'Refreshing…' : remaining ? `Refresh available in ${remaining}s` : 'Refresh enabled sources';
   };
-  refresh.addEventListener('click', async () => {
-    if (busy || Date.now() < nextRefresh) return;
-    busy = true;
-    nextRefresh = Date.now() + 60_000;
+  async function refreshSources(ids) {
+    if (busy) return;
+    ids = ids.filter(id => Date.now() >= (sourceRetryAt.get(id) || 0));
+    busy = true;nextRefresh = Date.now() + 60_000;
+    for (const id of ids) sourceRetryAt.set(id, nextRefresh);
     render();
-    const enabled = dataManager.getAll().filter(l => l.enabled);
-    const results = await Promise.allSettled(enabled.map(l => dataManager.refreshLayer(l.id)));
-    const count = results.filter(r => r.status === 'fulfilled' && r.value).length;
-    feedback.textContent = enabled.length ? `${count} of ${enabled.length} sources refreshed. Provider caches and limits still apply.` : 'Enable a layer in Data Layers first.';
-    busy = false;
-    render();
-  });
+    try {
+      const results = await settleLimited(ids, id => dataManager.refreshLayer(id), 2);
+      const count = results.filter(r => r.status === 'fulfilled' && r.value).length;
+      feedback.textContent = ids.length ? `${count} of ${ids.length} sources refreshed. Provider caches and limits still apply.` : 'Enable a layer in Data Layers first.';
+    } finally {busy = false;render();}
+  }
+  refresh.addEventListener('click', () => refreshSources(dataManager.getAll().filter(l => l.enabled).map(l => l.id)));
   const renderConnections = () => {
     connections.replaceChildren();
     const label = document.createElement('h3');

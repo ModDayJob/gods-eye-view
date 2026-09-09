@@ -52,3 +52,70 @@ matching are incomplete. Existing provider terms and coverage limits still apply
   and two recorded terrain-service HTTP 502 responses. These remain unresolved;
   passing unit tests do not establish graphics or provider reliability.
 - Phase 2 is a preview, not a claim that every external feed is available.
+
+## Local-only briefing-room iteration
+The local preview now opens a Briefing Room overview on an unshared fresh URL,
+with a first-view launcher entry and a prominent top button. It adds watched
+region cards, source-linked evidence search, a map-layer control surface,
+clickable country context, and manual browser snapshots (30 collections maximum).
+History replays the news overlay only; other feeds remain live. Comparisons use
+matching region/topic/window scopes and describe additions/absences in collected
+headlines, not confirmed changes in events. Briefing export includes limitations
+and user-authored assessment notes. Evidence questions perform local headline
+retrieval; they do not use a language model or read full articles. No historical
+archive before the first capture is implied. These changes have not been pushed.
+
+### Local performance and opening preferences
+View controls now offer Balanced (30 fps, 0.85 rendering scale), Detailed
+(60 fps, full rendering scale) and Light (20 fps, 0.7 rendering scale).
+Balanced is the new default; feed polling schedules are unchanged. The app can
+offer or restore the last untracked local camera view, or start at the world.
+The remembered view is browser-local, with coordinate validation; shared links
+keep priority. Plane icon dimensions are unchanged in this iteration.
+
+### Startup recovery fix
+The startup cover previously waited indefinitely for every shared-view layer.
+It now releases after eight seconds, with a nonblocking pending-source notice.
+Restoration continues; startup-location overrides still wait for restoration.
+Startup gate and launcher checks: 35 passed; production build passed. The original
+all-layers tab also crashed during reload; a lighter Austin recovery view was
+verified visible and interactive. This does not establish an all-layers crash fix.
+
+### Country and local news coverage
+The overview now exposes country/region selection directly, including United
+States, Russia, the European Union and dozens of other countries. City/town
+lookup uses the existing free Photon geocoder and asks the user to confirm the
+matched location. Local general-news searches omit the worldwide topic filter.
+Up to 30 searched places persist locally, with up to 20 watched places. Location
+markers are context only; news coverage depends on indexed publisher reports.
+Country/town scopes remain distinct in request caches and historical comparisons.
+Compact navigation is raised above overlapping map panels so it stays clickable.
+
+### Compact opening layout repair
+At narrow browser widths, collapsed map panels now remain compact side controls
+instead of stretching across the entire map. Expanded rails retain scrolling,
+with space between navigation, panel controls and attribution. Verified in the
+existing local browser pane, including expanding Data Layers.
+
+### Consistent opening location
+Retired automatic last-view recording and the return-to-last-place prompt.
+Fresh visits use the original Austin view, or one of 28 major cities saved in
+View → My chosen city. Chosen cities open directly at a north-up city overview,
+without a competing Austin fly-in. Explicit map URLs retain their own view.
+Aircraft proxy verification returned 162 unique reports from adsb.lol's 250 nm
+regional fallback; movement between source updates remains estimated.
+
+### Functional walkthrough and error handling
+See QA-REPORT.md for tested workflows, remaining provider/control issues, and
+verification scope. Repaired the compact attribution clearance, handled an
+expected background-flight cancellation when clearing layers, and surfaced
+road-network fetch failures in traffic status. The final build and 77 focused
+checks passed; both runtime repairs were also verified with browser fixtures.
+
+### Local stability follow-up
+Added bounded installation and road requests, individual source retries, limited
+bulk-refresh concurrency, progressive local dataset processing, and truthful
+traffic zoom guidance. Installation refresh failures retain visibly stale data;
+teardown clears it. Manual street-traffic retry works without moving the map.
+The full Radio regression now passes 106/106. See STABILITY-REPORT.md for the
+full automated results, 14-layer endurance check, and public-camera limitations.

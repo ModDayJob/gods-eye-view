@@ -20,3 +20,6 @@ output/
 .agents/
 pinokio/ENVIRONMENT
 pinokio/.installed
+
+# Local QA evidence and downloaded test exports
+qa-results/
